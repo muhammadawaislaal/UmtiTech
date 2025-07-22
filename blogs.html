@@ -4,92 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Latest tech blogs from UMTI Tech Solutions, a digital transformation leader in South Punjab, Pakistan." />
-  <title>UMTI Tech Solutions Blog</title>
+  <meta name="keywords" content="UMTI Tech, Awais Laal, Web Development, AI, Cloud, SEO Pakistan, Generative AI Punjab" />
+  <meta name="author" content="UMTI Tech Solutions" />
+  <meta property="og:url" content="https://muhammadawaislaal.github.io/UmtiTech/#home" />
+  <title>UMTI Tech Blog</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    .hidden { display: none; }
-    .article-section { display: none; transition: all 0.5s ease-in-out; padding-top: 2rem; }
-    .article-section.active { display: block; animation: fadeIn 0.6s ease-in; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .article-section { display: none; padding-top: 2rem; transition: all 0.4s ease-in-out; }
+    .article-section.active { display: block; animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .blog-card img { height: 12rem; object-fit: cover; border-radius: 0.5rem; }
+    .read-more { color: #2563eb; cursor: pointer; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-blue-900 text-white p-6 text-center text-2xl font-bold">UMTI Tech Solutions - Blog</header>
 
-  <main class="p-6 space-y-8 max-w-5xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <header class="bg-blue-900 text-white p-6 text-center text-2xl font-bold">
+    UMTI Tech Solutions Blog
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 space-y-10">
+
+    <!-- Blog Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- 🔻 ADD FUTURE BLOG CARDS BELOW THIS LINE 🔻 -->
 
       <div class="blog-card bg-white rounded-lg shadow-md p-4">
-        <img src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg" class="w-full h-48 object-cover rounded" alt="AI 2025">
-        <h2 class="text-xl font-semibold my-2">AI Trends 2025</h2>
-        <p class="text-sm">Explore how UMTI Tech Solutions is leveraging generative AI to shape the digital future globally.</p>
-        <button onclick="showArticle('ai-2025')" class="text-blue-600 mt-2 hover:underline">Read More</button>
+        <img src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg" alt="AI Trends 2025" />
+        <h2 class="text-xl font-semibold mt-4">AI Trends 2025</h2>
+        <p class="text-sm mt-2">UMTI Tech is pioneering generative AI across South Punjab and delivering intelligent systems globally.</p>
+        <span class="read-more mt-2 inline-block" onclick="showArticle('ai-2025')">Read More</span>
       </div>
 
       <div class="blog-card bg-white rounded-lg shadow-md p-4">
-        <img src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg" class="w-full h-48 object-cover rounded" alt="Web Development">
-        <h2 class="text-xl font-semibold my-2">Web Development Guide 2025</h2>
-        <p class="text-sm">Discover the latest trends in modern responsive websites and SEO best practices.</p>
-        <button onclick="showArticle('web-dev')" class="text-blue-600 mt-2 hover:underline">Read More</button>
+        <img src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg" alt="Web Development 2025" />
+        <h2 class="text-xl font-semibold mt-4">Web Development 2025</h2>
+        <p class="text-sm mt-2">Discover responsive design, modern frameworks, and top SEO strategies by UMTI experts.</p>
+        <span class="read-more mt-2 inline-block" onclick="showArticle('web-dev')">Read More</span>
       </div>
 
       <div class="blog-card bg-white rounded-lg shadow-md p-4">
-        <img src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg" class="w-full h-48 object-cover rounded" alt="Cloud Benefits">
-        <h2 class="text-xl font-semibold my-2">Cloud Computing Benefits 2025</h2>
-        <p class="text-sm">UMTI helps businesses grow by implementing cloud-first strategies from Punjab to the world.</p>
-        <button onclick="showArticle('cloud-2025')" class="text-blue-600 mt-2 hover:underline">Read More</button>
+        <img src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg" alt="Cloud Benefits" />
+        <h2 class="text-xl font-semibold mt-4">Cloud Benefits 2025</h2>
+        <p class="text-sm mt-2">UMTI’s cloud-first strategies improve scalability, reliability, and digital reach.</p>
+        <span class="read-more mt-2 inline-block" onclick="showArticle('cloud-2025')">Read More</span>
       </div>
 
     </div>
 
-    <!-- Article Sections (Only One Visible at a Time) -->
+    <!-- Articles -->
+
     <section id="ai-2025" class="article-section bg-white rounded-lg shadow-lg p-6">
-      <h2 class="text-2xl font-bold mb-4">AI Trends 2025 - How UMTI is Leading the Future</h2>
-      <p>
-        UMTI Tech Solutions is at the forefront of technological innovation in South Punjab and beyond. From AI to cloud, web development to automation, our mission is clear — digitize South Punjab and serve the world. We believe in upskilling, training, and delivering high-value digital services to clients and communities alike. Our generative AI program is just one of many groundbreaking projects. 
-        <!-- Placeholder repeated -->
-        UMTI Tech Solutions is at the forefront... [repeated ~1000 words]
+      <h2 class="text-3xl font-bold mb-4">AI Trends 2025 – Shaping the Future with UMTI</h2>
+      <p class="text-justify leading-7">
+        UMTI Tech Solutions is leading the future of AI innovation across South Punjab and Pakistan. Through practical training, real-time deployment, and open-source generative AI integration, UMTI is preparing a new digital workforce ready for 2025. Our AI-powered bots, automation flows, and NLP-based assistants have streamlined businesses and enabled SMEs across industries.
+        <br><br>
+        As a company born out of innovation, UMTI focuses on ethically built models. Generative AI is not just about content—it’s about transforming human productivity, automating design, accelerating software development, and making data-driven decisions more accessible. We educate developers, entrepreneurs, and learners to use AI responsibly with tools like ChatGPT, GitHub Copilot, MidJourney, and open-source models.
+        <br><br>
+        UMTI’s future roadmap includes AI-native SaaS platforms, healthcare solutions using diagnostic AI, and AI-integrated eCommerce platforms. Our goal is to lead South Punjab into the AI revolution.
+        <br><br>
+        Join our courses to build in AI. Visit our YouTube channel and WhatsApp for classes and live sessions.
       </p>
     </section>
 
     <section id="web-dev" class="article-section bg-white rounded-lg shadow-lg p-6">
-      <h2 class="text-2xl font-bold mb-4">Web Development Guide 2025</h2>
-      <p>
-        Web development at UMTI means clean code, intuitive UI/UX, and SEO-ready performance. We create digital platforms that perform beautifully across all devices. This guide explores frameworks, responsive grids, mobile-first strategies, accessibility, and optimization tools.
-        <!-- Placeholder repeated -->
-        Web development at UMTI means... [repeated ~1000 words]
+      <h2 class="text-3xl font-bold mb-4">UMTI's 2025 Web Development Blueprint</h2>
+      <p class="text-justify leading-7">
+        In 2025, modern web development is about performance, accessibility, and user-first experiences. UMTI Tech Solutions builds responsive, SEO-optimized, mobile-first websites using React, Vue, and TailwindCSS. Our CMS-powered sites are blazing fast, secure, and built to rank high.
+        <br><br>
+        We don’t just build static pages; we design systems. Every UMTI website is audit-checked for Core Web Vitals, Google ranking factors, and user engagement metrics. From eCommerce stores to custom dashboards and blogging platforms, our dev team ensures global standards are met.
+        <br><br>
+        UMTI also trains aspiring developers via YouTube tutorials and WhatsApp live coaching. We guide learners in HTML, CSS, JS, WordPress, Shopify, APIs, and Git. Start building modern websites with UMTI.
+        <br><br>
+        Our future web stack includes Next.js, serverless hosting, headless CMS, and AI-generated code scaffolds.
       </p>
     </section>
 
     <section id="cloud-2025" class="article-section bg-white rounded-lg shadow-lg p-6">
-      <h2 class="text-2xl font-bold mb-4">Cloud Computing Benefits 2025</h2>
-      <p>
-        UMTI empowers businesses by shifting workloads to cloud platforms like AWS and Azure. Our strategy includes scalability, disaster recovery, reduced costs, and automation. This article outlines how the cloud helps small businesses compete globally.
-        <!-- Placeholder repeated -->
-        UMTI empowers businesses by shifting... [repeated ~1000 words]
+      <h2 class="text-3xl font-bold mb-4">Cloud Strategy for Pakistan – UMTI's 2025 Approach</h2>
+      <p class="text-justify leading-7">
+        Cloud isn’t the future – it’s the present. UMTI empowers South Punjab businesses with AWS, Azure, and Google Cloud. From simple file storage to Kubernetes clusters, we offer cloud migration, DevOps pipelines, and serverless compute architecture.
+        <br><br>
+        Our clients enjoy 99.9% uptime, instant scalability, and fully managed services. Whether it's a startup app or an enterprise ERP, UMTI deploys secure, scalable, and cost-effective solutions. We even guide local students through certifications and internships in cloud computing.
+        <br><br>
+        In rural Pakistan, we introduced cloud-powered school systems and agri-analytics dashboards, delivering precision farming through IoT + cloud + AI.
+        <br><br>
+        UMTI will launch its own cloud-native SaaS for South Punjab enterprises by 2026.
       </p>
     </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-10 mt-10 relative z-10">
+  <footer class="bg-gray-900 text-gray-300 py-10 mt-20">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <p>&copy; 2025 UMTI Tech Solutions. All rights reserved.</p>
-      <p>Digitally transforming South Punjab and empowering global business.</p>
+      <p>&copy; 2023 UMTI Tech Solutions. All rights reserved.</p>
+      <p><a href="https://muhammadawaislaal.github.io/UmtiTech/#home" target="_blank" class="underline text-blue-400">Visit Our Official Website</a></p>
     </div>
   </footer>
 
-  <!-- JavaScript for showing articles -->
   <script>
     function showArticle(id) {
       document.querySelectorAll('.article-section').forEach(section => {
         section.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({ top: document.getElementById(id).offsetTop - 80, behavior: 'smooth' });
+      const target = document.getElementById(id);
+      target.classList.add('active');
+      window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
     }
   </script>
+
 </body>
 </html>
