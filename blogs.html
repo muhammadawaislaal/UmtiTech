@@ -3,91 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Explore tech trends, AI innovations, and web development insights from UMTI Tech Solutions, based in South Punjab, Pakistan." />
-  <meta name="keywords" content="UMTI Tech Solutions, AI, WordPress, Web Development, South Punjab, Pakistan, SaaS, Shopify, Ecommerce, Free Tech Training" />
-  <meta name="author" content="UMTI Tech Solutions" />
-  <title>UMTI Tech Blogs</title>
+  <meta name="description" content="UMTI Tech Solutions Blog – Stay updated with our latest AI, SaaS, Web, and Cloud innovations." />
+  <meta name="keywords" content="UMTI, Tech Solutions, AI, Web Development, SaaS, Shopify, Generative AI, South Punjab, Pakistan" />
+  <meta name="author" content="Muhammad Awais Laal" />
+  <title>UMTI Tech Blog</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    .blog-content { display: none; transition: all 0.3s ease-in-out; }
-    .blog-card:hover { transform: translateY(-3px); transition: transform 0.3s; }
-    .pattern-bg { background: url('https://via.placeholder.com/1200x800?text=Pattern') center/cover no-repeat; opacity: 0.1; position: absolute; inset: 0; z-index: 0; }
-    .active-article { display: block; animation: fadeIn 0.5s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .transition-all { transition: all 0.4s ease-in-out; }
+    .blog-card:hover { transform: scale(1.02); }
+    .article-content { display: none; opacity: 0; transform: scale(0.98); transition: opacity 0.5s, transform 0.5s; }
+    .article-content.active { display: block; opacity: 1; transform: scale(1); }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <section class="relative py-16 section bg-white">
-    <div class="pattern-bg"></div>
-    <div class="container mx-auto px-4 relative z-10">
-      <h1 class="text-4xl font-extrabold text-center text-blue-700 mb-6">Tech Insights from UMTI Tech Solutions</h1>
-      <p class="text-center max-w-3xl mx-auto mb-10 text-lg">Stay updated with innovations in AI, WordPress, SaaS, Shopify, and more — from Darkhast Jamal Khan to the world.</p>
-      
-      <!-- ✅ Blog Cards Grid -->
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<body class="bg-gray-50 text-gray-800">
 
-        <!-- 🔻 Blog Card 1 -->
-        <div class="blog-card bg-white p-4 rounded-xl shadow-lg">
-          <img src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg" alt="AI Trends" class="rounded-md mb-4 h-48 w-full object-cover">
-          <h3 class="text-xl font-bold text-blue-700">AI Trends 2025 – Shaping the Future</h3>
-          <p class="text-sm mt-2 text-gray-600">UMTI Tech Solutions is pioneering generative AI, machine learning, and automation...</p>
-          <button onclick="showArticle('ai-article')" class="text-blue-600 mt-3 hover:underline text-sm">Read More</button>
-        </div>
+  <section class="py-12 px-6">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-blue-600">UMTI Tech Solutions Blog</h1>
+      <p class="text-lg text-gray-600">Latest Insights on AI, SaaS, Web Development, and Digital Automation</p>
+    </div>
 
-        <!-- 🔻 Blog Card 2 -->
-        <div class="blog-card bg-white p-4 rounded-xl shadow-lg">
-          <img src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg" alt="Web Dev Guide" class="rounded-md mb-4 h-48 w-full object-cover">
-          <h3 class="text-xl font-bold text-blue-700">Modern Web Dev Guide 2025</h3>
-          <p class="text-sm mt-2 text-gray-600">Building fast, accessible, and SEO-optimized websites using WordPress, React, Vue, and Shopify...</p>
-          <button onclick="showArticle('webdev-article')" class="text-blue-600 mt-3 hover:underline text-sm">Read More</button>
-        </div>
-
-        <!-- 🔻 Blog Card 3 -->
-        <div class="blog-card bg-white p-4 rounded-xl shadow-lg">
-          <img src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg" alt="Cloud Benefits" class="rounded-md mb-4 h-48 w-full object-cover">
-          <h3 class="text-xl font-bold text-blue-700">Cloud Tech Benefits in 2025</h3>
-          <p class="text-sm mt-2 text-gray-600">Learn how UMTI leverages AWS, Azure, and hybrid cloud to serve businesses globally...</p>
-          <button onclick="showArticle('cloud-article')" class="text-blue-600 mt-3 hover:underline text-sm">Read More</button>
-        </div>
-
-        <!-- 🔻 ADD FUTURE BLOG CARDS BELOW THIS LINE 🔻 -->
-
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Blog Card 1 -->
+      <div class="blog-card bg-white p-6 rounded-xl shadow transition-all">
+        <img class="rounded mb-4 w-full h-48 object-cover" src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg?w=1200" alt="AI Trends 2025">
+        <h2 class="text-2xl font-semibold text-blue-600 mb-2">AI Trends 2025</h2>
+        <p class="text-gray-600 mb-4">UMTI Tech Solutions is pioneering Generative AI from South Punjab to the global stage. Here's how we’re redefining future tech...</p>
+        <button onclick="showArticle('article1')" class="text-blue-500 underline">Read More</button>
       </div>
+
+      <!-- Blog Card 2 -->
+      <div class="blog-card bg-white p-6 rounded-xl shadow transition-all">
+        <img class="rounded mb-4 w-full h-48 object-cover" src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg?w=1200" alt="Web Dev Guide">
+        <h2 class="text-2xl font-semibold text-blue-600 mb-2">Web Dev Guide 2025</h2>
+        <p class="text-gray-600 mb-4">From WordPress to React, UMTI is empowering startups with fast, SEO-optimized websites. Explore what’s coming next...</p>
+        <button onclick="showArticle('article2')" class="text-blue-500 underline">Read More</button>
+      </div>
+
+      <!-- Blog Card 3 -->
+      <div class="blog-card bg-white p-6 rounded-xl shadow transition-all">
+        <img class="rounded mb-4 w-full h-48 object-cover" src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg?w=1200" alt="Cloud Benefits">
+        <h2 class="text-2xl font-semibold text-blue-600 mb-2">Cloud Benefits 2025</h2>
+        <p class="text-gray-600 mb-4">Explore how UMTI Tech Solutions is making cloud computing accessible and scalable in underserved regions like South Punjab...</p>
+        <button onclick="showArticle('article3')" class="text-blue-500 underline">Read More</button>
+      </div>
+
+      <!-- 🔻 ADD FUTURE BLOG CARDS BELOW THIS LINE 🔻 -->
+
     </div>
   </section>
 
-  <!-- ✅ Expanded Articles (Hidden by Default) -->
-  <section id="ai-article" class="blog-content max-w-4xl mx-auto px-6 py-10 bg-white shadow-xl rounded-lg mb-10">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">AI Trends 2025 – UMTI’s Role in Generative Innovation</h2>
+  <!-- Full Article Sections -->
+  <section id="article1" class="article-content px-6 pb-12 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">AI Trends 2025</h2>
     <p class="text-gray-700 leading-relaxed">
-      The global tech ecosystem is undergoing rapid transformation driven by artificial intelligence. At UMTI Tech Solutions, based in the rural heart of South Punjab, we are not only witnessing this evolution but actively contributing to it...
+      UMTI Tech Solutions, headquartered in Darkhast Jamal Khan, South Punjab, is leading a technological transformation with its cutting-edge work in Artificial Intelligence. The rise of generative AI is not only transforming global businesses but also empowering rural regions like ours. <br><br>
+
+      Our CEO Muhammad Awais Laal, a visionary born in 2007 and educated at Akhuwat University, is at the forefront of building ethical, scalable AI systems. Under his leadership, UMTI launched free generative AI courses and reached hundreds of passionate learners via [YouTube](https://youtube.com/@umtitechsolutions?si=9aKv_QaENLntcd2s) and [WhatsApp Channel](https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u).<br><br>
+
+      In 2025, we see trends like AI-powered automation for small businesses, voice-based assistants for eCommerce, and deeply integrated AI in agriculture and health. Our research focuses on custom language models trained for the Seraiki language to bridge digital gaps.<br><br>
+
+      These innovations are being deployed across Shopify apps, SaaS tools, and chatbot integrations developed by UMTI. Stay tuned as we continue transforming lives with technology, especially in areas that have long been digitally neglected.<br><br>
+
+      Want to be part of the AI revolution? Join us on our WhatsApp channel for real-time updates and free classes.
     </p>
-    <!-- Add 1000-word article content here -->
   </section>
 
-  <section id="webdev-article" class="blog-content max-w-4xl mx-auto px-6 py-10 bg-white shadow-xl rounded-lg mb-10">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Web Dev Guide 2025 – From Punjab to the World</h2>
+  <section id="article2" class="article-content px-6 pb-12 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Web Development Guide 2025</h2>
     <p class="text-gray-700 leading-relaxed">
-      In 2025, web development isn't just about pretty websites—it's about performance, speed, security, and user-first design. UMTI Tech Solutions leverages years of expertise...
+      At UMTI Tech Solutions, our mission is to democratize digital access. Our web development division builds responsive, SEO-optimized websites that serve both local farmers and global startups. In 2025, trends include faster mobile-first sites, headless CMS setups, and AI-driven UX personalization.<br><br>
+
+      Our team delivers world-class WordPress, Shopify, and custom React.js/Vue.js solutions with blazing performance and accessibility. We integrate analytics, marketing tools, and chatbot services to boost conversions.<br><br>
+
+      The new free WordPress course we’re offering from July 21 to August 1 will train local youth on building real client projects. All processes are documented on our [WhatsApp Channel](https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u).<br><br>
+
+      With Pakistan’s digital market growing rapidly, now is the time to build your online presence. Whether you’re a small business in Dera Ghazi Khan or an international entrepreneur, UMTI has a tech solution for you.
     </p>
-    <!-- Add 1000-word article content here -->
   </section>
 
-  <section id="cloud-article" class="blog-content max-w-4xl mx-auto px-6 py-10 bg-white shadow-xl rounded-lg mb-10">
-    <h2 class="text-3xl font-bold text-blue-800 mb-4">Cloud Benefits in 2025 – The UMTI Strategy</h2>
+  <section id="article3" class="article-content px-6 pb-12 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-blue-600 mb-4">Cloud Benefits 2025</h2>
     <p class="text-gray-700 leading-relaxed">
-      Cloud computing remains at the core of digital transformation. UMTI empowers SMEs and startups by offering scalable, reliable solutions through AWS, Google Cloud, and Microsoft Azure...
+      Cloud computing is no longer just for large corporations. UMTI Tech Solutions is bringing AWS, Azure, and scalable serverless infrastructure to startups and NGOs across South Punjab. Our cloud automation services allow for rapid deployment of apps, CRMs, and SaaS tools.<br><br>
+
+      We help clients reduce costs by 60% through intelligent DevOps, backups, and auto-scaling. Our AI bots run on cloud GPUs for real-time performance. Security is top-notch with multi-region backups and SSL compliance.<br><br>
+
+      As one of the first cloud automation firms from this region, UMTI has empowered more than 70 businesses with our full-service stack—from frontend deployment to backend autoscaling. Stay tuned as we release new case studies and free trainings.
     </p>
-    <!-- Add 1000-word article content here -->
   </section>
 
-  <!-- ✅ JavaScript to show only one article -->
   <script>
     function showArticle(id) {
-      const articles = document.querySelectorAll('.blog-content');
-      articles.forEach(article => article.classList.remove('active-article'));
-      document.getElementById(id).classList.add('active-article');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll('.article-content').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: document.getElementById(id).offsetTop - 100, behavior: 'smooth' });
     }
   </script>
 </body>
