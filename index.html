@@ -3,215 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="UMTI Tech Solutions, founded by Awais Laal in Darkhast Jamal Khan, Punjab, Pakistan, offers premium software development and free tech courses for students worldwide.">
-    <meta name="keywords" content="UMTI Tech Solutions, Awais Laal, software development, free tech courses, web development, AI, Punjab, Pakistan, Darkhast Jamal Khan">
+    <meta name="description" content="UMTI Tech Solutions offers premium software development services and free tech courses in Darkhast Jamal Khan, South Punjab, Pakistan. Learn web development, AI, and more.">
+    <meta name="keywords" content="UMTI Tech, software development, tech courses, web development, AI, Darkhast Jamal Khan, South Punjab, Pakistan">
     <meta name="author" content="UMTI Tech Solutions">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="UMTI Tech Solutions - Code the Future, Today">
-    <meta property="og:description" content="Discover cutting-edge software services and free tech courses from UMTI Tech Solutions, led by Awais Laal in Punjab, Pakistan.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1542744173-05336fcc7ad4">
+    <meta property="og:title" content="UMTI Tech Solutions - Innovate & Educate">
+    <meta property="og:description" content="Premium software services and free tech courses in Darkhast Jamal Khan, South Punjab, Pakistan">
+    <meta property="og:image" content="https://umtitech.com/images/logo.png">
     <meta property="og:url" content="https://umtitech.com">
     <meta property="og:type" content="website">
-    <title>UMTI Tech Solutions - Code the Future, Today</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0e1a;
-            color: #e2e8f0;
-            overflow-x: hidden;
-            margin: 0;
-            position: relative;
-        }
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-        }
-        .bg-neon {
-            background: linear-gradient(45deg, #3b82f6, #a855f7, #ec4899, #facc15);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(236, 72, 153, 0.7);
-        }
-        .bg-glow {
-            background: linear-gradient(45deg, #3b82f6, #a855f7);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
-        }
-        .section {
-            padding: 4rem 1rem;
-            position: relative;
-            scroll-snap-align: start;
-        }
-        .nav {
-            background: rgba(10, 14, 26, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ec4899, #facc15);
-            transition: width 0.4s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .nav-link:hover {
-            color: #facc15;
-        }
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .hero-content {
-            z-index: 2;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
-        }
-        .portfolio-slider {
-            overflow: hidden;
-        }
-        .portfolio-slide {
-            transition: transform 0.8s ease;
-        }
-        .form-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        .form-input:focus {
-            border-color: #facc15;
-            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
-            outline: none;
-        }
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-glow:hover::before {
-            left: 100%;
-        }
-        .btn-glow:hover {
-            transform: translateY(-3px);
-        }
-        .glitch {
-            animation: glitch 4s infinite;
-        }
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            10%, 30%, 50% { transform: translate(-1px, 1px); }
-            20%, 40% { transform: translate(1px, -1px); }
-        }
-        .pattern-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40"%3E%3Cg fill="%23ffffff" fill-opacity="0.3"%3E%3Cpath d="M0 0h40v40H0z"/%3E%3C/g%3E%3C/svg%3E');
-            z-index: 0;
-        }
-        .trust-logo {
-            transition: transform 0.3s ease;
-        }
-        .trust-logo:hover {
-            transform: scale(1.1);
-        }
-        .stats-number {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ec4899, #facc15);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .course-card img, .service-card img, .portfolio-slide img, .blog-card img, .team-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .modal {
-            transition: opacity 0.3s ease;
-        }
-        .modal.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        .logo-pulse {
-            animation: pulse 3s infinite;
-        }
-        @media (max-width: 768px) {
-            .nav ul { display: none; }
-            .nav ul.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: #0a0e1a;
-                padding: 1rem;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .section { padding: 2rem 0.5rem; }
-            .stats-number { font-size: 1.8rem; }
-            .course-card img, .service-card img, .portfolio-slide img, .blog-card img, .team-card img { height: 150px; }
-            .btn-glow { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
-            .card:hover { transform: none; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
-            .hero p { font-size: 0.9rem; }
-            .stats-number { font-size: 1.5rem; }
-        }
-    </style>
-</head>
-<body class="snap-y snap-mandatory">
+    <title>UMTI Tech Solutions - Innovate & Educate</title>
+    
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
@@ -219,508 +21,1524 @@
         "@type": "Organization",
         "name": "UMTI Tech Solutions",
         "url": "https://umtitech.com",
-        "logo": "https://images.unsplash.com/photo-1542744173-05336fcc7ad4",
-        "founder": {
-            "@type": "Person",
-            "name": "Awais Laal"
-        },
+        "logo": "https://umtitech.com/images/logo.png",
+        "sameAs": [
+            "https://www.linkedin.com/company/umti-tech-solutions/",
+            "https://youtube.com/@umtitechsolutions",
+            "https://x.com/umtitech",
+            "https://www.facebook.com/profile.php?id=100092282794586"
+        ],
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Darkhast Jamal Khan",
-            "addressRegion": "Punjab",
+            "addressRegion": "South Punjab",
             "addressCountry": "Pakistan"
-        },
-        "description": "UMTI Tech Solutions, led by Awais Laal, provides premium software development and free tech courses In Islamabad Punjab, Pakistan."
+        }
     }
     </script>
-
-    <!-- Navbar -->
-    <nav class="nav text-white p-3 fixed w-full z-30">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#home" class="flex items-center logo-pulse">
-                <svg class="h-10 w-10 sm:h-12 sm:w-12 mr-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#neonGlow)" stroke-width="4" stroke-dasharray="4,4" />
-                    <path d="M30 70 L50 30 L70 70 Z" fill="url(#neonGlow)" opacity="0.6" />
-                    <text x="25" y="55" font-family="Orbitron" font-size="28" fill="url(#neonGlow)" class="glitch">U</text>
-                    <text x="65" y="55" font-family="Orbitron" font-size="28" fill="url(#neonGlow)" class="glitch">T</text>
-                </svg>
-                <span class="text-2xl sm:text-3xl font-bold bg-neon glitch">UMTI Tech</span>
-            </a>
-            <ul class="hidden md:flex space-x-6">
-                <li><a href="#home" class="nav-link text-base">Home</a></li>
-                <li><a href="#about" class="nav-link text-base">About</a></li>
-                <li><a href="#services" class="nav-link text-base">Services</a></li>
-                <li><a href="#portfolio" class="nav-link text-base">Portfolio</a></li>
-                <li><a href="#students" class="nav-link text-base">Students</a></li>
-                <li><a href="blogs.html" class="nav-link text-base">Blogs</a></li>
-                <li><a href="#contact" class="nav-link text-base">Contact</a></li>
-
-                 <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfOVXzc5TF7w7uYEfTAchExqylXOVJpHFNSbvV1pYWfebM8-g/viewform" class="btn-glow bg-glow text-white px-6 py-3 rounded-full text-base sm:text-lg                  font-semibold gsap-hero-btn">Apply now</a> </li>
-            </ul>
-            <button id="menu-toggle" class="md:hidden text-2xl">☰</button>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #ec4899;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 0.5rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--light-gray);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .header.scrolled {
+            box-shadow: var(--shadow);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 700px;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-20px); }
+        }
+        
+        /* About */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Services */
+        .services {
+            background-color: #f8fafc;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-category {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+        }
+        
+        /* Courses */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            overflow: hidden;
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .course-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .course-free {
+            background-color: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f8fafc;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 0 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+        }
+        
+        .testimonial-role {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Blogs */
+        .blogs {
+            display: none;
+            background-color: white;
+        }
+        
+        .blogs.active {
+            display: block;
+        }
+        
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            overflow: hidden;
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-excerpt {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .blog-link {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-logo img {
+            height: 30px;
+        }
+        
+        .footer-description {
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link-item {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-link {
+            color: var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--light-gray);
+        }
+        
+        .footer-contact-icon {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        
+        .chatbot-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .chatbot-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-dark);
+        }
+        
+        .chatbot-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .chatbot-box {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            max-height: 500px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .chatbot-box.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-title {
+            font-weight: 600;
+        }
+        
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background-color: #f1f5f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .chatbot-input-field {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 2rem 0 0 2rem;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .chatbot-send {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.25rem;
+            border-radius: 0 2rem 2rem 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .chatbot-send:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-box {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .chatbot-box {
+                width: calc(100vw - 2rem);
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1kYXNoYXJyYXk9IjQsNCIvPjxwYXRoIGQ9Ik0zMCA3MCBMNTAgMzAgTDcwIDcwIFoiIGZpbGw9IiMyNTYzZWIiIG9wYWNpdHk9IjAuNiIvPjx0ZXh0IHg9IjI1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5VPC90ZXh0Pjx0ZXh0IHg9IjY1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5UPC90ZXh0Pjwvc3ZnPg==" alt="UMTI Tech Logo">
+                    <span>UMTI Tech</span>
+                </a>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#courses" class="nav-link">Courses</a></li>
+                    <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" target="_blank">Apply Now</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    ☰
+                </button>
+            </nav>
         </div>
-    </nav>
-   
+    </header>
+
     <!-- Hero Section -->
-    <section id="home" class="section hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center hero-content px-4">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold glitch gsap-hero-title mb-6">Code the Future, Today</h1>
-            <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto gsap-hero-text">UMTI Tech Solutions, led by Awais Laal in Islamabad Punjab, Pakistan, delivers innovative software and free tech courses. <span class="text-accent">Start now!</span></p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#services" class="btn-glow bg-glow text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold gsap-hero-btn">Purchase Service</a>
-                <a href="#students" class="btn-glow bg-glow text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold gsap-hero-btn">Learn Free</a>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Innovative Tech Solutions for the Digital Age</h1>
+                <p class="hero-subtitle">Based in Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions delivers cutting-edge software development and free tech education to empower the next generation of innovators.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#courses" class="btn btn-secondary">Free Courses</a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust Signals -->
-    <section class="py-12 bg-opacity-50 bg-gray-900 relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold bg-neon mb-8 gsap-trust-title">Trusted Worldwide</h2>
-            <div class="flex flex-wrap justify-center gap-6">
-                <img src="https://i.pinimg.com/736x/a7/ca/a3/a7caa302b65aa288475527389b9cd3ce.jpg" alt="Google Logo" class="trust-logo h-10" loading="lazy">
-                <img src="https://cdn.freebiesupply.com/images/large/2x/amazon-logo-white.png" alt="Amazon Logo" class="trust-logo h-10" loading="lazy">
-                <img src="https://berqwp-cdn.sfo3.cdn.digitaloceanspaces.com/cache/esportsadvocate.net/wp-content/uploads/2024/11/FTC-challenges-Microsoft-further-on-Activision-Blizzard-acquisition-in-the-federal-court-of-appeals-jpg.webp" alt="Microsoft Logo" class="trust-logo h-10" loading="lazy">
-                <img src="https://img.freepik.com/premium-vector/tesla-logo-design-vector-illustration-artwork_429264-116.jpg?w=900" alt="Tesla Logo" class="trust-logo h-10" loading="lazy">
-            </div>
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tech solutions" class="hero-image" loading="lazy">
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold bg-neon mb-8 gsap-about-title">Our Story</h2>
-            <p class="text-base sm:text-lg max-w-3xl mx-auto mb-10 gsap-about-text">Founded by <strong>Awais Laal</strong> in <strong>Punjab, Pakistan</strong>, UMTI Tech Solutions is a powerhouse of innovation. We craft transformative software services world wide and provide free tech education to empower passionates and deserving students , driving progress from Pakistan’s heartland.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="card p-6 rounded-xl" data-gsap="zoom-in">
-                    <h3 class="text-xl font-semibold mb-3 bg-neon">Mission</h3>
-                    <p class="text-sm sm:text-base">Build cutting-edge software and share knowledge to deserving and passionates students To make huge Change in IT field .</p>
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">We combine technical expertise with a passion for education to deliver exceptional results from our base in Darkhast Jamal Khan, South Punjab.</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our team" loading="lazy">
                 </div>
-                <div class="card p-6 rounded-xl" data-gsap="zoom-in">
-                    <h3 class="text-xl font-semibold mb-3 bg-neon">Vision</h3>
-                    <p class="text-sm sm:text-base">Make technology and education universal drivers of progress.</p>
-                </div>
-                <div class="card p-6 rounded-xl" data-gsap="zoom-in">
-                    <h3 class="text-xl font-semibold mb-3 bg-neon">Values</h3>
-                    <p class="text-sm sm:text-base">Innovation, integrity, and impact from Punjab to the world.</p>
-                </div>
-            </div>
-            <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="text-center" data-gsap="fade-up">
-                    <p class="stats-number">2000+</p>
-                    <p class="text-sm sm:text-base">Projects Delivered</p>
-                </div>
-                <div class="text-center" data-gsap="fade-up">
-                    <p class="stats-number">150K+</p>
-                    <p class="text-sm sm:text-base">Students Trained</p>
-                </div>
-                <div class="text-center" data-gsap="fade-up">
-                    <p class="stats-number">15+</p>
-                    <p class="text-sm sm:text-base">Years of Excellence</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="py-12 bg-opacity-50 bg-gray-900 relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold bg-neon mb-8 gsap-team-title">Our Innovators</h2>
-            <p class="text-base sm:text-lg max-w-3xl mx-auto mb-10 gsap-team-text">In Punjab Pakistan our team delivers excellence in software services world wide clients and education.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="card team-card p-6 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/view-3d-male-videographer_23-2151066986.jpg?t=st=1744542917~exp=1744546517~hmac=83854ec6e71f98e30ec7e63eaf1298c57c8c213d5369853196e2183e28383b7a&w=1380" alt="Awais Laal, Founder of UMTI Tech Solutions" class="rounded-t-xl" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-2 bg-neon">Awais Laal</h3>
-                    <p class="text-sm">Founder & CEO</p>
-                </div>
-                <div class="card team-card p-6 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/man-with-headphones-holding-mobile-phone-his-hand-3d-rendering_1057-44571.jpg?t=st=1744542822~exp=1744546422~hmac=2b6c06a4fc43d0e4cb47d2e8d12dde9500cb0f4e200b0a8363ed54d836bde36b&w=900" alt="Aamir Khan, Lead Developer" class="rounded-t-xl" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-2 bg-neon">Aamir Shaheen</h3>
-                    <p class="text-sm">Lead Developer</p>
-                </div>
-                <div class="card team-card p-6 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/3d-illustration-young-businessman-with-book-his-hands_1057-46177.jpg?t=st=1744542786~exp=1744546386~hmac=4c6d49b6d87b06f1d564264e44cbc6a023af1507486360187a9f4579fbafe30b&w=900" alt="Imran Nazir, AI Specialist" class="rounded-t-xl" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-2 bg-neon">Imran Nazir</h3>
-                    <p class="text-sm">AI Specialist</p>
+                
+                <div class="about-text">
+                    <h3>Transforming Ideas Into Digital Reality</h3>
+                    <p>Founded in Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions has grown from a small startup to a recognized leader in software development and tech education.</p>
+                    <p>Our team of passionate developers and educators work tirelessly to create innovative solutions while giving back to the community through free technical courses. We're proud to be contributing to Pakistan's growing tech ecosystem from our location in South Punjab.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5K+</div>
+                            <div class="stat-label">Students Trained</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold bg-neon mb-8 gsap-services-title">Premium Services</h2>
-            <p class="text-base sm:text-lg max-w-3xl mx-auto mb-10 gsap-services-text">From Darkhast Jamal Khan, Punjab, Pakistan, UMTI Tech Solutions offers top-tier software solutions.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card service-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg" alt="Web Development Service by UMTI Tech Solutions" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">website Development</h3>
-                    <p class="text-sm sm:text-base">Responsive websites with React or Vue.</p>
-                    <p class="text-accent font-bold mt-2 text-sm sm:text-base">From $200</p>
-                    <a href="https://www.fiverr.com/s/DBl4dj7" target="_blank" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Purchase Now</a>
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">We offer comprehensive solutions to meet all your digital needs from our South Punjab office.</p>
+            
+            <div class="services-grid">
+                <div class="card service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">Custom websites and web applications built with modern technologies like React, Vue, and Node.js. We create responsive, SEO-friendly sites that drive results.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="card service-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113" alt="Mobile App Development Service" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Mobile Apps Development</h3>
-                    <p class="text-sm sm:text-base">iOS/Android apps with Flutter.</p>
-                    <p class="text-accent font-bold mt-2 text-sm sm:text-base">From $500</p>
-                    <a href="https://www.fiverr.com/s/DBl4dj7" target="_blank" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Purchase Now</a>
+                
+                <div class="card service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile Apps</h3>
+                    <p class="service-description">Cross-platform mobile applications developed with Flutter and React Native for iOS and Android. From concept to app store deployment.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="card service-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://orca.security/wp-content/uploads/2024/10/top-10-ai-packages-blog.jpg" alt="AI Solutions by UMTI Tech Solutions" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">AI Solutions & Packages</h3>
-                    <p class="text-sm sm:text-base">Machine learning for automation.</p>
-                    <p class="text-accent font-bold mt-2 text-sm sm:text-base">From $99</p>
-                    <a href="https://www.fiverr.com/s/DBl4dj7" target="_blank" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Purchase Now</a>
+                
+                <div class="card service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI Solutions</h3>
+                    <p class="service-description">Artificial intelligence and machine learning solutions tailored to your business requirements. Predictive analytics, chatbots, and automation.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
-                <div class="card service-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://acropolium.com/img/articles/enterprise-chatbot-development-guide/img01.jpg" alt="Cloud Systems Service" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Chat Bot Services </h3>
-                    <p class="text-sm sm:text-base">Scalable AWS/Azure solutions.</p>
-                    <p class="text-accent font-bold mt-2 text-sm sm:text-base">From $69</p>
-                    <a href="https://www.fiverr.com/s/DBl4dj7" target="_blank" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Purchase Now</a>
+                
+                <div class="card service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title">Cloud Services</h3>
+                    <p class="service-description">Scalable cloud infrastructure and deployment on AWS, Google Cloud, and Azure platforms. Migration, optimization, and management.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="section relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold bg-neon mb-8 gsap-portfolio-title">Our Showcase</h2>
-            <p class="text-base sm:text-lg max-w-3xl mx-auto mb-10 gsap-portfolio-text">Discover projects by UMTI Tech Solutions that redefine technology.</p>
-            <div class="portfolio-slider relative">
-                <div class="portfolio-slides flex" id="portfolio-slides">
-                    <div class="portfolio-slide w-full flex-shrink-0 px-4">
-                        <div class="card rounded-xl overflow-hidden" data-gsap="zoom-in">
-                            <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4" alt="E-Commerce Empire Project" loading="lazy">
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold mb-3 bg-neon">E-Commerce Empire</h3>
-                                <p class="text-sm sm:text-base">A React-based global marketplace.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-slide w-full flex-shrink-0 px-4">
-                        <div class="card rounded-xl overflow-hidden" data-gsap="zoom-in">
-                            <img src="https://images.unsplash.com/photo-1506399558188-acca6f8cbf41" alt="HealthSync App Project" loading="lazy">
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold mb-3 bg-neon">HealthSync App</h3>
-                                <p class="text-sm sm:text-base">Flutter app for healthcare.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-slide w-full flex-shrink-0 px-4">
-                        <div class="card rounded-xl overflow-hidden" data-gsap="zoom-in">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Quantum CRM Project" loading="lazy">
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold mb-3 bg-neon">Quantum CRM</h3>
-                                <p class="text-sm sm:text-base">Angular CRM for efficiency.</p>
-                            </div>
-                        </div>
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Portfolio</h2>
+            <p class="section-subtitle">Explore some of our recent projects and success stories from clients worldwide.</p>
+            
+            <div class="portfolio-grid">
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce platform" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">E-Commerce Platform</h3>
+                        <p class="portfolio-category">Web Development</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
-                <button class="absolute top-1/2 left-4 transform -translate-y-1/2 btn-glow bg-glow text-white p-3 rounded-full" onclick="movePortfolioSlide(-1)">←</button>
-                <button class="absolute top-1/2 right-4 transform -translate-y-1/2 btn-glow bg-glow text-white p-3 rounded-full" onclick="movePortfolioSlide(1)">→</button>
+                
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Health app" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Health & Fitness App</h3>
+                        <p class="portfolio-category">Mobile Development</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CRM system" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Business CRM System</h3>
+                        <p class="portfolio-category">Enterprise Software</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Students Section -->
-    <section id="students" class="section relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold bg-neon mb-8 gsap-students-title">Free Tech Courses</h2>
-            <p class="text-base sm:text-lg max-w-3xl mx-auto mb-10 gsap-students-text">UMTI Tech Solutions, led by Awais Laal in Punjab, Pakistan, offers free courses to empower students. <span class="text-accent">Join now—limited seats!</span></p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card course-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/person-front-computer-working-html_23-2150040428.jpg?t=st=1744544625~exp=1744548225~hmac=c62eb7e12fd0cecf45c0e8840ffd2aa7a659841803ff3dc01c13aaa29a504a5d&w=1380" alt="Free Web Development Course" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Web Development</h3>
-                    <p class="text-sm sm:text-base">Learn HTML, CSS, JavaScript, and React to build modern websites from scratch.</p>
-                    <button onclick="openEnrollModal('Web Development')" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Enroll Now</button>
+    <!-- Courses Section -->
+    <section class="section courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">Free Tech Courses</h2>
+            <p class="section-subtitle">We believe in giving back by offering free technical education to deserving students in Pakistan.</p>
+            
+            <div class="courses-grid">
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Web Development Course" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">Web Development Fundamentals</h3>
+                        <p class="course-description">Learn HTML, CSS, and JavaScript to build modern, responsive websites from scratch. Perfect for beginners starting their coding journey.</p>
+                        <div class="course-meta">
+                            <span>8 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
                 </div>
-                <div class="card course-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/fantasy-snake-illustration_23-2151588966.jpg?t=st=1744545079~exp=1744548679~hmac=dc4a8e4c576c505827c1c6d709987a856a15714af3f0b68b0f3895e85afbaa90&w=1380" alt="Free Python Programming Course" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Python Programming</h3>
-                    <p class="text-sm sm:text-base">Master Python for web development, automation, and data analysis.</p>
-                    <button onclick="openEnrollModal('Python Programming')" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Enroll Now</button>
+                
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Python Course" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">Python Programming</h3>
+                        <p class="course-description">Master Python for web development, data analysis, and automation projects. This comprehensive course covers from basics to advanced concepts.</p>
+                        <div class="course-meta">
+                            <span>6 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
                 </div>
-                <div class="card course-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/technology-human-touch-background-modern-remake-creation-adam_53876-129794.jpg?t=st=1744545027~exp=1744548627~hmac=383d16780d0f4569b1af80571415c582014366d5edf19dfc69da037b995a75f3&w=1380" alt="Free Artificial Intelligence Course" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Artificial Intelligence</h3>
-                    <p class="text-sm sm:text-base">Explore machine learning and AI with hands-on projects.</p>
-                    <button onclick="openEnrollModal('Artificial Intelligence')" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Enroll Now</button>
-                </div>
-                <div class="card course-card p-5 rounded-xl" data-gsap="zoom-in">
-                    <img src="https://img.freepik.com/free-photo/woman-with-editor-occupation-wearing-headphones_482257-10564.jpg?t=st=1744544885~exp=1744548485~hmac=23d84ee22b44d20f7672d1acea2b225910d6dc2fd23a80cd7708203a35a7992a&w=1380" alt="Free Cloud Computing Course" loading="lazy">
-                    <h3 class="text-lg font-semibold mb-3 bg-neon">Graphic Designing</h3>
-                    <p class="text-sm sm:text-base">Master Classes, E-Commerce, and Google  for scalable systems.</p>
-                    <button onclick="openEnrollModal('Cloud Computing')" class="btn-glow bg-glow text-white px-5 py-2 rounded-full mt-4 text-sm sm:text-base">Enroll Now</button>
+                
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80" alt="AI Course" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">AI & Machine Learning</h3>
+                        <p class="course-description">Introduction to artificial intelligence and machine learning concepts. Learn to build predictive models and understand neural networks.</p>
+                        <div class="course-meta">
+                            <span>10 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-12 bg-opacity-50 bg-gray-900 relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold bg-neon mb-8 gsap-testimonials-title">Client & Student Voices</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div class="card p-6 rounded-xl" data-gsap="fade-up">
-                    <p class="text-sm sm:text-base mb-4">"UMTI Tech Solutions built our platform with precision. Their free courses are phenomenal!"</p>
-                    <p class="text-accent font-semibold text-sm sm:text-base">— Aisha M., Startup CEO</p>
-                </div>
-                <div class="card p-6 rounded-xl" data-gsap="fade-up">
-                    <p class="text-sm sm:text-base mb-4">"Awais Laal’s team transformed my career with their Python course. Highly recommend!"</p>
-                    <p class="text-accent font-semibold text-sm sm:text-base">— Bilal K., Student</p>
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Hear from businesses and students who have worked with us.</p>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client testimonial" class="testimonial-avatar" loading="lazy">
+                    <p class="testimonial-text">"UMTI Tech transformed our outdated website into a modern, high-performing platform that has significantly increased our online conversions and customer engagement."</p>
+                    <h4 class="testimonial-author">Sarah Johnson</h4>
+                    <p class="testimonial-role">CEO, TechSolutions Inc.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto max-w-lg px-4 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold bg-neon mb-8 gsap-contact-title">Connect With Us</h2>
-            <p class="text-base sm:text-lg mb-10 gsap-contact-text">Ready to innovate or learn? Contact UMTI Tech Solutions in Lahore And Islamabad Pakistan. <span class="text-accent">Let’s build the future!</span></p>
-            <form id="contact-form" class="space-y-6">
-                <div data-gsap="fade-up">
-                    <label for="name" class="block text-sm sm:text-base font-medium">Name</label>
-                    <input type="text" id="name" name="name" required class="form-input w-full p-3 rounded-lg text-sm sm:text-base">
-                </div>
-                <div data-gsap="fade-up">
-                    <label for="email" class="block text-sm sm:text-base font-medium">Email</label>
-                    <input type="email" id="email" name="email" required class="form-input w-full p-3 rounded-lg text-sm sm:text-base">
-                </div>
-                <div data-gsap="fade-up">
-                    <label for="message" class="block text-sm sm:text-base font-medium">Message</label>
-                    <textarea id="message" name="message" required class="form-input w-full p-3 rounded-lg text-sm sm:text-base h-32"></textarea>
-                </div>
-                <button type="submit" class="btn-glow bg-glow w-full p-3 rounded-lg text-white text-sm sm:text-base font-semibold" data-gsap="fade-up">Send Message</button>
-            </form>
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind or want to learn more about our courses? Contact us today.</p>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Enroll Modal -->
-    <div id="enroll-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-40">
-        <div class="bg-gray-900 p-6 rounded-lg max-w-md w-full">
-            <h3 class="text-xl font-bold bg-neon mb-4" id="enroll-course-title">Enroll in Course</h3>
-            <form id="enroll-form" class="space-y-5">
-                <div>
-                    <label for="enroll-name" class="block text-sm font-medium">Full Name</label>
-                    <input type="text" id="enroll-name" name="name" required class="form-input w-full p-3 rounded-md text-sm">
-                </div>
-                <div>
-                    <label for="enroll-email" class="block text-sm font-medium">Email</label>
-                    <input type="email" id="enroll-email" name="email" required class="form-input w-full p-3 rounded-md text-sm">
-                </div>
-                <div>
-                    <label for="enroll-phone" class="block text-sm font-medium">Phone (Optional)</label>
-                    <input type="tel" id="enroll-phone" name="phone" class="form-input w-full p-3 rounded-md text-sm">
-                </div>
-                <div class="flex space-x-3">
-                    <button type="submit" class="btn-glow bg-glow w-full p-3 rounded-md text-white text-sm font-semibold">Join Course</button>
-                    <button type="button" onclick="closeEnrollModal()" class="btn-glow bg-gray-700 w-full p-3 rounded-md text-white text-sm font-semibold">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 relative">
-        <div class="pattern-bg"></div>
-        <div class="container mx-auto text-center px-4">
-            <div class="flex justify-center items-center mb-4">
-                <svg class="h-10 w-10 sm:h-12 sm:w-12 mr-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#neonGlow)" stroke-width="4" stroke-dasharray="4,4" />
-                    <path d="M30 70 L50 30 L70 70 Z" fill="url(#neonGlow)" opacity="0.6" />
-                    <text x="25" y="55" font-family="Orbitron" font-size="28" fill="url(#neonGlow)" class="glitch">U</text>
-                    <text x="65" y="55" font-family="Orbitron" font-size="28" fill="url(#neonGlow)" class="glitch">T</text>
-                </svg>
-                <h3 class="text-2xl sm:text-3xl font-bold bg-neon glitch">UMTI Tech Solutions</h3>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1kYXNoYXJyYXk9IjQsNCIvPjxwYXRoIGQ9Ik0zMCA3MCBMNTAgMzAgTDcwIDcwIFoiIGZpbGw9IiMyNTYzZWIiIG9wYWNpdHk9IjAuNiIvPjx0ZXh0IHg9IjI1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5VPC90ZXh0Pjx0ZXh0IHg9IjY1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5UPC90ZXh0Pjwvc3ZnPg==" alt="UMTI Tech Logo">
+                        <span>UMTI Tech</span>
+                    </a>
+                    <p class="footer-description">Innovative tech solutions and education to empower the digital future from Darkhast Jamal Khan, South Punjab, Pakistan.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/share/1HRMpx7ncN/?mibextid=qi2Omg" class="social-link" target="_blank">f</a>
+                        <a href="https://www.linkedin.com/company/umti-tech-solutions/" class="social-link" target="_blank">in</a>
+                        <a href="https://x.com/umtitech?t=fkZv1JpGvaJDadzOOMGrfQ&s=09" class="social-link" target="_blank">𝕏</a>
+                        <a href="https://youtube.com/@umtitechsolutions?si=9aKv_QaENLntcd2s" class="social-link" target="_blank">▶️</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#home" class="footer-link">Home</a></li>
+                        <li class="footer-link-item"><a href="#about" class="footer-link">About Us</a></li>
+                        <li class="footer-link-item"><a href="#services" class="footer-link">Services</a></li>
+                        <li class="footer-link-item"><a href="#portfolio" class="footer-link">Portfolio</a></li>
+                        <li class="footer-link-item"><a href="#courses" class="footer-link">Courses</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#" class="footer-link">Web Development</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link">Mobile Apps</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link">AI Solutions</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link">Cloud Services</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📍</span>
+                        <span>Darkhast Jamal Khan, South Punjab, Pakistan</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">✉️</span>
+                        <span>info@umtitech.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📞</span>
+                        <span>+92 300 1234567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📱</span>
+                        <span><a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" target="_blank" style="color: inherit;">WhatsApp Channel</a></span>
+                    </div>
+                </div>
             </div>
-            <p class="text-base sm:text-lg mb-4">Code the Future, Today</p>
-            <p class="text-sm sm:text-base mb-4">Founded by Awais Laal in lahore and islamabad Punjab, Pakistan</p>
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://www.facebook.com/profile.php?id=100092282794586" class="hover:text-accent text-sm sm:text-base">Facebook</a>
-                <a href="https://www.facebook.com/profile.php?id=100092282794586" class="hover:text-accent text-sm sm:text-base">Twitter</a>
-                <a href="https://www.linkedin.com/company/umti-tech-solutions/?viewAsMember=true" class="hover:text-accent text-sm sm:text-base">LinkedIn</a>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 UMTI Tech Solutions. All Rights Reserved.</p>
             </div>
-            <p class="text-sm">© 2025 UMTI Tech Solutions. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-btn" id="chatbotBtn">
+            💬
+        </button>
+        
+        <div class="chatbot-box" id="chatbotBox">
+            <div class="chatbot-header">
+                <h4 class="chatbot-title">UMTI Tech Assistant</h4>
+                <button class="chatbot-close" id="chatbotClose">×</button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    Hello! I'm the UMTI Tech assistant. How can I help you today?
+                </div>
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" class="chatbot-input-field" id="chatbotInput" placeholder="Type your message...">
+                <button class="chatbot-send" id="chatbotSend">Send</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Three.js 3D Orbs (optimized)
-        const canvas = document.getElementById('hero-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.z = 20;
-
-        const geometry = new THREE.SphereGeometry(4, 16, 16);
-        const material = new THREE.MeshBasicMaterial({
-            color: 0x3b82f6,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.4
-        });
-        const orbs = [];
-        for (let i = 0; i < 2; i++) {
-            const orb = new THREE.Mesh(geometry, material);
-            orb.position.set((Math.random() - 0.5) * 15, (Math.random() - 0.5) * 15, (Math.random() - 0.5) * 15);
-            scene.add(orb);
-            orbs.push(orb);
-        }
-
-        function animateOrbs() {
-            if (window.innerWidth > 768) {
-                orbs.forEach((orb, i) => {
-                    orb.rotation.x += 0.01 * (i + 1);
-                    orb.rotation.y += 0.01 * (i + 1);
-                });
-                renderer.render(scene, camera);
-            }
-            requestAnimationFrame(animateOrbs);
-        }
-        animateOrbs();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // GSAP Animations (disabled on mobile)
-        gsap.registerPlugin(ScrollTrigger);
-        if (window.innerWidth > 768) {
-            gsap.from('.gsap-hero-title', {
-                opacity: 0,
-                scale: 0.5,
-                rotationX: 90,
-                duration: 1.5,
-                ease: 'elastic.out(1, 0.3)'
-            });
-            gsap.from('.gsap-hero-text', {
-                opacity: 0,
-                y: 80,
-                duration: 1.2,
-                delay: 0.4,
-                ease: 'power3.out'
-            });
-            gsap.from('.gsap-hero-btn', {
-                opacity: 0,
-                y: 40,
-                duration: 1,
-                delay: 0.8,
-                ease: 'bounce.out',
-                stagger: 0.2
-            });
-            document.querySelectorAll('[data-gsap="fade-up"]').forEach(el => {
-                gsap.from(el, {
-                    opacity: 0,
-                    y: 60,
-                    duration: 1.2,
-                    scrollTrigger: { trigger: el, start: 'top 90%' }
-                });
-            });
-            document.querySelectorAll('[data-gsap="zoom-in"]').forEach(el => {
-                gsap.from(el, {
-                    scale: 0.8,
-                    opacity: 0,
-                    duration: 1,
-                    scrollTrigger: { trigger: el, start: 'top 90%' }
-                });
-            });
-            ['trust', 'about', 'team', 'services', 'portfolio', 'students', 'blogs', 'testimonials', 'contact'].forEach(section => {
-                gsap.from(`.gsap-${section}-title`, {
-                    opacity: 0,
-                    x: section % 2 === 0 ? -80 : 80,
-                    duration: 1.2,
-                    scrollTrigger: { trigger: `.gsap-${section}-title`, start: 'top 90%' }
-                });
-                gsap.from(`.gsap-${section}-text`, {
-                    opacity: 0,
-                    y: 40,
-                    duration: 1,
-                    delay: 0.2,
-                    scrollTrigger: { trigger: `.gsap-${section}-text`, start: 'top 90%' }
-                });
-            });
-        }
-
         // Mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.querySelector('nav ul');
-        menuToggle.addEventListener('click', () => {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
                 }
             });
         });
-
-        // Portfolio slider
-        let portfolioSlideIndex = 0;
-        const portfolioSlides = document.querySelectorAll('.portfolio-slide');
-        const portfolioSlideContainer = document.getElementById('portfolio-slides');
-        function movePortfolioSlide(direction) {
-            portfolioSlideIndex = (portfolioSlideIndex + direction + portfolioSlides.length) % portfolioSlides.length;
-            portfolioSlideContainer.style.transform = `translateX(-${portfolioSlideIndex * 100}%)`;
-        }
-
-        // Enroll modal
-        function openEnrollModal(courseName) {
-            document.getElementById('enroll-course-title').textContent = `Enroll in ${courseName}`;
-            document.getElementById('enroll-modal').classList.remove('hidden');
-        }
-        function closeEnrollModal() {
-            document.getElementById('enroll-modal').classList.add('hidden');
-        }
-        document.getElementById('enroll-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Enrolled successfully! Start learning today.');
-            this.reset();
-            closeEnrollModal();
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
-
-        // Contact form (mock)
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        
+        // Active link highlighting
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Chatbot functionality with Gemini API
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatbotBox = document.getElementById('chatbotBox');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        
+        // Toggle chatbot
+        chatbotBtn.addEventListener('click', () => {
+            chatbotBox.classList.toggle('active');
+        });
+        
+        chatbotClose.addEventListener('click', () => {
+            chatbotBox.classList.remove('active');
+        });
+        
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt) {
+            const API_KEY = 'AIzaSyCasa_souS0U0uOGjG8gNy4sPc8yOykPgk';
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    return "I'm sorry, I couldn't process your request. Please try again later.";
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                return "I'm having trouble connecting to the server. Please try again later.";
+            }
+        }
+        
+        // Send message function
+        async function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message === '') return;
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.textContent = message;
+            chatbotMessages.appendChild(userMessage);
+            
+            // Clear input
+            chatbotInput.value = '';
+            
+            // Scroll to bottom
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            
+            // Show typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message bot-message';
+            typingIndicator.textContent = 'Typing...';
+            chatbotMessages.appendChild(typingIndicator);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            
+            try {
+                // Call Gemini API
+                const response = await callGeminiAPI(`You are a helpful assistant for UMTI Tech Solutions, a software development and tech education company based in Darkhast Jamal Khan, South Punjab, Pakistan. The user asked: "${message}"`);
+                
+                // Remove typing indicator
+                chatbotMessages.removeChild(typingIndicator);
+                
+                // Add bot response
+                const botMessage = document.createElement('div');
+                botMessage.className = 'message bot-message';
+                botMessage.textContent = response;
+                chatbotMessages.appendChild(botMessage);
+            } catch (error) {
+                // Remove typing indicator
+                chatbotMessages.removeChild(typingIndicator);
+                
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'message bot-message';
+                errorMessage.textContent = "I'm sorry, I encountered an error. Please try again later.";
+                chatbotMessages.appendChild(errorMessage);
+            }
+            
+            // Scroll to bottom
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Send message on button click
+        chatbotSend.addEventListener('click', sendMessage);
+        
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Message sent! We’ll get back to you soon.');
-            this.reset();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without adding to history
+                    history.replaceState(null, null, targetId);
+                }
+            });
         });
     </script>
-
-    
 </body>
 </html>
