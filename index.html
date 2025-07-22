@@ -42,8 +42,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
@@ -108,6 +108,14 @@
         
         .section {
             padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title {
@@ -126,6 +134,11 @@
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .section-title:hover::after {
+            width: 80px;
         }
         
         .section-subtitle {
@@ -145,6 +158,8 @@
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-primary {
@@ -220,6 +235,11 @@
         .logo img {
             height: 40px;
             margin-right: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: rotate(15deg);
         }
         
         .nav-links {
@@ -231,6 +251,7 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
+            transition: var(--transition);
         }
         
         .nav-link::after {
@@ -259,6 +280,11 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--primary);
         }
         
         /* Hero */
@@ -292,18 +318,23 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.1;
+            animation: fadeInUp 1s ease-out;
         }
         
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--gray);
             margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
         }
         
         .hero-buttons {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
         }
         
         .hero-image {
@@ -322,6 +353,17 @@
             50% { transform: translateY(-50%) translateX(-20px); }
         }
         
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* About */
         .about {
             background-color: white;
@@ -338,6 +380,11 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .about-image:hover {
+            transform: scale(1.02);
         }
         
         .about-text h3 {
@@ -359,6 +406,15 @@
         
         .stat-item {
             text-align: center;
+            padding: 1.5rem;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(37, 99, 235, 0.1);
         }
         
         .stat-number {
@@ -373,9 +429,87 @@
             font-size: 0.9rem;
         }
         
+        /* Team */
+        .team {
+            background-color: #f8fafc;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-card {
+            text-align: center;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .team-card:hover .team-image {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .team-name {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .team-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-bio {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--primary);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
         /* Services */
         .services {
-            background-color: #f8fafc;
+            background-color: white;
         }
         
         .services-grid {
@@ -387,12 +521,22 @@
         .service-card {
             padding: 2rem;
             text-align: center;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            background-color: rgba(37, 99, 235, 0.05);
         }
         
         .service-icon {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
         }
         
         .service-title {
@@ -462,6 +606,10 @@
         }
         
         /* Courses */
+        .courses {
+            background-color: #f8fafc;
+        }
+        
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -470,12 +618,22 @@
         
         .course-card {
             overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
         }
         
         .course-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .course-card:hover .course-image {
+            transform: scale(1.05);
         }
         
         .course-content {
@@ -516,7 +674,7 @@
         
         /* Testimonials */
         .testimonials {
-            background-color: #f8fafc;
+            background-color: white;
         }
         
         .testimonials-slider {
@@ -559,6 +717,10 @@
         }
         
         /* Contact */
+        .contact {
+            background-color: #f8fafc;
+        }
+        
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -596,62 +758,6 @@
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
-        }
-        
-        /* Blogs */
-        .blogs {
-            display: none;
-            background-color: white;
-        }
-        
-        .blogs.active {
-            display: block;
-        }
-        
-        .blogs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .blog-card {
-            overflow: hidden;
-        }
-        
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .blog-content {
-            padding: 1.5rem;
-        }
-        
-        .blog-date {
-            color: var(--gray);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .blog-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .blog-excerpt {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .blog-link {
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         /* Footer */
@@ -805,21 +911,23 @@
             overflow: hidden;
             display: none;
             flex-direction: column;
+            transform-origin: bottom right;
+            transition: all 0.3s ease;
         }
         
         .chatbot-box.active {
             display: flex;
-            animation: fadeInUp 0.3s ease-out;
+            animation: scaleUp 0.3s ease-out;
         }
         
-        @keyframes fadeInUp {
+        @keyframes scaleUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
             }
         }
         
@@ -842,6 +950,11 @@
             color: white;
             font-size: 1.25rem;
             cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .chatbot-close:hover {
+            transform: rotate(90deg);
         }
         
         .chatbot-messages {
@@ -859,6 +972,18 @@
             border-radius: 1rem;
             font-size: 0.9rem;
             line-height: 1.4;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .bot-message {
@@ -874,6 +999,41 @@
             border-bottom-right-radius: 0.25rem;
         }
         
+        .typing-indicator {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background-color: #f1f5f9;
+            border-radius: 1rem;
+            align-self: flex-start;
+            width: fit-content;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+        
         .chatbot-input {
             display: flex;
             padding: 1rem;
@@ -887,6 +1047,11 @@
             border-radius: 2rem 0 0 2rem;
             outline: none;
             font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .chatbot-input-field:focus {
+            border-color: var(--primary);
         }
         
         .chatbot-send {
@@ -1015,6 +1180,7 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li><a href="#courses" class="nav-link">Courses</a></li>
@@ -1024,7 +1190,7 @@
                 </ul>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    ☰
+                    <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
@@ -1080,6 +1246,88 @@
         </div>
     </section>
 
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">The talented professionals behind UMTI Tech Solutions' success.</p>
+            
+            <div class="team-grid">
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Awais Laal" class="team-image" loading="lazy">
+                    <h3 class="team-name">Awais Laal</h3>
+                    <p class="team-role">Founder & CEO</p>
+                    <p class="team-bio">Visionary leader with 10+ years of experience in software development and tech education. Passionate about empowering the next generation of developers.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Aamir Shaheen" class="team-image" loading="lazy">
+                    <h3 class="team-name">Aamir Shaheen</h3>
+                    <p class="team-role">Lead Developer</p>
+                    <p class="team-bio">Full-stack developer specializing in React, Node.js, and cloud architecture. Dedicated to creating scalable and efficient solutions.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Imran Nazir" class="team-image" loading="lazy">
+                    <h3 class="team-name">Imran Nazir</h3>
+                    <p class="team-role">AI Specialist</p>
+                    <p class="team-bio">Machine learning expert with a focus on computer vision and natural language processing. Committed to bringing AI solutions to local businesses.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Sara Khan" class="team-image" loading="lazy">
+                    <h3 class="team-name">Sara Khan</h3>
+                    <p class="team-role">UI/UX Designer</p>
+                    <p class="team-bio">Creative designer with a passion for creating intuitive and beautiful user experiences. Specializes in mobile and web interfaces.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bilal Ahmed" class="team-image" loading="lazy">
+                    <h3 class="team-name">Bilal Ahmed</h3>
+                    <p class="team-role">DevOps Engineer</p>
+                    <p class="team-bio">Cloud infrastructure specialist with expertise in AWS, Docker, and CI/CD pipelines. Ensures our solutions are scalable and reliable.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="card team-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Fatima Riaz" class="team-image" loading="lazy">
+                    <h3 class="team-name">Fatima Riaz</h3>
+                    <p class="team-role">Education Coordinator</p>
+                    <p class="team-bio">Passionate educator who organizes our free tech courses and ensures students receive the best learning experience possible.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="section services" id="services">
         <div class="container">
@@ -1088,30 +1336,44 @@
             
             <div class="services-grid">
                 <div class="card service-card">
-                    <div class="service-icon">🌐</div>
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
                     <h3 class="service-title">Web Development</h3>
                     <p class="service-description">Custom websites and web applications built with modern technologies like React, Vue, and Node.js. We create responsive, SEO-friendly sites that drive results.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
-                    <div class="service-icon">📱</div>
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3 class="service-title">Mobile Apps</h3>
                     <p class="service-description">Cross-platform mobile applications developed with Flutter and React Native for iOS and Android. From concept to app store deployment.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
-                    <div class="service-icon">🤖</div>
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
                     <h3 class="service-title">AI Solutions</h3>
                     <p class="service-description">Artificial intelligence and machine learning solutions tailored to your business requirements. Predictive analytics, chatbots, and automation.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
-                    <div class="service-icon">☁️</div>
+                    <div class="service-icon"><i class="fas fa-cloud"></i></div>
                     <h3 class="service-title">Cloud Services</h3>
                     <p class="service-description">Scalable cloud infrastructure and deployment on AWS, Google Cloud, and Azure platforms. Migration, optimization, and management.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="card service-card">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="service-title">UI/UX Design</h3>
+                    <p class="service-description">Beautiful, intuitive interfaces designed to enhance user experience and drive engagement. From wireframes to final designs.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="card service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="service-title">Digital Marketing</h3>
+                    <p class="service-description">Comprehensive digital marketing strategies including SEO, social media, and content marketing to grow your online presence.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
@@ -1148,6 +1410,33 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Business CRM System</h3>
                         <p class="portfolio-category">Enterprise Software</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Dashboard" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">AI Analytics Dashboard</h3>
+                        <p class="portfolio-category">AI Solution</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Education Platform" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Online Learning Platform</h3>
+                        <p class="portfolio-category">Web Development</p>
+                        <a href="#" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+
+                <div class="card portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile Game" class="portfolio-image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Mobile Game</h3>
+                        <p class="portfolio-category">Mobile Development</p>
                         <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
@@ -1195,6 +1484,45 @@
                         <p class="course-description">Introduction to artificial intelligence and machine learning concepts. Learn to build predictive models and understand neural networks.</p>
                         <div class="course-meta">
                             <span>10 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
+                </div>
+
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile Development" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">Mobile App Development</h3>
+                        <p class="course-description">Build cross-platform mobile applications with Flutter. Learn to create beautiful, performant apps for iOS and Android.</p>
+                        <div class="course-meta">
+                            <span>8 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
+                </div>
+
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Cloud Computing" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">Cloud Computing</h3>
+                        <p class="course-description">Learn to deploy and manage applications on AWS, Google Cloud, and Azure. Master cloud architecture and best practices.</p>
+                        <div class="course-meta">
+                            <span>6 Weeks</span>
+                            <span class="course-free">FREE</span>
+                        </div>
+                        <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
+                    </div>
+                </div>
+
+                <div class="card course-card">
+                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="UI/UX Design" class="course-image" loading="lazy">
+                    <div class="course-content">
+                        <h3 class="course-title">UI/UX Design</h3>
+                        <p class="course-description">Learn to create beautiful, user-friendly interfaces. Master design principles, tools like Figma, and user research techniques.</p>
+                        <div class="course-meta">
+                            <span>6 Weeks</span>
                             <span class="course-free">FREE</span>
                         </div>
                         <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
@@ -1266,10 +1594,10 @@
                     </a>
                     <p class="footer-description">Innovative tech solutions and education to empower the digital future from Darkhast Jamal Khan, South Punjab, Pakistan.</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/share/1HRMpx7ncN/?mibextid=qi2Omg" class="social-link" target="_blank">f</a>
-                        <a href="https://www.linkedin.com/company/umti-tech-solutions/" class="social-link" target="_blank">in</a>
-                        <a href="https://x.com/umtitech?t=fkZv1JpGvaJDadzOOMGrfQ&s=09" class="social-link" target="_blank">𝕏</a>
-                        <a href="https://youtube.com/@umtitechsolutions?si=9aKv_QaENLntcd2s" class="social-link" target="_blank">▶️</a>
+                        <a href="https://www.facebook.com/share/1HRMpx7ncN/?mibextid=qi2Omg" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/umti-tech-solutions/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/umtitech?t=fkZv1JpGvaJDadzOOMGrfQ&s=09" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@umtitechsolutions?si=9aKv_QaENLntcd2s" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1278,8 +1606,8 @@
                     <ul class="footer-links">
                         <li class="footer-link-item"><a href="#home" class="footer-link">Home</a></li>
                         <li class="footer-link-item"><a href="#about" class="footer-link">About Us</a></li>
+                        <li class="footer-link-item"><a href="#team" class="footer-link">Our Team</a></li>
                         <li class="footer-link-item"><a href="#services" class="footer-link">Services</a></li>
-                        <li class="footer-link-item"><a href="#portfolio" class="footer-link">Portfolio</a></li>
                         <li class="footer-link-item"><a href="#courses" class="footer-link">Courses</a></li>
                     </ul>
                 </div>
@@ -1298,19 +1626,19 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Contact Info</h3>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-icon">📍</span>
+                        <span class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></span>
                         <span>Darkhast Jamal Khan, South Punjab, Pakistan</span>
                     </div>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-icon">✉️</span>
+                        <span class="footer-contact-icon"><i class="fas fa-envelope"></i></span>
                         <span>info@umtitech.com</span>
                     </div>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-icon">📞</span>
+                        <span class="footer-contact-icon"><i class="fas fa-phone"></i></span>
                         <span>+92 300 1234567</span>
                     </div>
                     <div class="footer-contact-item">
-                        <span class="footer-contact-icon">📱</span>
+                        <span class="footer-contact-icon"><i class="fab fa-whatsapp"></i></span>
                         <span><a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" target="_blank" style="color: inherit;">WhatsApp Channel</a></span>
                     </div>
                 </div>
@@ -1325,13 +1653,13 @@
     <!-- Chatbot -->
     <div class="chatbot-container">
         <button class="chatbot-btn" id="chatbotBtn">
-            💬
+            <i class="fas fa-comment-dots"></i>
         </button>
         
         <div class="chatbot-box" id="chatbotBox">
             <div class="chatbot-header">
                 <h4 class="chatbot-title">UMTI Tech Assistant</h4>
-                <button class="chatbot-close" id="chatbotClose">×</button>
+                <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
             </div>
             
             <div class="chatbot-messages" id="chatbotMessages">
@@ -1342,7 +1670,7 @@
             
             <div class="chatbot-input">
                 <input type="text" class="chatbot-input-field" id="chatbotInput" placeholder="Type your message...">
-                <button class="chatbot-send" id="chatbotSend">Send</button>
+                <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
@@ -1354,7 +1682,9 @@
         
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
         
         // Close mobile menu when clicking a link
@@ -1362,7 +1692,7 @@
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
-                    mobileMenuBtn.textContent = '☰';
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             });
         });
@@ -1402,6 +1732,19 @@
             });
         });
         
+        // Intersection Observer for section animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
         // Chatbot functionality with Gemini API
         const chatbotBtn = document.getElementById('chatbotBtn');
         const chatbotBox = document.getElementById('chatbotBox');
@@ -1419,6 +1762,36 @@
             chatbotBox.classList.remove('active');
         });
         
+        // Function to add message to chat
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Function to show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return typingDiv;
+        }
+        
+        // Function to hide typing indicator
+        function hideTypingIndicator(typingDiv) {
+            if (typingDiv && typingDiv.parentNode) {
+                typingDiv.parentNode.removeChild(typingDiv);
+            }
+        }
+        
         // Function to call Gemini API
         async function callGeminiAPI(prompt) {
             const API_KEY = 'AIzaSyCasa_souS0U0uOGjG8gNy4sPc8yOykPgk';
@@ -1433,7 +1806,7 @@
                     body: JSON.stringify({
                         contents: [{
                             parts: [{
-                                text: prompt
+                                text: `You are a helpful assistant for UMTI Tech Solutions, a software development and tech education company based in Darkhast Jamal Khan, South Punjab, Pakistan. The user asked: "${prompt}"`
                             }]
                         }]
                     })
@@ -1444,6 +1817,7 @@
                 if (data.candidates && data.candidates[0].content.parts[0].text) {
                     return data.candidates[0].content.parts[0].text;
                 } else {
+                    console.error('Unexpected API response:', data);
                     return "I'm sorry, I couldn't process your request. Please try again later.";
                 }
             } catch (error) {
@@ -1458,49 +1832,30 @@
             if (message === '') return;
             
             // Add user message
-            const userMessage = document.createElement('div');
-            userMessage.className = 'message user-message';
-            userMessage.textContent = message;
-            chatbotMessages.appendChild(userMessage);
+            addMessage(message, true);
             
             // Clear input
             chatbotInput.value = '';
             
-            // Scroll to bottom
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            
             // Show typing indicator
-            const typingIndicator = document.createElement('div');
-            typingIndicator.className = 'message bot-message';
-            typingIndicator.textContent = 'Typing...';
-            chatbotMessages.appendChild(typingIndicator);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            const typingIndicator = showTypingIndicator();
             
             try {
                 // Call Gemini API
-                const response = await callGeminiAPI(`You are a helpful assistant for UMTI Tech Solutions, a software development and tech education company based in Darkhast Jamal Khan, South Punjab, Pakistan. The user asked: "${message}"`);
+                const response = await callGeminiAPI(message);
                 
                 // Remove typing indicator
-                chatbotMessages.removeChild(typingIndicator);
+                hideTypingIndicator(typingIndicator);
                 
                 // Add bot response
-                const botMessage = document.createElement('div');
-                botMessage.className = 'message bot-message';
-                botMessage.textContent = response;
-                chatbotMessages.appendChild(botMessage);
+                addMessage(response);
             } catch (error) {
                 // Remove typing indicator
-                chatbotMessages.removeChild(typingIndicator);
+                hideTypingIndicator(typingIndicator);
                 
                 // Show error message
-                const errorMessage = document.createElement('div');
-                errorMessage.className = 'message bot-message';
-                errorMessage.textContent = "I'm sorry, I encountered an error. Please try again later.";
-                chatbotMessages.appendChild(errorMessage);
+                addMessage("I'm sorry, I encountered an error. Please try again later.");
             }
-            
-            // Scroll to bottom
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
         
         // Send message on button click
@@ -1512,6 +1867,37 @@
                 sendMessage();
             }
         });
+        
+        // Predefined questions for quick responses
+        const predefinedQuestions = [
+            {
+                question: "What is UMTI Tech Solutions?",
+                answer: "UMTI Tech Solutions is a software development and tech education company based in Darkhast Jamal Khan, South Punjab, Pakistan. We provide premium software services and free tech courses to empower the next generation of developers and innovators."
+            },
+            {
+                question: "Where are you located?",
+                answer: "Our headquarters are located in Darkhast Jamal Khan, South Punjab, Pakistan. We serve clients worldwide through our remote development teams."
+            },
+            {
+                question: "What services do you offer?",
+                answer: "We offer a range of services including web development, mobile app development, AI solutions, cloud services, UI/UX design, and digital marketing. We also provide free tech courses to deserving students."
+            },
+            {
+                question: "How can I enroll in your free courses?",
+                answer: "You can enroll in our free courses by joining our WhatsApp channel: https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u or contacting us through our website."
+            }
+        ];
+        
+        // Check for predefined questions
+        function checkPredefinedQuestions(message) {
+            const lowerMessage = message.toLowerCase();
+            for (const item of predefinedQuestions) {
+                if (lowerMessage.includes(item.question.toLowerCase().substring(0, 20))) {
+                    return item.answer;
+                }
+            }
+            return null;
+        }
         
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
