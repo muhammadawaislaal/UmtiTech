@@ -1,133 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tech insights from UMTI Tech Solutions, Punjab, Pakistan.">
-    <title>Tech Insights - UMTI</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .section { position: relative; overflow: hidden; }
-        .pattern-bg { 
-            background: url('https://via.placeholder.com/1200x800?text=Pattern') center/cover no-repeat; 
-            opacity: 0.1; position: absolute; inset: 0; z-index: 1; 
-        }
-        .bg-neon { 
-            background: linear-gradient(45deg, #10b981, #3b82f6); 
-            -webkit-background-clip: text; background-clip: text; 
-            color: transparent; display: inline-block; 
-        }
-        .text-accent { color: #3b82f6; }
-        .bg-accent { background: #3b82f6; transition: background 0.3s; }
-        .bg-accent:hover { background: #2563eb; }
-        .blog-card { 
-            display: flex; flex-direction: column; transition: transform 0.3s; z-index: 2; 
-        }
-        .blog-card:hover { transform: translateY(-5px); }
-        .blog-card img { 
-            width: 100%; height: 12rem; object-fit: cover; border-radius: 0.75rem 0.75rem 0 0; margin-bottom: 1rem; 
-        }
-        .container { max-width: 1280px; margin: 0 auto; }
-        h2.bg-neon { font-size: clamp(2rem, 5vw, 3rem); }
-        .apply-now { 
-            padding: 0.75rem 1.5rem; color: #fff; border-radius: 0.375rem; text-decoration: none; display: inline-block; margin-bottom: 1rem; 
-        }
-        a:focus { outline: 2px solid #3b82f6; outline-offset: 2px; }
-        @supports not (background-clip: text) { .bg-neon { background: none; color: #3b82f6; } }
-        @media (max-width: 640px) { 
-            .blog-card img { height: 10rem; } 
-            .apply-now { width: 100%; max-width: 300px; } 
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Tech articles and insights from UMTI Tech Solutions, a leading software company in Punjab, Pakistan. Learn about AI, cloud, web development and more."/>
+  <title>UMTI Tech Insights</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    .section { position: relative; overflow: hidden; }
+    .pattern-bg {
+      background: url('https://via.placeholder.com/1200x800?text=Pattern') center/cover no-repeat;
+      opacity: 0.05; position: absolute; inset: 0; z-index: 1;
+    }
+    .bg-neon {
+      background: linear-gradient(45deg, #10b981, #3b82f6);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; display: inline-block;
+    }
+    .text-accent { color: #3b82f6; }
+    .bg-accent { background: #3b82f6; transition: background 0.3s; }
+    .bg-accent:hover { background: #2563eb; }
+    .blog-card { transition: transform 0.3s; z-index: 2; }
+    .blog-card:hover { transform: translateY(-5px); }
+    .blog-card img {
+      width: 100%; height: 12rem; object-fit: cover;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    @media (max-width: 640px) {
+      .blog-card img { height: 10rem; }
+    }
+  </style>
 </head>
-<body>
-    <section id="blogs" class="section bg-gray-50 py-12">
-        <div class="pattern-bg"></div>
-        <div class="container text-center px-4">
-            <h2 class="text-3xl font-bold bg-neon mb-6">Tech Insights from UMTI</h2>
-            <p class="text-lg max-w-3xl mx-auto mb-8">
-                Latest tech trends from UMTI Tech Solutions, founded by Awais Laal in Punjab, Pakistan.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <article class="blog-card p-4 rounded-xl bg-white shadow-md">
-                    <img 
-                        src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg?t=st=1744549481~exp=1744553081~hmac=1ac2553a6b563343064a3ea12fb6b906aeab44962e7f3c43323312e6c7caf794&w=1380" 
-                        alt="AI Trends 2025" 
-                        loading="lazy" 
-                        onerror="this.src='https://via.placeholder.com/400x300?text=Fallback'"
-                    >
-                    <h3 class="text-lg font-semibold bg-neon mb-2">AI Trends 2025</h3>
-                    <p class="text-sm text-gray-600 mb-3">
-                        UMTI Tech Solutions, Punjab, leads in generative AI and ethical algorithms for global industries.
-                    </p>
-                    <div class="text-sm text-gray-500 mb-3">
-                        Awais Laal | <time datetime="2025-04-13">Apr 13, 2025</time>
-                    </div>
-                    <a 
-                        href="/blog/ai-trends" 
-                        class="text-accent text-sm hover:underline" 
-                        aria-label="Read more about AI Trends"
-                    >Read More</a>
-                </article>
-                <article class="blog-card p-4 rounded-xl bg-white shadow-md">
-                    <img 
-                        src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg?t=st=1744549432~exp=1744553032~hmac=d300eb65ee88b75dadb547fda038f335e6d8d5939b0f6b785d96ccb394887f46&w=1380" 
-                        alt="Web Dev Guide 2025" 
-                        loading="lazy" 
-                        onerror="this.src='https://via.placeholder.com/400x300?text=Fallback'"
-                    >
-                    <h3 class="text-lg font-semibold bg-neon mb-2">Web Dev Guide 2025</h3>
-                    <p class="text-sm text-gray-600 mb-3">
-                        UMTI excels in React and Vue to build SEO-optimized websites from Punjab, Pakistan.
-                    </p>
-                    <div class="text-sm text-gray-500 mb-3">
-                        UMTI Team | <time datetime="2025-04-10">Apr 10, 2025</time>
-                    </div>
-                    <a 
-                        href="/blog/web-dev" 
-                        class="text-accent text-sm hover:underline" 
-                        aria-label="Read more about Web Dev Guide"
-                    >Read More</a>
-                </article>
-                <article class="blog-card p-4 rounded-xl bg-white shadow-md">
-                    <img 
-                        src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg?t=st=1744546362~exp=1744549962~hmac=c350626d8902a9302a2782fd38953f3dc6a3d9b7baca2001052f061bb8399685&w=900" 
-                        alt="Cloud Benefits 2025" 
-                        loading="lazy" 
-                        onerror="this.src='https://via.placeholder.com/400x300?text=Fallback'"
-                    >
-                    <h3 class="text-lg font-semibold bg-neon mb-2">Cloud Benefits 2025</h3>
-                    <p class="text-sm text-gray-600 mb-3">
-                        UMTI drives cloud innovation with AWS and Azure from Darkhast Jamal Khan.
-                    </p>
-                    <div class="text-sm text-gray-500 mb-3">
-                        Awais Laal | <time datetime="2025-04-08">Apr 8, 2025</time>
-                    </div>
-                    <a 
-                        href="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg?t=st=1744546362~exp=1744549962~hmac=c350626d8902a9302a2782fd38953f3dc6a3d9b7baca2001052f061bb8399685&w=900" 
-                        class="text-accent text-sm hover:underline" 
-                        aria-label="Read more about Cloud Benefits"
-                    >Read More</a>
-                </article>
-            </div>
-            <div class="mt-8">
-                <a 
-                    href="/blog" 
-                    class="text-white bg-accent px-4 py-2 rounded-lg" 
-                    aria-label="View all UMTI blog posts"
-                >View All Blogs</a>
-            </div>
-        </div>
-    </section>
+<body class="bg-gray-50 text-gray-800">
+
+  <section id="blogs" class="section py-12 relative">
+    <div class="pattern-bg"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="text-3xl font-bold bg-neon mb-4">Tech Insights from UMTI</h2>
+      <p class="text-lg max-w-2xl mx-auto mb-8">Discover the latest tech trends, training, and innovations by UMTI Tech Solutions — empowering South Punjab and beyond.</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Blog Card 1 -->
+        <article class="blog-card bg-white rounded-xl shadow-md p-4 text-left">
+          <img src="https://img.freepik.com/free-photo/data-center-technician-runs-code_482257-91181.jpg" alt="AI Trends 2025" />
+          <h3 class="text-xl font-semibold mt-2 mb-1">AI Trends 2025</h3>
+          <div class="text-sm text-gray-500 mb-2">By Awais Laal | <time datetime="2025-04-13">Apr 13, 2025</time></div>
+          <p class="text-sm text-gray-700 short-text">UMTI Tech Solutions leads in generative AI and ethical algorithms that power industries worldwide...</p>
+          <button onclick="toggleText(this)" class="text-accent text-sm mt-1 hover:underline">Read More</button>
+          <p class="text-sm text-gray-700 full-text hidden mt-2">
+            From Darkhast Jamal Khan, UMTI Tech Solutions is paving the future with AI automation, smart assistants, and accessible training. We’re transforming the global workforce with the power of technology.
+          </p>
+        </article>
+
+        <!-- Blog Card 2 -->
+        <article class="blog-card bg-white rounded-xl shadow-md p-4 text-left">
+          <img src="https://img.freepik.com/free-photo/cybersecurity-concept-collage-design_23-2151877153.jpg" alt="Web Dev Guide 2025" />
+          <h3 class="text-xl font-semibold mt-2 mb-1">Web Dev Guide 2025</h3>
+          <div class="text-sm text-gray-500 mb-2">By UMTI Team | <time datetime="2025-04-10">Apr 10, 2025</time></div>
+          <p class="text-sm text-gray-700 short-text">UMTI excels in React, Vue, and WordPress to deliver SEO-optimized, user-friendly websites from rural Pakistan...</p>
+          <button onclick="toggleText(this)" class="text-accent text-sm mt-1 hover:underline">Read More</button>
+          <p class="text-sm text-gray-700 full-text hidden mt-2">
+            Our team trains youth on cutting-edge web technologies with real-world projects and global freelancing skills. UMTI Tech Solutions is leading South Punjab into a digital era.
+          </p>
+        </article>
+
+        <!-- Blog Card 3 -->
+        <article class="blog-card bg-white rounded-xl shadow-md p-4 text-left">
+          <img src="https://img.freepik.com/free-photo/ai-cybersecurity-virus-protection-machine-learning_53876-129788.jpg" alt="Cloud Benefits 2025" />
+          <h3 class="text-xl font-semibold mt-2 mb-1">Cloud Benefits 2025</h3>
+          <div class="text-sm text-gray-500 mb-2">By Awais Laal | <time datetime="2025-04-08">Apr 8, 2025</time></div>
+          <p class="text-sm text-gray-700 short-text">UMTI leverages AWS and Azure to deliver scalable, secure, and high-performance cloud solutions...</p>
+          <button onclick="toggleText(this)" class="text-accent text-sm mt-1 hover:underline">Read More</button>
+          <p class="text-sm text-gray-700 full-text hidden mt-2">
+            With experience in global deployment, our cloud architects are building automation pipelines for startups, SMEs, and global enterprises, transforming how South Punjab does business.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="mt-10">
+        <a href="/blog" class="px-5 py-2 rounded-lg bg-accent text-white hover:bg-blue-700 text-sm font-medium">View All Blogs</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleText(btn) {
+      const card = btn.parentElement;
+      const fullText = card.querySelector('.full-text');
+      const shortText = card.querySelector('.short-text');
+      const isHidden = fullText.classList.contains('hidden');
+
+      fullText.classList.toggle('hidden');
+      shortText.classList.toggle('hidden');
+      btn.textContent = isHidden ? 'Read Less' : 'Read More';
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-<a 
-    href="https://docs.google.com/forms/d/e/1FAIpQLSfOVXzc5TF7w7uYEfTAchExqylXOVJpHFNSbvV1pYWfebM8-g/viewform" 
-    class="text-white bg-accent inline-block apply-now" 
-    aria-label="Apply now for UMTI Tech Solutions courses"
-    target="_blank" 
-    rel="noopener noreferrer"
->Apply Now</a>
