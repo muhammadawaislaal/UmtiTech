@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="UMTI Tech Solutions offers premium software development services and free tech courses in Darkhast Jamal Khan, South Punjab, Pakistan. Learn web development, AI, and more.">
-    <meta name="keywords" content="UMTI Tech, software development, tech courses, web development, AI, Darkhast Jamal Khan, South Punjab, Pakistan">
+    <meta name="keywords" content="UMTI Tech, software development, tech courses, web development, AI, Darkhast Jamal Khan, South Punjab, Pakistan, mobile apps, cloud services">
     <meta name="author" content="UMTI Tech Solutions">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="UMTI Tech Solutions - Innovate & Educate">
+    <meta property="og:title" content="UMTI Tech Solutions - Empowering Digital Futures">
     <meta property="og:description" content="Premium software services and free tech courses in Darkhast Jamal Khan, South Punjab, Pakistan">
-    <meta property="og:image" content="https://umtitech.com/images/logo.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/UMTITech/UMTITech/main/UMTI%20Tech%20Logo.png">
     <meta property="og:url" content="https://umtitech.com">
     <meta property="og:type" content="website">
-    <title>UMTI Tech Solutions - Innovate & Educate</title>
+    <title>UMTI Tech Solutions - Empowering Digital Futures</title>
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -21,7 +21,7 @@
         "@type": "Organization",
         "name": "UMTI Tech Solutions",
         "url": "https://umtitech.com",
-        "logo": "https://umtitech.com/images/logo.png",
+        "logo": "https://raw.githubusercontent.com/UMTITech/UMTITech/main/UMTI%20Tech%20Logo.png",
         "sameAs": [
             "https://www.linkedin.com/company/umti-tech-solutions/",
             "https://youtube.com/@umtitechsolutions",
@@ -33,6 +33,12 @@
             "addressLocality": "Darkhast Jamal Khan",
             "addressRegion": "South Punjab",
             "addressCountry": "Pakistan"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+92-300-1234567",
+            "contactType": "customer service",
+            "email": "info@umtitech.com"
         }
     }
     </script>
@@ -47,12 +53,12 @@
     
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --accent: #ec4899;
+            --primary: #1e40af; /* Deep blue for elegance */
+            --primary-dark: #1e3a8a;
+            --secondary: #6d28d9; /* Rich purple for sophistication */
+            --accent: #db2777; /* Vibrant pink for subtle highlights */
             --light: #f8fafc;
-            --dark: #0f172a;
+            --dark: #1e293b;
             --gray: #64748b;
             --light-gray: #e2e8f0;
             --success: #10b981;
@@ -65,7 +71,7 @@
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 0.5rem;
+            --radius: 0.75rem; /* Slightly larger for classier look */
         }
         
         * {
@@ -84,7 +90,7 @@
         
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.2;
         }
         
@@ -101,9 +107,9 @@
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px; /* Wider for modern displays */
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
         
         .section {
@@ -119,7 +125,7 @@
         }
         
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
@@ -130,7 +136,7 @@
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 60px;
+            width: 70px;
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             border-radius: 2px;
@@ -138,28 +144,45 @@
         }
         
         .section-title:hover::after {
-            width: 80px;
+            width: 90px;
         }
         
         .section-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--gray);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 3rem;
         }
         
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.75rem;
+            padding: 0.85rem 2rem;
             border-radius: var(--radius);
             font-weight: 500;
             text-align: center;
             transition: var(--transition);
             cursor: pointer;
             border: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             position: relative;
             overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn-primary {
@@ -177,12 +200,13 @@
         .btn-secondary {
             background-color: white;
             color: var(--primary);
-            border: 1px solid var(--light-gray);
+            border: 2px solid var(--primary);
             box-shadow: var(--shadow-sm);
         }
         
         .btn-secondary:hover {
-            background-color: var(--light-gray);
+            background-color: var(--primary);
+            color: white;
             transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
@@ -193,6 +217,8 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: var(--transition);
+            position: relative;
+            z-index: 1;
         }
         
         .card:hover {
@@ -200,51 +226,77 @@
             box-shadow: var(--shadow-lg);
         }
         
+        /* Notice Bar */
+        .notice-bar {
+            background: linear-gradient(90deg, #1e3a8a, #6b21a8); /* Classy deep blue to purple */
+            color: white;
+            padding: 0.75rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+            overflow: hidden;
+        }
+        
+        .notice-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
         /* Header */
         .header {
             position: fixed;
-            top: 0;
+            top: 40px;
             left: 0;
             width: 100%;
             z-index: 1000;
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
         }
         
         .header.scrolled {
             box-shadow: var(--shadow);
+            top: 0;
         }
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 1.75rem 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: var(--dark);
         }
         
         .logo img {
-            height: 40px;
-            margin-right: 0.5rem;
+            height: 45px;
+            margin-right: 0.75rem;
             transition: var(--transition);
         }
         
         .logo:hover img {
-            transform: rotate(15deg);
+            transform: scale(1.1);
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .nav-link {
@@ -292,71 +344,93 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(109, 40, 217, 0.1) 100%);
             position: relative;
             overflow: hidden;
+            z-index: 0;
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
+            top: -30%;
+            right: -15%;
+            width: 120%;
+            height: 150%;
+            background: radial-gradient(circle at 70% 30%, rgba(30, 64, 175, 0.15), transparent 60%);
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
             width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-            z-index: 0;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(109, 40, 217, 0.15), transparent 60%);
+            z-index: -1;
         }
         
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 600px;
+            max-width: 800px;
+            padding: 2rem;
         }
         
         .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.75rem;
             line-height: 1.1;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             animation: fadeInUp 1s ease-out;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--gray);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
+            max-width: 600px;
         }
         
         .hero-buttons {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
             animation: fadeInUp 1s ease-out 0.4s forwards;
             opacity: 0;
         }
         
         .hero-image {
             position: absolute;
-            right: 0;
+            right: 5%;
             top: 50%;
             transform: translateY(-50%);
-            width: 50%;
-            max-width: 700px;
+            width: 40%;
+            max-width: 600px;
             z-index: 0;
-            animation: float 6s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+            opacity: 0.9;
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-20px); }
+            50% { transform: translateY(-50%) translateX(-15px); }
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -372,7 +446,7 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 3.5rem;
             align-items: center;
         }
         
@@ -384,11 +458,11 @@
         }
         
         .about-image:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
         
         .about-text h3 {
-            font-size: 2rem;
+            font-size: 2.25rem;
             margin-bottom: 1.5rem;
         }
         
@@ -406,27 +480,27 @@
         
         .stat-item {
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(37, 99, 235, 0.05);
+            padding: 1.75rem;
+            background: rgba(30, 64, 175, 0.05);
             border-radius: var(--radius);
             transition: var(--transition);
         }
         
         .stat-item:hover {
             transform: translateY(-5px);
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(30, 64, 175, 0.1);
         }
         
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            font-weight: 800;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         /* Team */
@@ -436,8 +510,8 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
         }
         
         .team-card {
@@ -451,22 +525,22 @@
         }
         
         .team-image {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 1.5rem;
-            border: 3px solid var(--primary);
+            border: 4px solid var(--primary);
             transition: var(--transition);
         }
         
         .team-card:hover .team-image {
             transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
         }
         
         .team-name {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
@@ -490,10 +564,10 @@
         }
         
         .team-social a {
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            background-color: rgba(37, 99, 235, 0.1);
+            background-color: rgba(30, 64, 175, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -514,22 +588,22 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
         
         .service-card {
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
             transition: var(--transition);
         }
         
         .service-card:hover {
-            background-color: rgba(37, 99, 235, 0.05);
+            background-color: rgba(30, 64, 175, 0.05);
         }
         
         .service-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             transition: var(--transition);
@@ -540,7 +614,7 @@
         }
         
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
         }
         
@@ -552,8 +626,8 @@
         /* Portfolio */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
         
         .portfolio-item {
@@ -564,7 +638,7 @@
         
         .portfolio-image {
             width: 100%;
-            height: 250px;
+            height: 260px;
             object-fit: cover;
             transition: var(--transition);
         }
@@ -575,7 +649,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -596,7 +670,7 @@
         }
         
         .portfolio-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
         }
         
@@ -612,8 +686,8 @@
         
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
         
         .course-card {
@@ -627,7 +701,7 @@
         
         .course-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             transition: var(--transition);
         }
@@ -637,18 +711,18 @@
         }
         
         .course-content {
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
         
         .course-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
         
         .course-description {
             color: var(--gray);
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         .course-meta {
@@ -667,9 +741,9 @@
         .course-free {
             background-color: var(--success);
             color: white;
-            padding: 0.25rem 0.75rem;
+            padding: 0.3rem 0.85rem;
             border-radius: 2rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
         
         /* Testimonials */
@@ -678,14 +752,14 @@
         }
         
         .testimonials-slider {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
         }
         
         .testimonial {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             text-align: center;
@@ -693,12 +767,12 @@
         }
         
         .testimonial-avatar {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 1rem;
-            border: 3px solid var(--primary);
+            border: 4px solid var(--primary);
         }
         
         .testimonial-text {
@@ -713,7 +787,7 @@
         
         .testimonial-role {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         /* Contact */
@@ -722,16 +796,16 @@
         }
         
         .contact-form {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
         
         .form-label {
@@ -742,7 +816,7 @@
         
         .form-control {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem;
             border: 1px solid var(--light-gray);
             border-radius: var(--radius);
             transition: var(--transition);
@@ -752,11 +826,11 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
         }
         
         textarea.form-control {
-            min-height: 150px;
+            min-height: 160px;
             resize: vertical;
         }
         
@@ -769,22 +843,22 @@
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3.5rem;
             margin-bottom: 3rem;
         }
         
         .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         
         .footer-logo img {
-            height: 30px;
+            height: 35px;
         }
         
         .footer-description {
@@ -794,12 +868,12 @@
         
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
         }
         
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.1);
             display: flex;
@@ -814,7 +888,7 @@
         }
         
         .footer-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 0.75rem;
@@ -825,7 +899,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 2px;
             background-color: var(--primary);
         }
@@ -864,20 +938,20 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--light-gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         /* Chatbot */
         .chatbot-container {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 2.5rem;
+            right: 2.5rem;
             z-index: 999;
         }
         
         .chatbot-btn {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             background-color: var(--primary);
             color: white;
@@ -896,15 +970,15 @@
         }
         
         .chatbot-btn i {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
         
         .chatbot-box {
             position: absolute;
-            bottom: 80px;
+            bottom: 90px;
             right: 0;
-            width: 350px;
-            max-height: 500px;
+            width: 360px;
+            max-height: 520px;
             background-color: white;
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
@@ -934,7 +1008,7 @@
         .chatbot-header {
             background-color: var(--primary);
             color: white;
-            padding: 1rem;
+            padding: 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -942,13 +1016,14 @@
         
         .chatbot-title {
             font-weight: 600;
+            font-size: 1.1rem;
         }
         
         .chatbot-close {
             background: none;
             border: none;
             color: white;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: var(--transition);
         }
@@ -959,7 +1034,7 @@
         
         .chatbot-messages {
             flex: 1;
-            padding: 1rem;
+            padding: 1.25rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -968,9 +1043,9 @@
         
         .message {
             max-width: 80%;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1.25rem;
             border-radius: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.4;
             animation: fadeIn 0.3s ease-out;
         }
@@ -1002,7 +1077,7 @@
         .typing-indicator {
             display: flex;
             gap: 0.5rem;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1.25rem;
             background-color: #f1f5f9;
             border-radius: 1rem;
             align-self: flex-start;
@@ -1036,13 +1111,13 @@
         
         .chatbot-input {
             display: flex;
-            padding: 1rem;
+            padding: 1.25rem;
             border-top: 1px solid var(--light-gray);
         }
         
         .chatbot-input-field {
             flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1.25rem;
             border: 1px solid var(--light-gray);
             border-radius: 2rem 0 0 2rem;
             outline: none;
@@ -1058,7 +1133,7 @@
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 0 1.25rem;
+            padding: 0 1.5rem;
             border-radius: 0 2rem 2rem 0;
             cursor: pointer;
             transition: var(--transition);
@@ -1071,7 +1146,7 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 3.75rem;
             }
             
             .about-content {
@@ -1079,8 +1154,12 @@
             }
             
             .about-image {
-                max-width: 500px;
+                max-width: 600px;
                 margin: 0 auto;
+            }
+            
+            .hero-image {
+                width: 50%;
             }
         }
         
@@ -1090,11 +1169,17 @@
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
+                text-align: center;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+                text-align: center;
             }
             
             .hero-image {
@@ -1108,6 +1193,8 @@
             
             .hero-buttons {
                 justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
             
             .mobile-menu-btn {
@@ -1116,14 +1203,14 @@
             
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 100px;
                 left: 0;
                 width: 100%;
                 background-color: white;
                 flex-direction: column;
                 align-items: center;
                 padding: 2rem 0;
-                gap: 1.5rem;
+                gap: 1.75rem;
                 box-shadow: var(--shadow);
                 transform: translateY(-150%);
                 transition: var(--transition);
@@ -1139,41 +1226,57 @@
             }
             
             .chatbot-box {
-                width: 300px;
+                width: 320px;
             }
         }
         
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
             
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
+                gap: 0.85rem;
             }
             
             .section-title {
-                font-size: 1.75rem;
+                font-size: 1.85rem;
             }
             
             .chatbot-box {
                 width: calc(100vw - 2rem);
                 right: 1rem;
             }
+            
+            .navbar {
+                padding: 1.25rem 0;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <div class="notice-text">
+            🚀 Join our free tech courses today! | New AI solutions available | Contact us for custom software development 🚀
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <nav class="navbar">
                 <a href="#home" class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1kYXNoYXJyYXk9IjQsNCIvPjxwYXRoIGQ9Ik0zMCA3MCBMNTAgMzAgTDcwIDcwIFoiIGZpbGw9IiMyNTYzZWIiIG9wYWNpdHk9IjAuNiIvPjx0ZXh0IHg9IjI1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5VPC90ZXh0Pjx0ZXh0IHg9IjY1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5UPC90ZXh0Pjwvc3ZnPg==" alt="UMTI Tech Logo">
+                    <img src="https://raw.githubusercontent.com/UMTITech/UMTITech/main/UMTI%20Tech%20Logo.png">
                     <span>UMTI Tech</span>
                 </a>
                 
@@ -1200,14 +1303,14 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Innovative Tech Solutions for the Digital Age</h1>
-                <p class="hero-subtitle">Based in Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions delivers cutting-edge software development and free tech education to empower the next generation of innovators.</p>
+                <h1 class="hero-title">Empowering Your Digital Future</h1>
+                <p class="hero-subtitle">From Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions delivers world-class software development and free tech education to inspire and innovate.</p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#courses" class="btn btn-secondary">Free Courses</a>
+                    <a href="#services" class="btn btn-primary">Discover Our Services</a>
+                    <a href="#courses" class="btn btn-secondary">Explore Free Courses</a>
                 </div>
             </div>
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tech solutions" class="hero-image" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1666875753105-105a92a03a1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="hero-image" loading="lazy">
         </div>
     </section>
 
@@ -1215,17 +1318,17 @@
     <section class="section about" id="about">
         <div class="container">
             <h2 class="section-title">About Us</h2>
-            <p class="section-subtitle">We combine technical expertise with a passion for education to deliver exceptional results from our base in Darkhast Jamal Khan, South Punjab.</p>
+            <p class="section-subtitle">We blend innovation and education to deliver exceptional solutions from our base in South Punjab.</p>
             
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our team" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" loading="lazy">
                 </div>
                 
                 <div class="about-text">
-                    <h3>Transforming Ideas Into Digital Reality</h3>
-                    <p>Founded in Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions has grown from a small startup to a recognized leader in software development and tech education.</p>
-                    <p>Our team of passionate developers and educators work tirelessly to create innovative solutions while giving back to the community through free technical courses. We're proud to be contributing to Pakistan's growing tech ecosystem from our location in South Punjab.</p>
+                    <h3>Innovate, Create, Educate</h3>
+                    <p>Based in Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions is a leader in software development and tech education, transforming ideas into reality.</p>
+                    <p>Our commitment to excellence extends beyond client projects—we empower communities through free tech courses, fostering Pakistan's digital growth.</p>
                     
                     <div class="stats">
                         <div class="stat-item">
@@ -1249,15 +1352,15 @@
     <!-- Team Section -->
     <section class="section team" id="team">
         <div class="container">
-            <h2 class="section-title">Meet Our Team</h2>
-            <p class="section-subtitle">The talented professionals behind UMTI Tech Solutions' success.</p>
+            <h2 class="section-title">Our Team</h2>
+            <p class="section-subtitle">Meet the passionate professionals driving UMTI Tech Solutions forward.</p>
             
             <div class="team-grid">
                 <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Awais Laal" class="team-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" class="team-image" loading="lazy">
                     <h3 class="team-name">Awais Laal</h3>
                     <p class="team-role">Founder & CEO</p>
-                    <p class="team-bio">Visionary leader with 10+ years of experience in software development and tech education. Passionate about empowering the next generation of developers.</p>
+                    <p class="team-bio">Visionary leader with over a decade of experience in software and education, dedicated to empowering communities.</p>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1266,10 +1369,10 @@
                 </div>
                 
                 <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Aamir Shaheen" class="team-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" class="team-image" loading="lazy">
                     <h3 class="team-name">Aamir Shaheen</h3>
                     <p class="team-role">Lead Developer</p>
-                    <p class="team-bio">Full-stack developer specializing in React, Node.js, and cloud architecture. Dedicated to creating scalable and efficient solutions.</p>
+                    <p class="team-bio">Expert in full-stack development, specializing in scalable solutions using React and Node.js.</p>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1278,50 +1381,26 @@
                 </div>
                 
                 <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Imran Nazir" class="team-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="team-image" loading="lazy">
                     <h3 class="team-name">Imran Nazir</h3>
                     <p class="team-role">AI Specialist</p>
-                    <p class="team-bio">Machine learning expert with a focus on computer vision and natural language processing. Committed to bringing AI solutions to local businesses.</p>
+                    <p class="team-bio">Specializes in AI and machine learning, delivering innovative solutions for business automation.</p>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-
+                
                 <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Sara Khan" class="team-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" class="team-image" loading="lazy">
                     <h3 class="team-name">Sara Khan</h3>
                     <p class="team-role">UI/UX Designer</p>
-                    <p class="team-bio">Creative designer with a passion for creating intuitive and beautiful user experiences. Specializes in mobile and web interfaces.</p>
+                    <p class="team-bio">Creates intuitive, stunning interfaces that enhance user engagement and satisfaction.</p>
                     <div class="team-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </div>
-                </div>
-
-                <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bilal Ahmed" class="team-image" loading="lazy">
-                    <h3 class="team-name">Bilal Ahmed</h3>
-                    <p class="team-role">DevOps Engineer</p>
-                    <p class="team-bio">Cloud infrastructure specialist with expertise in AWS, Docker, and CI/CD pipelines. Ensures our solutions are scalable and reliable.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="card team-card">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Fatima Riaz" class="team-image" loading="lazy">
-                    <h3 class="team-name">Fatima Riaz</h3>
-                    <p class="team-role">Education Coordinator</p>
-                    <p class="team-bio">Passionate educator who organizes our free tech courses and ensures students receive the best learning experience possible.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
@@ -1332,48 +1411,48 @@
     <section class="section services" id="services">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">We offer comprehensive solutions to meet all your digital needs from our South Punjab office.</p>
+            <p class="section-subtitle">Comprehensive digital solutions crafted from our South Punjab hub.</p>
             
             <div class="services-grid">
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-globe"></i></div>
                     <h3 class="service-title">Web Development</h3>
-                    <p class="service-description">Custom websites and web applications built with modern technologies like React, Vue, and Node.js. We create responsive, SEO-friendly sites that drive results.</p>
+                    <p class="service-description">Custom, responsive websites built with cutting-edge technologies like React and Node.js for optimal performance.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3 class="service-title">Mobile Apps</h3>
-                    <p class="service-description">Cross-platform mobile applications developed with Flutter and React Native for iOS and Android. From concept to app store deployment.</p>
+                    <p class="service-description">Cross-platform mobile apps developed with Flutter and React Native, from concept to deployment.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-robot"></i></div>
                     <h3 class="service-title">AI Solutions</h3>
-                    <p class="service-description">Artificial intelligence and machine learning solutions tailored to your business requirements. Predictive analytics, chatbots, and automation.</p>
+                    <p class="service-description">Tailored AI and machine learning solutions, including chatbots and predictive analytics for businesses.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
                 
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-cloud"></i></div>
                     <h3 class="service-title">Cloud Services</h3>
-                    <p class="service-description">Scalable cloud infrastructure and deployment on AWS, Google Cloud, and Azure platforms. Migration, optimization, and management.</p>
+                    <p class="service-description">Scalable cloud solutions on AWS, Google Cloud, and Azure, with expert migration and management.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
-
+                
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
                     <h3 class="service-title">UI/UX Design</h3>
-                    <p class="service-description">Beautiful, intuitive interfaces designed to enhance user experience and drive engagement. From wireframes to final designs.</p>
+                    <p class="service-description">Intuitive, visually stunning interfaces designed to maximize user engagement.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
-
+                
                 <div class="card service-card">
                     <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="service-title">Digital Marketing</h3>
-                    <p class="service-description">Comprehensive digital marketing strategies including SEO, social media, and content marketing to grow your online presence.</p>
+                    <p class="service-description">SEO, social media, and content strategies to boost your online presence.</p>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
@@ -1384,11 +1463,11 @@
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <h2 class="section-title">Our Portfolio</h2>
-            <p class="section-subtitle">Explore some of our recent projects and success stories from clients worldwide.</p>
+            <p class="section-subtitle">Discover our recent projects showcasing innovation and excellence.</p>
             
             <div class="portfolio-grid">
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce platform" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">E-Commerce Platform</h3>
                         <p class="portfolio-category">Web Development</p>
@@ -1397,7 +1476,7 @@
                 </div>
                 
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Health app" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Health & Fitness App</h3>
                         <p class="portfolio-category">Mobile Development</p>
@@ -1406,34 +1485,34 @@
                 </div>
                 
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="CRM system" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Business CRM System</h3>
                         <p class="portfolio-category">Enterprise Software</p>
                         <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
-
+                
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Dashboard" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">AI Analytics Dashboard</h3>
                         <p class="portfolio-category">AI Solution</p>
                         <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
-
+                
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Education Platform" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Online Learning Platform</h3>
                         <p class="portfolio-category">Web Development</p>
                         <a href="#" class="btn btn-primary">View Project</a>
                     </div>
                 </div>
-
+                
                 <div class="card portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile Game" class="portfolio-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="portfolio-image" loading="lazy">
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Mobile Game</h3>
                         <p class="portfolio-category">Mobile Development</p>
@@ -1448,14 +1527,14 @@
     <section class="section courses" id="courses">
         <div class="container">
             <h2 class="section-title">Free Tech Courses</h2>
-            <p class="section-subtitle">We believe in giving back by offering free technical education to deserving students in Pakistan.</p>
+            <p class="section-subtitle">Empowering Pakistan's youth with free technical education.</p>
             
             <div class="courses-grid">
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Web Development Course" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">Web Development Fundamentals</h3>
-                        <p class="course-description">Learn HTML, CSS, and JavaScript to build modern, responsive websites from scratch. Perfect for beginners starting their coding journey.</p>
+                        <p class="course-description">Master HTML, CSS, and JavaScript to build responsive, modern websites from scratch.</p>
                         <div class="course-meta">
                             <span>8 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1465,10 +1544,10 @@
                 </div>
                 
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Python Course" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1528&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">Python Programming</h3>
-                        <p class="course-description">Master Python for web development, data analysis, and automation projects. This comprehensive course covers from basics to advanced concepts.</p>
+                        <p class="course-description">Learn Python for web development, data analysis, and automation, from basics to advanced.</p>
                         <div class="course-meta">
                             <span>6 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1478,10 +1557,10 @@
                 </div>
                 
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80" alt="AI Course" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1465&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">AI & Machine Learning</h3>
-                        <p class="course-description">Introduction to artificial intelligence and machine learning concepts. Learn to build predictive models and understand neural networks.</p>
+                        <p class="course-description">Explore AI and machine learning, building predictive models and neural networks.</p>
                         <div class="course-meta">
                             <span>10 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1489,12 +1568,12 @@
                         <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
                     </div>
                 </div>
-
+                
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mobile Development" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">Mobile App Development</h3>
-                        <p class="course-description">Build cross-platform mobile applications with Flutter. Learn to create beautiful, performant apps for iOS and Android.</p>
+                        <p class="course-description">Build cross-platform apps with Flutter for iOS and Android.</p>
                         <div class="course-meta">
                             <span>8 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1502,12 +1581,12 @@
                         <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
                     </div>
                 </div>
-
+                
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Cloud Computing" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">Cloud Computing</h3>
-                        <p class="course-description">Learn to deploy and manage applications on AWS, Google Cloud, and Azure. Master cloud architecture and best practices.</p>
+                        <p class="course-description">Master cloud deployment on AWS, Google Cloud, and Azure.</p>
                         <div class="course-meta">
                             <span>6 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1515,12 +1594,12 @@
                         <a href="https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u" class="btn btn-primary" style="margin-top: 1rem; width: 100%;" target="_blank">Enroll Now</a>
                     </div>
                 </div>
-
+                
                 <div class="card course-card">
-                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="UI/UX Design" class="course-image" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="course-image" loading="lazy">
                     <div class="course-content">
                         <h3 class="course-title">UI/UX Design</h3>
-                        <p class="course-description">Learn to create beautiful, user-friendly interfaces. Master design principles, tools like Figma, and user research techniques.</p>
+                        <p class="course-description">Learn to design user-friendly interfaces with Figma and user research.</p>
                         <div class="course-meta">
                             <span>6 Weeks</span>
                             <span class="course-free">FREE</span>
@@ -1535,13 +1614,13 @@
     <!-- Testimonials Section -->
     <section class="section testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <p class="section-subtitle">Hear from businesses and students who have worked with us.</p>
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">Hear from our satisfied clients and students.</p>
             
             <div class="testimonials-slider">
                 <div class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client testimonial" class="testimonial-avatar" loading="lazy">
-                    <p class="testimonial-text">"UMTI Tech transformed our outdated website into a modern, high-performing platform that has significantly increased our online conversions and customer engagement."</p>
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-avatar" loading="lazy">
+                    <p class="testimonial-text">"UMTI Tech transformed our business with a stunning, high-performance website that boosted our conversions."</p>
                     <h4 class="testimonial-author">Sarah Johnson</h4>
                     <p class="testimonial-role">CEO, TechSolutions Inc.</p>
                 </div>
@@ -1552,8 +1631,8 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Have a project in mind or want to learn more about our courses? Contact us today.</p>
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Ready to start a project or join our courses? Reach out today!</p>
             
             <div class="contact-form">
                 <form id="contactForm">
@@ -1589,10 +1668,10 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <a href="#" class="footer-logo">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1kYXNoYXJyYXk9IjQsNCIvPjxwYXRoIGQ9Ik0zMCA3MCBMNTAgMzAgTDcwIDcwIFoiIGZpbGw9IiMyNTYzZWIiIG9wYWNpdHk9IjAuNiIvPjx0ZXh0IHg9IjI1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5VPC90ZXh0Pjx0ZXh0IHg9IjY1IiB5PSI1NSIgZm9udC1mYW1pbHk9Ik9yYml0cm9uIiBmb250LXNpemU9IjI4IiBmaWxsPSIjMjU2M2ViIiBjbGFzcz0iZ2xpdGNoIj5UPC90ZXh0Pjwvc3ZnPg==" alt="UMTI Tech Logo">
+                        <img src="https://raw.githubusercontent.com/UMTITech/UMTITech/main/UMTI%20Tech%20Logo.png">
                         <span>UMTI Tech</span>
                     </a>
-                    <p class="footer-description">Innovative tech solutions and education to empower the digital future from Darkhast Jamal Khan, South Punjab, Pakistan.</p>
+                    <p class="footer-description">Innovative tech solutions and education from Darkhast Jamal Khan, South Punjab, Pakistan.</p>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/share/1HRMpx7ncN/?mibextid=qi2Omg" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.linkedin.com/company/umti-tech-solutions/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1645,7 +1724,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 UMTI Tech Solutions. All Rights Reserved.</p>
+                <p>© 2025 UMTI Tech Solutions. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1664,7 +1743,7 @@
             
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    Hello! I'm the UMTI Tech assistant. How can I help you today?
+                    Hello! I'm the UMTI Tech Assistant. How can I assist you today? Ask about our services, courses, or anything else!
                 </div>
             </div>
             
@@ -1745,7 +1824,7 @@
             observer.observe(section);
         });
         
-        // Chatbot functionality with Gemini API
+        // Chatbot functionality
         const chatbotBtn = document.getElementById('chatbotBtn');
         const chatbotBox = document.getElementById('chatbotBox');
         const chatbotClose = document.getElementById('chatbotClose');
@@ -1753,7 +1832,6 @@
         const chatbotInput = document.getElementById('chatbotInput');
         const chatbotSend = document.getElementById('chatbotSend');
         
-        // Toggle chatbot
         chatbotBtn.addEventListener('click', () => {
             chatbotBox.classList.toggle('active');
         });
@@ -1762,7 +1840,6 @@
             chatbotBox.classList.remove('active');
         });
         
-        // Function to add message to chat
         function addMessage(text, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
@@ -1771,7 +1848,6 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
         
-        // Function to show typing indicator
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
             typingDiv.className = 'typing-indicator';
@@ -1785,90 +1861,12 @@
             return typingDiv;
         }
         
-        // Function to hide typing indicator
         function hideTypingIndicator(typingDiv) {
             if (typingDiv && typingDiv.parentNode) {
                 typingDiv.parentNode.removeChild(typingDiv);
             }
         }
         
-        // Function to call Gemini API
-        async function callGeminiAPI(prompt) {
-            const API_KEY = 'AIzaSyCasa_souS0U0uOGjG8gNy4sPc8yOykPgk';
-            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
-            
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: `You are a helpful assistant for UMTI Tech Solutions, a software development and tech education company based in Darkhast Jamal Khan, South Punjab, Pakistan. The user asked: "${prompt}"`
-                            }]
-                        }]
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (data.candidates && data.candidates[0].content.parts[0].text) {
-                    return data.candidates[0].content.parts[0].text;
-                } else {
-                    console.error('Unexpected API response:', data);
-                    return "I'm sorry, I couldn't process your request. Please try again later.";
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                return "I'm having trouble connecting to the server. Please try again later.";
-            }
-        }
-        
-        // Send message function
-        async function sendMessage() {
-            const message = chatbotInput.value.trim();
-            if (message === '') return;
-            
-            // Add user message
-            addMessage(message, true);
-            
-            // Clear input
-            chatbotInput.value = '';
-            
-            // Show typing indicator
-            const typingIndicator = showTypingIndicator();
-            
-            try {
-                // Call Gemini API
-                const response = await callGeminiAPI(message);
-                
-                // Remove typing indicator
-                hideTypingIndicator(typingIndicator);
-                
-                // Add bot response
-                addMessage(response);
-            } catch (error) {
-                // Remove typing indicator
-                hideTypingIndicator(typingIndicator);
-                
-                // Show error message
-                addMessage("I'm sorry, I encountered an error. Please try again later.");
-            }
-        }
-        
-        // Send message on button click
-        chatbotSend.addEventListener('click', sendMessage);
-        
-        // Send message on Enter key
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-        
-        // Predefined questions for quick responses
         const predefinedQuestions = [
             {
                 question: "What is UMTI Tech Solutions?",
@@ -1885,45 +1883,64 @@
             {
                 question: "How can I enroll in your free courses?",
                 answer: "You can enroll in our free courses by joining our WhatsApp channel: https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u or contacting us through our website."
+            },
+            {
+                question: "What are your contact details?",
+                answer: "You can reach us at info@umtitech.com or +92 300 1234567. We're located in Darkhast Jamal Khan, South Punjab, Pakistan. You can also join our WhatsApp channel: https://whatsapp.com/channel/0029Vb6B9an8fewtwW3Xjr3u"
+            },
+            {
+                question: "Tell me about your team",
+                answer: "Our team consists of experienced professionals including our Founder & CEO Awais Laal, Lead Developer Aamir Shaheen, AI Specialist Imran Nazir, and UI/UX Designer Sara Khan. Each brings unique expertise to deliver exceptional solutions."
+            },
+            {
+                question: "What courses do you offer?",
+                answer: "We offer free courses in Web Development Fundamentals, Python Programming, AI & Machine Learning, Mobile App Development, Cloud Computing, and UI/UX Design. Check our courses section for more details and enrollment."
+            },
+            {
+                question: "How can I start a project with you?",
+                answer: "To start a project, please fill out the contact form in the 'Get In Touch' section or email us at info@umtitech.com. We'll schedule a consultation to discuss your needs and provide a tailored solution."
             }
         ];
         
-        // Check for predefined questions
-        function checkPredefinedQuestions(message) {
-            const lowerMessage = message.toLowerCase();
-            for (const item of predefinedQuestions) {
-                if (lowerMessage.includes(item.question.toLowerCase().substring(0, 20))) {
-                    return item.answer;
-                }
-            }
-            return null;
+        function findAnswer(userInput) {
+            const input = userInput.toLowerCase().trim();
+            const matchedQuestion = predefinedQuestions.find(q => 
+                input.includes(q.question.toLowerCase()) || 
+                q.question.toLowerCase().includes(input)
+            );
+            return matchedQuestion ? matchedQuestion.answer : "I'm not sure about that. Could you please provide more details or ask about our services, courses, or contact information?";
         }
         
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            e.target.reset();
+        function handleSendMessage() {
+            const userInput = chatbotInput.value.trim();
+            if (!userInput) return;
+            
+            addMessage(userInput, true);
+            chatbotInput.value = '';
+            const typingDiv = showTypingIndicator();
+            
+            setTimeout(() => {
+                hideTypingIndicator(typingDiv);
+                const botResponse = findAnswer(userInput);
+                addMessage(botResponse);
+            }, 1000);
+        }
+        
+        chatbotSend.addEventListener('click', handleSendMessage);
+        
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSendMessage();
+            }
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update URL without adding to history
-                    history.replaceState(null, null, targetId);
-                }
-            });
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will get back to you soon.');
+            contactForm.reset();
         });
     </script>
 </body>
