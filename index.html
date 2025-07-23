@@ -285,7 +285,7 @@
         }
         
         .logo img {
-            height: 45px;
+            height: 65px;
             margin-right: 0.75rem;
             transition: var(--transition);
         }
@@ -408,19 +408,44 @@
             animation: fadeInUp 1s ease-out 0.4s forwards;
             opacity: 0;
         }
-        
+
         .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40%;
-            max-width: 600px;
-            z-index: 0;
-            animation: float 5s ease-in-out infinite;
-            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
-            opacity: 0.9;
-        }
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    max-width: 600px;
+    z-index: 0;
+    animation: float 5s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    opacity: 0.9;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+    .hero-image {
+        width: 50%;
+        right: 5%;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+    .hero-image {
+        position: relative;
+        width: 80%;
+        max-width: 100%;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+        
+        
         
         @keyframes float {
             0%, 100% { transform: translateY(-50%) translateX(0); }
@@ -1310,7 +1335,7 @@
                     <a href="#courses" class="btn btn-secondary">Explore Free Courses</a>
                 </div>
             </div>
-            <img src="ChatGPT Image Jul 23, 2025, 02_15_30 PM.png=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="hero-image" loading="lazy">
+            <img src="hero section character.png" class="hero-image" loading="lazy">
         </div>
     </section>
 
