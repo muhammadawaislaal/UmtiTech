@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umti Tech Solutions - LMS</title>
+    <title>Umti Tech Solutions - Advanced LMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.css" rel="stylesheet">
     <style>
-
-
-
-
-
         :root {
             --primary: #4776E6;
             --secondary: #8E54E9;
@@ -37,43 +33,55 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary);
             text-decoration: none;
+            z-index: 1001;
         }
 
         .logo span {
             color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            z-index: 1001;
         }
 
         nav ul {
@@ -82,7 +90,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         nav ul li a {
@@ -91,6 +99,7 @@
             font-weight: 500;
             transition: color var(--transform-speed);
             position: relative;
+            font-size: 0.95rem;
         }
 
         nav ul li a:hover {
@@ -119,8 +128,8 @@
             text-align: center;
             background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
             color: white;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 60px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
             position: relative;
             overflow: hidden;
         }
@@ -145,15 +154,17 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            line-height: 1.6;
         }
 
         .btn {
@@ -169,11 +180,34 @@
             transition: all var(--transform-speed);
             transform: translateY(0);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+        }
+
+        .btn-danger {
+            background: var(--accent);
+        }
+
+        .btn-info {
+            background: var(--info);
         }
 
         /* Section Styles */
@@ -183,8 +217,8 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.2rem;
+            margin-bottom: 40px;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--dark);
             position: relative;
@@ -220,7 +254,7 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
@@ -252,11 +286,10 @@
             box-shadow: var(--card-shadow);
             transition: transform var(--transform-speed), box-shadow var(--transform-speed);
             text-align: center;
-            perspective: 1000px;
         }
 
         .category-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
@@ -292,11 +325,10 @@
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: transform var(--transform-speed), box-shadow var(--transform-speed);
-            perspective: 1000px;
         }
 
         .course-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
@@ -335,10 +367,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transition: all var(--transform-speed);
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -351,11 +384,13 @@
             border-radius: 15px;
             padding: 30px;
             max-width: 500px;
-            width: 90%;
+            width: 100%;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             transform: translateY(50px) scale(0.9);
             transition: transform var(--transform-speed);
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-overlay.active .modal {
@@ -372,6 +407,7 @@
             cursor: pointer;
             color: #999;
             transition: color var(--transform-speed);
+            z-index: 1;
         }
 
         .close-modal:hover {
@@ -401,24 +437,80 @@
 
         /* Login Section */
         .login-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
         }
 
-        .login-form {
+        .login-card {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .login-form h3 {
-            margin-bottom: 20px;
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .login-card-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
             text-align: center;
-            font-size: 1.5rem;
-            color: var(--primary);
+        }
+
+        .login-card-body {
+            padding: 30px;
+        }
+
+        .login-card-footer {
+            padding: 20px 30px;
+            background: #f8fafc;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .user-type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .user-type-btn {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            background: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .user-type-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(71, 118, 230, 0.3);
+        }
+
+        .user-type-btn i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
         }
 
         .form-group {
@@ -427,29 +519,36 @@
         }
 
         .form-group label {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--dark);
         }
 
-        .form-group input {
+        .form-group label i {
+            color: var(--primary);
+            width: 16px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.1);
         }
 
         .login-btn {
-            padding: 14px 28px;
+            padding: 12px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             border: none;
@@ -459,6 +558,10 @@
             font-size: 1rem;
             transition: all 0.3s;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .login-btn:hover {
@@ -515,42 +618,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav ul li {
-                margin: 0 10px 10px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* 3D Effects */
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: transform var(--transform-speed);
-        }
-
-        .card-3d:hover {
-            transform: rotateY(5deg) rotateX(5deg);
-        }
-
         /* LMS Dashboard Styles */
         .dashboard-page {
             display: none;
@@ -560,6 +627,9 @@
             background: white;
             box-shadow: var(--card-shadow);
             padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
 
         .lms-header-content {
@@ -584,23 +654,38 @@
         }
 
         .user-avatar {
-            width: 35px;
-            height: 35px;
-            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
         /* Dashboard Content */
         .dashboard-content {
             display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 25px;
-            margin-top: 25px;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .sidebar-toggle {
+            display: none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            align-items: center;
+            gap: 8px;
         }
 
         .sidebar {
@@ -609,6 +694,11 @@
             padding: 25px;
             box-shadow: var(--card-shadow);
             height: fit-content;
+            position: sticky;
+            top: 100px;
+            transition: all 0.3s ease;
+            max-height: calc(100vh - 130px);
+            overflow-y: auto;
         }
 
         .sidebar-menu {
@@ -628,11 +718,17 @@
             padding: 12px;
             border-radius: 10px;
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .sidebar-menu a:hover, .sidebar-menu a.active {
             background: var(--primary);
             color: white;
+        }
+
+        .sidebar-menu a i {
+            width: 20px;
+            text-align: center;
         }
 
         .main-content {
@@ -652,16 +748,40 @@
         }
 
         .stat-card {
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 28px;
+            padding: 25px;
             border-radius: 15px;
             text-align: center;
             transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .stat-card:hover::before {
+            transform: translateX(0);
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
         }
 
         .stat-number {
@@ -686,18 +806,22 @@
         }
 
         /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .table-container {
+            overflow-x: auto;
             margin: 25px 0;
-            background: white;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: var(--card-shadow);
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 800px;
+        }
+
         th, td {
-            padding: 18px;
+            padding: 15px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
@@ -706,6 +830,8 @@
             background: var(--primary);
             color: white;
             font-weight: 500;
+            position: sticky;
+            top: 0;
         }
 
         tr:hover {
@@ -727,6 +853,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .card-title {
@@ -737,10 +865,16 @@
 
         /* Badges */
         .badge {
-            padding: 6px 15px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
+            display: inline-block;
+        }
+
+        .badge-primary {
+            background: #e6eeff;
+            color: var(--primary);
         }
 
         .badge-success {
@@ -758,21 +892,36 @@
             color: #2c5282;
         }
 
+        .badge-danger {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
         /* Progress Bars */
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 10px;
             background: #e2e8f0;
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
-            margin: 10px 0;
         }
 
         .progress-fill {
             height: 100%;
-            background: var(--gradient);
-            border-radius: 4px;
-            transition: width 0.3s;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+            transition: width 0.5s;
         }
 
         /* Quiz Styles */
@@ -847,6 +996,10 @@
             cursor: pointer;
             background: #f8fafc;
             transition: all 0.3s;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .calendar-cell:hover {
@@ -901,6 +1054,7 @@
             justify-content: center;
             margin-right: 15px;
             z-index: 1;
+            flex-shrink: 0;
         }
 
         .timeline-content {
@@ -917,37 +1071,98 @@
             margin-top: 5px;
         }
 
-        /* Responsive LMS */
-        @media (max-width: 968px) {
-            .dashboard-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Charts */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .main-content {
-                padding: 20px;
-            }
-            
-            .stat-card {
-                padding: 20px;
-            }
-            
-            .lms-card {
-                padding: 20px;
-            }
+        /* Notifications */
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notification-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .notifications-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .notifications-dropdown.active {
+            display: block;
+        }
+
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .notification-item:hover {
+            background: #f8fafc;
+        }
+
+        .notification-item.unread {
+            background: #f0f4ff;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-bar button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: var(--secondary);
         }
 
         /* Utility Classes */
@@ -957,6 +1172,10 @@
 
         .text-center {
             text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
         }
 
         .mt-20 {
@@ -971,8 +1190,16 @@
             display: flex;
         }
 
+        .flex-column {
+            flex-direction: column;
+        }
+
         .justify-between {
             justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
         }
 
         .items-center {
@@ -991,6 +1218,10 @@
             gap: 20px;
         }
 
+        .w-100 {
+            width: 100%;
+        }
+
         .loading {
             text-align: center;
             padding: 40px;
@@ -1003,174 +1234,557 @@
             color: var(--primary);
         }
 
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 500;
+        }
 
+        .message.error {
+            background: #fed7d7;
+            color: #c53030;
+        }
 
+        .message.success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
 
+        .message.warning {
+            background: #feebc8;
+            color: #744210;
+        }
 
+        .message.info {
+            background: #bee3f8;
+            color: #2c5282;
+        }
 
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+        }
 
+        .mobile-menu.active {
+            right: 0;
+        }
 
+        .mobile-menu ul {
+            list-style: none;
+        }
 
+        .mobile-menu ul li {
+            margin: 15px 0;
+        }
 
+        .mobile-menu ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
 
+        .mobile-menu ul li a:hover {
+            background: var(--primary);
+            color: white;
+        }
 
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
 
-        /* =============================================
-   TEXT VISIBILITY FIXES
-   ============================================= */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
 
-/* Global text color reset with better specificity */
-body,
-.hero h1, 
-.hero p,
-.section-title,
-.feature-card,
-.feature-card h3,
-.feature-card p,
-.category-content,
-.category-content h3,
-.category-content p,
-.course-content,
-.course-content h3,
-.course-content p,
-.modal,
-.modal h2,
-.modal p,
-.highlight,
-.login-form,
-.login-form h3,
-.form-group label,
-.footer-content,
-.footer-logo,
-.footer-contact p,
-.lms-header,
-.lms-section-title,
-.card-title,
-.stat-card,
-.stat-number,
-.stat-label,
-th,
-td,
-.timeline-content,
-.quiz-question,
-.calendar-header,
-.calendar-cell,
-.user-info,
-.main-content,
-.sidebar,
-.sidebar-menu a {
-    color: #2D3748 !important;
-    opacity: 1 !important;
-    text-shadow: none !important;
-}
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-/* Specific fixes for elements with colored backgrounds */
-.hero *,
-.stat-card *,
-th * {
-    color: white !important;
-}
+        /* Text Visibility Fixes */
+        body,
+        .hero h1, 
+        .hero p,
+        .section-title,
+        .feature-card,
+        .feature-card h3,
+        .feature-card p,
+        .category-content,
+        .category-content h3,
+        .category-content p,
+        .course-content,
+        .course-content h3,
+        .course-content p,
+        .modal,
+        .modal h2,
+        .modal p,
+        .highlight,
+        .login-form,
+        .login-form h3,
+        .form-group label,
+        .footer-content,
+        .footer-logo,
+        .footer-contact p,
+        .lms-header,
+        .lms-section-title,
+        .card-title,
+        .stat-card,
+        .stat-number,
+        .stat-label,
+        th,
+        td,
+        .timeline-content,
+        .quiz-question,
+        .calendar-header,
+        .calendar-cell,
+        .user-info,
+        .main-content,
+        .sidebar,
+        .sidebar-menu a {
+            color: #2D3748 !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
+        }
 
-/* Fix for footer text */
-footer,
-footer * {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
+        /* Specific fixes for elements with colored backgrounds */
+        .hero *,
+        .stat-card *,
+        th * {
+            color: white !important;
+        }
 
-.footer-logo,
-.footer-contact p {
-    color: white !important;
-    opacity: 1 !important;
-}
+        /* Fix for footer text */
+        footer,
+        footer * {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
 
-/* Fix for dashboard overview text */
-.dashboard-content,
-.main-content,
-.lms-card,
-.quiz-container,
-.timeline-content {
-    color: #2D3748 !important;
-}
+        .footer-logo,
+        .footer-contact p {
+            color: white !important;
+            opacity: 1 !important;
+        }
 
-.dashboard-content *,
-.main-content *,
-.lms-card *,
-.quiz-container *,
-.timeline-content * {
-    color: inherit !important;
-}
+        /* Fix for dashboard overview text */
+        .dashboard-content,
+        .main-content,
+        .lms-card,
+        .quiz-container,
+        .timeline-content {
+            color: #2D3748 !important;
+        }
 
-/* Ensure text selection remains visible */
-::selection {
-    background-color: #4299E1 !important;
-    color: white !important;
-}
+        .dashboard-content *,
+        .main-content *,
+        .lms-card *,
+        .quiz-container *,
+        .timeline-content * {
+            color: inherit !important;
+        }
 
-/* Fix for placeholders */
-input::placeholder {
-    color: #718096 !important;
-    opacity: 1 !important;
-}
+        /* Ensure text selection remains visible */
+        ::selection {
+            background-color: #4299E1 !important;
+            color: white !important;
+        }
 
-/* Fix for form labels */
-.form-group label {
-    color: #4A5568 !important;
-    font-weight: 600 !important;
-}
+        /* Fix for placeholders */
+        input::placeholder {
+            color: #718096 !important;
+            opacity: 1 !important;
+        }
 
-/* Header text visibility fix */
-.logo {
-    color: var(--primary) !important;
-}
+        /* Fix for form labels */
+        .form-group label {
+            color: #4A5568 !important;
+            font-weight: 600 !important;
+        }
 
-/* Specific fix for Umti Tech Solutions header text */
-.lms-header .logo,
-.header-content .logo {
-    color: var(--primary) !important;
-    opacity: 1 !important;
-}
+        /* Header text visibility fix */
+        .logo {
+            color: var(--primary) !important;
+        }
 
-/* Dashboard overview text fix */
-.overview-text,
-.dashboard-stats,
-.dashboard-widget {
-    color: #2D3748 !important;
-}
+        /* Specific fix for Umti Tech Solutions header text */
+        .lms-header .logo,
+        .header-content .logo {
+            color: var(--primary) !important;
+            opacity: 1 !important;
+        }
 
-.overview-text *,
-.dashboard-stats *,
-.dashboard-widget * {
-    color: inherit !important;
-}
+        /* Dashboard overview text fix */
+        .overview-text,
+        .dashboard-stats,
+        .dashboard-widget {
+            color: #2D3748 !important;
+        }
 
+        .overview-text *,
+        .dashboard-stats *,
+        .dashboard-widget * {
+            color: inherit !important;
+        }
 
+        /* Specific fix for LMS login page header text */
+        header .logo,
+        .lms-header .logo {
+            color: var(--primary) !important;
+            opacity: 1 !important;
+            text-shadow: none !important;
+        }
 
+        /* Ensure the logo text has proper contrast against its background */
+        .header-content .logo {
+            background: transparent !important;
+        }
 
+        /* If the logo is inside a specific login container */
+        .login-container .logo,
+        .login-page .logo {
+            color: #f4f6f8 !important;
+            font-weight: 700 !important;
+        }
 
+        /* Mobile Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .dashboard-content {
+                grid-template-columns: 250px 1fr;
+                gap: 25px;
+            }
+        }
 
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                width: 300px;
+                height: 100%;
+                z-index: 1000;
+                transition: left 0.3s ease;
+                overflow-y: auto;
+                border-radius: 0;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: flex;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
 
-/* Specific fix for LMS login page header text */
-header .logo,
-.lms-header .logo {
-    color: var(--primary) !important;
-    opacity: 1 !important;
-    text-shadow: none !important;
-}
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .features, .categories, .courses {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card, .category-card, .course-card {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .lms-card {
+                padding: 20px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .user-info {
+                font-size: 0.9rem;
+            }
+            
+            .user-avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+            
+            .calendar {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+                padding: 10px;
+            }
+            
+            .calendar-cell {
+                padding: 8px;
+                font-size: 0.8rem;
+                min-height: 40px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .login-card-header {
+                padding: 25px;
+            }
+            
+            .login-card-body {
+                padding: 25px;
+            }
+            
+            .modal {
+                padding: 25px;
+            }
+            
+            .notifications-dropdown {
+                width: 280px;
+                right: -50px;
+            }
+        }
 
-/* Ensure the logo text has proper contrast against its background */
-.header-content .logo {
-    background: transparent !important;
-}
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .feature-card, .category-card, .course-card {
+                padding: 15px;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+            }
+            
+            .category-img {
+                height: 120px;
+                font-size: 2.5rem;
+            }
+            
+            .course-img {
+                height: 150px;
+                font-size: 3rem;
+            }
+            
+            .lms-header-content {
+                flex-wrap: wrap;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .lms-section-title {
+                font-size: 1.3rem;
+            }
+            
+            .user-type-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .notifications-dropdown {
+                width: 250px;
+                right: -80px;
+            }
+        }
 
-/* If the logo is inside a specific login container */
-.login-container .logo,
-.login-page .logo {
-    color: #f4f6f8 !important; /* Using the exact primary color */
-    font-weight: 700 !important;
-}
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .feature-card h3, .course-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .lms-section-title {
+                font-size: 1.2rem;
+            }
+            
+            .stat-number {
+                font-size: 1.6rem;
+            }
+            
+            .sidebar {
+                width: 280px;
+            }
+            
+            .mobile-menu {
+                width: 280px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="https://muhammadawaislaal.github.io/UmtiTech/">Home</a></li>
+            <li><a href="#about" onclick="closeMobileMenu()">About LMS</a></li>
+            <li><a href="#categories" onclick="closeMobileMenu()">Categories</a></li>
+            <li><a href="#courses" onclick="closeMobileMenu()">Courses</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
     <!-- Landing Page -->
     <div id="landingPage">
         <!-- Header Section -->
@@ -1178,6 +1792,9 @@ header .logo,
             <div class="container">
                 <div class="header-content">
                     <a href="#" class="logo">Umti<span>Tech</span></a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                     <nav>
                         <ul>
                             <li><a href="https://muhammadawaislaal.github.io/UmtiTech/">Home</a></li>
@@ -1209,20 +1826,35 @@ header .logo,
             <div class="container">
                 <h2 class="section-title">About Our LMS</h2>
                 <div class="features">
-                    <div class="feature-card card-3d">
+                    <div class="feature-card">
                         <div class="feature-icon">📚</div>
                         <h3>Comprehensive Courses</h3>
                         <p>Access a wide range of courses across multiple disciplines, all designed by industry experts.</p>
                     </div>
-                    <div class="feature-card card-3d">
+                    <div class="feature-card">
                         <div class="feature-icon">⏱️</div>
                         <h3>Self-Paced Learning</h3>
                         <p>Learn on your own schedule with our flexible, on-demand course materials.</p>
                     </div>
-                    <div class="feature-card card-3d">
+                    <div class="feature-card">
                         <div class="feature-icon">👨‍🏫</div>
                         <h3>Expert Instructors</h3>
                         <p>Learn from professionals with real-world experience in their respective fields.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Track your progress with detailed analytics and performance insights.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3>Certification</h3>
+                        <p>Earn recognized certificates upon completion of your courses.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>Community Support</h3>
+                        <p>Connect with peers and instructors through our community forums.</p>
                     </div>
                 </div>
             </div>
@@ -1233,32 +1865,46 @@ header .logo,
             <div class="container">
                 <h2 class="section-title">Course Categories</h2>
                 <div class="categories">
-                    <div class="category-card card-3d">
+                    <div class="category-card">
                         <div class="category-img">💻</div>
                         <div class="category-content">
                             <h3>Programming</h3>
                             <p>Learn the latest programming languages and frameworks.</p>
                         </div>
                     </div>
-                    <div class="category-card card-3d">
+                    <div class="category-card">
                         <div class="category-img">🎨</div>
                         <div class="category-content">
                             <h3>Design</h3>
                             <p>Master design tools and principles for digital media.</p>
                         </div>
                     </div>
-                    <div class="category-card card-3d">
+                    <div class="category-card">
                         <div class="category-img">📊</div>
                         <div class="category-content">
                             <h3>Business</h3>
                             <p>Develop skills for business growth and management.</p>
                         </div>
                     </div>
-                    <div class="category-card card-3d">
+                    <div class="category-card">
                         <div class="category-img">📱</div>
                         <div class="category-content">
                             <h3>Marketing</h3>
                             <p>Learn digital marketing strategies and techniques.</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-img">🔬</div>
+                        <div class="category-content">
+                            <h3>Data Science</h3>
+                            <p>Master data analysis, visualization, and machine learning.</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-img">🌐</div>
+                        <div class="category-content">
+                            <h3>Web Development</h3>
+                            <p>Build modern, responsive websites and web applications.</p>
                         </div>
                     </div>
                 </div>
@@ -1270,7 +1916,7 @@ header .logo,
             <div class="container">
                 <h2 class="section-title">Featured Courses</h2>
                 <div class="courses">
-                    <div class="course-card card-3d">
+                    <div class="course-card">
                         <div class="course-img">🐍</div>
                         <div class="course-content">
                             <h3>Python Masterclass</h3>
@@ -1278,7 +1924,7 @@ header .logo,
                             <button class="btn enroll-btn">Enroll Now</button>
                         </div>
                     </div>
-                    <div class="course-card card-3d">
+                    <div class="course-card">
                         <div class="course-img">🎨</div>
                         <div class="course-content">
                             <h3>UI/UX Design Pro</h3>
@@ -1286,7 +1932,7 @@ header .logo,
                             <button class="btn enroll-btn">Enroll Now</button>
                         </div>
                     </div>
-                    <div class="course-card card-3d">
+                    <div class="course-card">
                         <div class="course-img">📊</div>
                         <div class="course-content">
                             <h3>Business Analytics</h3>
@@ -1294,166 +1940,17 @@ header .logo,
                             <button class="btn enroll-btn">Enroll Now</button>
                         </div>
                     </div>
+                    <div class="course-card">
+                        <div class="course-img">🤖</div>
+                        <div class="course-content">
+                            <h3>Machine Learning</h3>
+                            <p>Dive into the world of AI and machine learning with hands-on projects.</p>
+                            <button class="btn enroll-btn">Enroll Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <style>
-    /* Professional Login Card Styles */
-    .login-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 20px;
-    }
-
-    .login-card {
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        width: 100%;
-        max-width: 420px;
-        overflow: hidden;
-        transform: translateY(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .login-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
-    }
-
-    .login-card-header {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        padding: 30px;
-        text-align: center;
-    }
-
-    .login-card-body {
-        padding: 30px;
-    }
-
-    .login-card-footer {
-        padding: 20px 30px;
-        background: #f8fafc;
-        text-align: center;
-        border-top: 1px solid #e2e8f0;
-    }
-
-    .user-type-selector {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 25px;
-    }
-
-    .user-type-btn {
-        padding: 12px;
-        border: 2px solid #e2e8f0;
-        background: none;
-        cursor: pointer;
-        border-radius: 10px;
-        font-weight: 500;
-        transition: all 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .user-type-btn.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(71, 118, 230, 0.3);
-    }
-
-    .user-type-btn i {
-        font-size: 1.2rem;
-        margin-bottom: 5px;
-    }
-
-    .form-group label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-        font-weight: 500;
-    }
-
-    .form-group label i {
-        color: var(--primary);
-        width: 16px;
-    }
-
-    .demo-credentials {
-        margin-top: 25px;
-        padding: 15px;
-        background: #f8fafc;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .demo-credentials p {
-        margin-bottom: 10px;
-        font-weight: 600;
-        color: var(--dark);
-    }
-
-    .credential-badge {
-        margin: 8px 0;
-        padding: 8px;
-        background: white;
-        border-radius: 8px;
-        font-size: 0.9rem;
-    }
-
-    .badge-admin {
-        background: var(--accent);
-        color: white;
-        padding: 4px 8px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-    }
-
-    .badge-student {
-        background: var(--success);
-        color: white;
-        padding: 4px 8px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-    }
-
-    .btn-outline {
-        background: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-    }
-
-    .btn-outline:hover {
-        background: var(--primary);
-        color: white;
-    }
-
-    /* Animation for login card */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .login-card {
-        animation: fadeInUp 0.5s ease-out;
-    }
-</style>
 
         <!-- Enrollment Modal -->
         <div class="modal-overlay" id="enrollment-modal">
@@ -1479,9 +1976,18 @@ header .logo,
                         <p>Transforming education through technology and innovation.</p>
                     </div>
                     <div class="footer-contact">
-                        <p><i>📧</i> umtitechsolutions@gmail.com</p>
-                        <p><i>📱</i> +1 (555) 123-4567</p>
-                        <p><i>📍</i> DJK South Punjab Pakistan</p>
+                        <p><i class="fas fa-envelope"></i> umtitechsolutions@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> DJK South Punjab Pakistan</p>
+                    </div>
+                    <div>
+                        <h3>Quick Links</h3>
+                        <ul style="list-style: none; margin-top: 15px;">
+                            <li><a href="#about" style="color: rgba(255,255,255,0.9); text-decoration: none;">About Us</a></li>
+                            <li><a href="#courses" style="color: rgba(255,255,255,0.9); text-decoration: none;">Courses</a></li>
+                            <li><a href="#contact" style="color: rgba(255,255,255,0.9); text-decoration: none;">Contact</a></li>
+                            <li><a href="#" style="color: rgba(255,255,255,0.9); text-decoration: none;">Privacy Policy</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
@@ -1491,13 +1997,11 @@ header .logo,
         </footer>
     </div>
 
-
-
-                <!-- LMS Login Page -->
+    <!-- LMS Login Page -->
     <div id="loginPage" class="login-container" style="display: none;">
         <div class="login-card">
             <div class="login-card-header">
-                <div class="logo">
+                <div class="logo" style="color: white !important; font-size: 1.8rem;">
                     <i class="fas fa-graduation-cap"></i> Umti Tech LMS
                 </div>
                 <p class="tagline">Learn. Grow. Succeed.</p>
@@ -1541,8 +2045,8 @@ header .logo,
                     <div class="credential-badge">
                         <span class="badge badge-student">Student:</span> student / student123
                     </div>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
             
             <div class="login-card-footer">
                 <button class="btn btn-outline" onclick="showLandingPage()">
@@ -1561,6 +2065,27 @@ header .logo,
                         <i class="fas fa-graduation-cap"></i> Admin Dashboard
                     </div>
                     <div class="nav-links">
+                        <div class="notification-bell" id="notificationBell">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                            <div class="notifications-dropdown" id="notificationsDropdown">
+                                <div class="notification-item unread">
+                                    <strong>New Student Registration</strong>
+                                    <p>John Doe has registered for the Python course</p>
+                                    <small>2 hours ago</small>
+                                </div>
+                                <div class="notification-item unread">
+                                    <strong>Payment Received</strong>
+                                    <p>Payment of $49.99 received from Jane Smith</p>
+                                    <small>5 hours ago</small>
+                                </div>
+                                <div class="notification-item">
+                                    <strong>Course Completed</strong>
+                                    <p>Michael Johnson completed the Web Development course</p>
+                                    <small>1 day ago</small>
+                                </div>
+                            </div>
+                        </div>
                         <div class="user-info">
                             <div class="user-avatar">A</div>
                             <span>Admin</span>
@@ -1574,8 +2099,12 @@ header .logo,
         </header>
 
         <div class="container">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            
             <div class="dashboard-content">
-                <div class="sidebar">
+                <div class="sidebar" id="sidebar">
                     <ul class="sidebar-menu">
                         <li><a href="#" class="active" onclick="showAdminTab('dashboard')">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
@@ -1585,6 +2114,24 @@ header .logo,
                         </a></li>
                         <li><a href="#" onclick="showAdminTab('courses')">
                             <i class="fas fa-book"></i> Courses
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('instructors')">
+                            <i class="fas fa-chalkboard-teacher"></i> Instructors
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('enrollments')">
+                            <i class="fas fa-user-plus"></i> Enrollments
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('assignments')">
+                            <i class="fas fa-tasks"></i> Assignments
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('quizzes')">
+                            <i class="fas fa-question-circle"></i> Quizzes
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('reports')">
+                            <i class="fas fa-chart-bar"></i> Reports
+                        </a></li>
+                        <li><a href="#" onclick="showAdminTab('messages')">
+                            <i class="fas fa-comments"></i> Messages
                         </a></li>
                         <li><a href="#" onclick="showAdminTab('settings')">
                             <i class="fas fa-cog"></i> Settings
@@ -1598,76 +2145,172 @@ header .logo,
                         <h2 class="lms-section-title">Dashboard Overview</h2>
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-number" id="totalStudents">0</div>
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-number" id="totalStudents">142</div>
                                 <div class="stat-label">Total Students</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="totalCourses">0</div>
+                                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                                <div class="stat-number" id="totalCourses">24</div>
                                 <div class="stat-label">Total Courses</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="totalEnrollments">0</div>
+                                <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                                <div class="stat-number" id="totalEnrollments">328</div>
                                 <div class="stat-label">Total Enrollments</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="revenue">$0</div>
+                                <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="stat-number" id="revenue">$8,742</div>
                                 <div class="stat-label">Total Revenue</div>
                             </div>
                         </div>
 
-                        <h3 class="lms-section-title">Recent Enrollments</h3>
-                        <div id="recentEnrollmentsContainer">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading enrollments...</p>
+                        <div class="flex gap-20" style="flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 300px;">
+                                <h3 class="lms-section-title">Recent Enrollments</h3>
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Student</th>
+                                                <th>Course</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>John Doe</td>
+                                                <td>Python Masterclass</td>
+                                                <td>2023-10-15</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jane Smith</td>
+                                                <td>UI/UX Design Pro</td>
+                                                <td>2023-10-14</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Michael Johnson</td>
+                                                <td>Business Analytics</td>
+                                                <td>2023-10-13</td>
+                                                <td><span class="badge badge-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sarah Williams</td>
+                                                <td>Machine Learning</td>
+                                                <td>2023-10-12</td>
+                                                <td><span class="badge badge-success">Active</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-
-                        <h3 class="lms-section-title">Recent Activity</h3>
-                        <div id="recentActivity">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading activity...</p>
+                            
+                            <div style="flex: 1; min-width: 300px;">
+                                <h3 class="lms-section-title">System Status</h3>
+                                <div class="lms-card">
+                                    <div class="progress-container">
+                                        <div class="progress-label">
+                                            <span>Server Uptime</span>
+                                            <span>99.8%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 99.8%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-container">
+                                        <div class="progress-label">
+                                            <span>Storage Usage</span>
+                                            <span>65%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-container">
+                                        <div class="progress-label">
+                                            <span>Active Users</span>
+                                            <span>42</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="lms-section-title">Quick Actions</h3>
+                                <div class="flex gap-10" style="flex-wrap: wrap;">
+                                    <button class="btn btn-sm btn-success">
+                                        <i class="fas fa-plus"></i> New Course
+                                    </button>
+                                    <button class="btn btn-sm btn-info">
+                                        <i class="fas fa-bullhorn"></i> Announcement
+                                    </button>
+                                    <button class="btn btn-sm btn-warning">
+                                        <i class="fas fa-file-export"></i> Export Data
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Students Management Tab -->
                     <div id="adminStudentsTab" class="tab-content">
-                        <div class="flex justify-between items-center mb-20">
-                            <h2 class="lms-section-title">Student Management</h2>
-                            <button class="btn" onclick="showCreateStudentForm()">
-                                <i class="fas fa-plus"></i> New Student
-                            </button>
+                        <div class="card-header">
+                            <h2 class="lms-section-title" style="margin: 0;">Student Management</h2>
+                            <div class="flex gap-10">
+                                <div class="search-bar">
+                                    <input type="text" placeholder="Search students...">
+                                    <button><i class="fas fa-search"></i></button>
+                                </div>
+                                <button class="btn" onclick="showCreateStudentForm()">
+                                    <i class="fas fa-plus"></i> New Student
+                                </button>
+                            </div>
                         </div>
                         
                         <div id="createStudentForm" class="lms-card hidden">
                             <h3>Create New Student</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" id="newStudentUsername">
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" id="newStudentUsername">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" id="newStudentPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" id="newStudentEmail">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" id="newStudentPassword">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" id="newStudentEmail">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" id="newStudentPhone">
-                                </div>
-                                <div class="form-group" style="grid-column: span 2;">
-                                    <label>Full Name</label>
-                                    <input type="text" id="newStudentFullName">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" id="newStudentFullName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" id="newStudentPhone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select id="newStudentStatus">
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                            <option value="suspended">Suspended</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex gap-10">
+                            <div class="flex gap-10 mt-20">
                                 <button class="btn btn-success" onclick="createStudent()">
-                                    <i class="fas fa-save"></i> Create
+                                    <i class="fas fa-save"></i> Create Student
                                 </button>
                                 <button class="btn" onclick="hideCreateStudentForm()">
                                     <i class="fas fa-times"></i> Cancel
@@ -1675,54 +2318,156 @@ header .logo,
                             </div>
                         </div>
 
-                        <div id="studentsListContainer">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading students...</p>
-                            </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Courses</th>
+                                        <th>Join Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>STU001</td>
+                                        <td>John Doe</td>
+                                        <td>john.doe@example.com</td>
+                                        <td>3</td>
+                                        <td>2023-08-15</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>STU002</td>
+                                        <td>Jane Smith</td>
+                                        <td>jane.smith@example.com</td>
+                                        <td>2</td>
+                                        <td>2023-09-10</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>STU003</td>
+                                        <td>Michael Johnson</td>
+                                        <td>michael.j@example.com</td>
+                                        <td>1</td>
+                                        <td>2023-10-05</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     <!-- Courses Management Tab -->
                     <div id="adminCoursesTab" class="tab-content">
-                        <div class="flex justify-between items-center mb-20">
-                            <h2 class="lms-section-title">Course Management</h2>
-                            <button class="btn" onclick="showCreateCourseForm()">
-                                <i class="fas fa-plus"></i> New Course
-                            </button>
+                        <div class="card-header">
+                            <h2 class="lms-section-title" style="margin: 0;">Course Management</h2>
+                            <div class="flex gap-10">
+                                <div class="search-bar">
+                                    <input type="text" placeholder="Search courses...">
+                                    <button><i class="fas fa-search"></i></button>
+                                </div>
+                                <button class="btn" onclick="showCreateCourseForm()">
+                                    <i class="fas fa-plus"></i> New Course
+                                </button>
+                            </div>
                         </div>
 
                         <div id="createCourseForm" class="lms-card hidden">
                             <h3>Create New Course</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
-                                <div class="form-group">
-                                    <label>Course Title</label>
-                                    <input type="text" id="newCourseTitle">
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Course Title</label>
+                                        <input type="text" id="newCourseTitle">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select id="newCourseCategory">
+                                            <option value="programming">Programming</option>
+                                            <option value="design">Design</option>
+                                            <option value="business">Business</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="data-science">Data Science</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Instructor</label>
+                                        <select id="newCourseInstructor">
+                                            <option value="instructor1">John Smith</option>
+                                            <option value="instructor2">Sarah Johnson</option>
+                                            <option value="instructor3">Michael Brown</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Price ($)</label>
-                                    <input type="number" id="newCoursePrice" step="0.01">
-                                </div>
-                                <div class="form-group">
-                                    <label>Instructor</label>
-                                    <input type="text" id="newCourseInstructor">
-                                </div>
-                                <div class="form-group">
-                                    <label>Duration</label>
-                                    <input type="text" id="newCourseDuration" placeholder="e.g., 8 weeks">
-                                </div>
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" id="newCourseCategory">
-                                </div>
-                                <div class="form-group" style="grid-column: span 2;">
-                                    <label>Description</label>
-                                    <textarea id="newCourseDescription" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px;"></textarea>
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Price ($)</label>
+                                        <input type="number" id="newCoursePrice" step="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Duration</label>
+                                        <input type="text" id="newCourseDuration" placeholder="e.g., 8 weeks">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select id="newCourseStatus">
+                                            <option value="active">Active</option>
+                                            <option value="draft">Draft</option>
+                                            <option value="archived">Archived</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex gap-10">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="newCourseDescription" rows="4"></textarea>
+                            </div>
+                            <div class="flex gap-10 mt-20">
                                 <button class="btn btn-success" onclick="createCourse()">
-                                    <i class="fas fa-save"></i> Create
+                                    <i class="fas fa-save"></i> Create Course
                                 </button>
                                 <button class="btn" onclick="hideCreateCourseForm()">
                                     <i class="fas fa-times"></i> Cancel
@@ -1730,11 +2475,132 @@ header .logo,
                             </div>
                         </div>
 
-                        <div id="coursesList">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading courses...</p>
-                            </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Instructor</th>
+                                        <th>Students</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CRS001</td>
+                                        <td>Python Masterclass</td>
+                                        <td>Programming</td>
+                                        <td>John Smith</td>
+                                        <td>42</td>
+                                        <td>$49.99</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CRS002</td>
+                                        <td>UI/UX Design Pro</td>
+                                        <td>Design</td>
+                                        <td>Sarah Johnson</td>
+                                        <td>28</td>
+                                        <td>$59.99</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CRS003</td>
+                                        <td>Business Analytics</td>
+                                        <td>Business</td>
+                                        <td>Michael Brown</td>
+                                        <td>35</td>
+                                        <td>$79.99</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <div class="flex gap-10">
+                                                <button class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-warning">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Additional Admin Tabs (Instructors, Enrollments, Assignments, Quizzes, Reports, Messages) -->
+                    <div id="adminInstructorsTab" class="tab-content">
+                        <h2 class="lms-section-title">Instructor Management</h2>
+                        <div class="lms-card">
+                            <p>Instructor management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="adminEnrollmentsTab" class="tab-content">
+                        <h2 class="lms-section-title">Enrollment Management</h2>
+                        <div class="lms-card">
+                            <p>Enrollment management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="adminAssignmentsTab" class="tab-content">
+                        <h2 class="lms-section-title">Assignment Management</h2>
+                        <div class="lms-card">
+                            <p>Assignment management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="adminQuizzesTab" class="tab-content">
+                        <h2 class="lms-section-title">Quiz Management</h2>
+                        <div class="lms-card">
+                            <p>Quiz management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="adminReportsTab" class="tab-content">
+                        <h2 class="lms-section-title">Reports & Analytics</h2>
+                        <div class="lms-card">
+                            <p>Reports and analytics content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="adminMessagesTab" class="tab-content">
+                        <h2 class="lms-section-title">Message Center</h2>
+                        <div class="lms-card">
+                            <p>Message center content will be displayed here.</p>
                         </div>
                     </div>
 
@@ -1742,26 +2608,38 @@ header .logo,
                     <div id="adminSettingsTab" class="tab-content">
                         <h2 class="lms-section-title">Admin Settings</h2>
                         <div class="lms-card">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div class="form-group">
-                                    <label>Admin Username</label>
-                                    <input type="text" id="adminUserSetting" value="admin">
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Admin Username</label>
+                                        <input type="text" id="adminUserSetting" value="admin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Admin Password</label>
+                                        <input type="password" id="adminPassSetting" placeholder="Enter new password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" id="emailSetting" value="umtitechsolutions@gmail.com">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Admin Password</label>
-                                    <input type="password" id="adminPassSetting" placeholder="Enter new password">
-                                </div>
-                                <div class="form-group" style="grid-column: span 2;">
-                                    <label>Company Name</label>
-                                    <input type="text" id="companyNameSetting" value="Umti Tech Solutions">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" id="emailSetting" value="umtitechsolutions@gmail.com">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" id="phoneSetting" value="+1 (555) 123-4567">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Company Name</label>
+                                        <input type="text" id="companyNameSetting" value="Umti Tech Solutions">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" id="phoneSetting" value="+1 (555) 123-4567">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Timezone</label>
+                                        <select id="timezoneSetting">
+                                            <option value="est">Eastern Standard Time (EST)</option>
+                                            <option value="pst">Pacific Standard Time (PST)</option>
+                                            <option value="gmt">Greenwich Mean Time (GMT)</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <button class="btn mt-20" onclick="updateSettings()">
@@ -1783,6 +2661,27 @@ header .logo,
                         <i class="fas fa-graduation-cap"></i> Student Portal
                     </div>
                     <div class="nav-links">
+                        <div class="notification-bell" id="studentNotificationBell">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">5</span>
+                            <div class="notifications-dropdown" id="studentNotificationsDropdown">
+                                <div class="notification-item unread">
+                                    <strong>New Assignment</strong>
+                                    <p>Module 3 assignment is now available</p>
+                                    <small>1 hour ago</small>
+                                </div>
+                                <div class="notification-item unread">
+                                    <strong>Quiz Reminder</strong>
+                                    <p>Weekly quiz deadline is approaching</p>
+                                    <small>3 hours ago</small>
+                                </div>
+                                <div class="notification-item">
+                                    <strong>Course Update</strong>
+                                    <p>New content added to Python Masterclass</p>
+                                    <small>1 day ago</small>
+                                </div>
+                            </div>
+                        </div>
                         <div class="user-info">
                             <div class="user-avatar" id="studentAvatar">S</div>
                             <span id="studentName">Student</span>
@@ -1796,8 +2695,12 @@ header .logo,
         </header>
 
         <div class="container">
+            <button class="sidebar-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+            
             <div class="dashboard-content">
-                <div class="sidebar">
+                <div class="sidebar" id="sidebar">
                     <ul class="sidebar-menu">
                         <li><a href="#" class="active" onclick="showStudentTab('overview')">
                             <i class="fas fa-tachometer-alt"></i> Overview
@@ -1808,8 +2711,20 @@ header .logo,
                         <li><a href="#" onclick="showStudentTab('progress')">
                             <i class="fas fa-chart-line"></i> Progress
                         </a></li>
-                        <li><a href="#" onclick="showStudentTab('quiz')">
-                            <i class="fas fa-tasks"></i> Daily Quiz
+                        <li><a href="#" onclick="showStudentTab('assignments')">
+                            <i class="fas fa-tasks"></i> Assignments
+                        </a></li>
+                        <li><a href="#" onclick="showStudentTab('quizzes')">
+                            <i class="fas fa-question-circle"></i> Quizzes
+                        </a></li>
+                        <li><a href="#" onclick="showStudentTab('certificates')">
+                            <i class="fas fa-certificate"></i> Certificates
+                        </a></li>
+                        <li><a href="#" onclick="showStudentTab('discussions')">
+                            <i class="fas fa-comments"></i> Discussions
+                        </a></li>
+                        <li><a href="#" onclick="showStudentTab('resources')">
+                            <i class="fas fa-file-alt"></i> Resources
                         </a></li>
                         <li><a href="#" onclick="showStudentTab('profile')">
                             <i class="fas fa-user"></i> Profile
@@ -1829,36 +2744,122 @@ header .logo,
                         <h2 class="lms-section-title">Learning Overview</h2>
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-number" id="studentTotalCourses">0</div>
+                                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                                <div class="stat-number" id="studentTotalCourses">3</div>
                                 <div class="stat-label">Enrolled Courses</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="studentCompletedCourses">0</div>
+                                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                                <div class="stat-number" id="studentCompletedCourses">1</div>
                                 <div class="stat-label">Completed</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="studentPoints">0</div>
+                                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                                <div class="stat-number" id="studentPoints">1,250</div>
                                 <div class="stat-label">Points</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-number" id="studentAttendance">0%</div>
+                                <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                                <div class="stat-number" id="studentAttendance">93%</div>
                                 <div class="stat-label">Attendance</div>
                             </div>
                         </div>
 
-                        <h3 class="lms-section-title">My Courses</h3>
-                        <div id="studentCoursesList">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading your courses...</p>
+                        <div class="flex gap-20" style="flex-wrap: wrap; margin-top: 30px;">
+                            <div style="flex: 1; min-width: 300px;">
+                                <h3 class="lms-section-title">My Courses</h3>
+                                <div id="studentCoursesList">
+                                    <div class="lms-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Python Masterclass</h3>
+                                            <span class="badge badge-success">Completed</span>
+                                        </div>
+                                        <p>Learn Python from basics to advanced concepts including data analysis and web development.</p>
+                                        <div class="progress-container">
+                                            <div class="progress-label">
+                                                <span>Progress</span>
+                                                <span>100%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm mt-20">
+                                            <i class="fas fa-eye"></i> View Course
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="lms-card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">UI/UX Design Pro</h3>
+                                            <span class="badge badge-info">In Progress</span>
+                                        </div>
+                                        <p>Master the principles of user interface and experience design with practical projects.</p>
+                                        <div class="progress-container">
+                                            <div class="progress-label">
+                                                <span>Progress</span>
+                                                <span>65%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-sm mt-20">
+                                            <i class="fas fa-play"></i> Continue Learning
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <h3 class="lms-section-title">Today's Quiz</h3>
-                        <div id="dailyQuizContainer">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading daily quiz...</p>
+                            
+                            <div style="flex: 1; min-width: 300px;">
+                                <h3 class="lms-section-title">Upcoming Deadlines</h3>
+                                <div class="lms-card">
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-tasks"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <p><strong>Assignment:</strong> Module 3 Project</p>
+                                                <p>Due: Oct 20, 2023</p>
+                                                <div class="timeline-time">2 days left</div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-question-circle"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <p><strong>Quiz:</strong> Weekly JavaScript Quiz</p>
+                                                <p>Due: Oct 22, 2023</p>
+                                                <div class="timeline-time">4 days left</div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-icon">
+                                                <i class="fas fa-book"></i>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <p><strong>Reading:</strong> Chapter 5 - Advanced Concepts</p>
+                                                <p>Due: Oct 25, 2023</p>
+                                                <div class="timeline-time">7 days left</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="lms-section-title">Today's Quiz</h3>
+                                <div id="dailyQuizContainer">
+                                    <div class="quiz-container">
+                                        <h3>Daily JavaScript Quiz</h3>
+                                        <p>Course: Advanced JavaScript</p>
+                                        <p>Duration: 15 minutes</p>
+                                        <p>Questions: 5</p>
+                                        <button class="btn" onclick="showStudentTab('quizzes')">
+                                            <i class="fas fa-play"></i> Start Quiz
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1866,49 +2867,127 @@ header .logo,
                     <!-- Student Courses Tab -->
                     <div id="studentCoursesTab" class="tab-content">
                         <h2 class="lms-section-title">Available Courses</h2>
-                        <div id="availableCoursesList">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading available courses...</p>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search courses...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        
+                        <div class="courses">
+                            <div class="course-card">
+                                <div class="course-img">🤖</div>
+                                <div class="course-content">
+                                    <h3>Machine Learning</h3>
+                                    <p>Dive into the world of AI and machine learning with hands-on projects.</p>
+                                    <div class="flex justify-between items-center mt-20">
+                                        <span><i class="fas fa-clock"></i> 8 weeks</span>
+                                        <span><i class="fas fa-dollar-sign"></i> 99.99</span>
+                                    </div>
+                                    <button class="btn w-100 mt-20" onclick="enrollInCourse('ml-course')">
+                                        <i class="fas fa-plus"></i> Enroll Now
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="course-card">
+                                <div class="course-img">🌐</div>
+                                <div class="course-content">
+                                    <h3>Web Development</h3>
+                                    <p>Build modern, responsive websites and web applications.</p>
+                                    <div class="flex justify-between items-center mt-20">
+                                        <span><i class="fas fa-clock"></i> 6 weeks</span>
+                                        <span><i class="fas fa-dollar-sign"></i> 79.99</span>
+                                    </div>
+                                    <button class="btn w-100 mt-20" onclick="enrollInCourse('web-dev-course')">
+                                        <i class="fas fa-plus"></i> Enroll Now
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <h3 class="lms-section-title" style="margin-top: 40px;">My Enrolled Courses</h3>
                         <div id="enrolledCoursesList">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading enrolled courses...</p>
+                            <div class="courses">
+                                <div class="course-card">
+                                    <div class="course-img">🐍</div>
+                                    <div class="course-content">
+                                        <h3>Python Masterclass</h3>
+                                        <p>Learn Python from basics to advanced concepts including data analysis and web development.</p>
+                                        <div class="progress-container mt-20">
+                                            <div class="progress-label">
+                                                <span>Progress</span>
+                                                <span>100%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <button class="btn w-100 mt-20">
+                                            <i class="fas fa-eye"></i> View Course
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="course-card">
+                                    <div class="course-img">🎨</div>
+                                    <div class="course-content">
+                                        <h3>UI/UX Design Pro</h3>
+                                        <p>Master the principles of user interface and experience design with practical projects.</p>
+                                        <div class="progress-container mt-20">
+                                            <div class="progress-label">
+                                                <span>Progress</span>
+                                                <span>65%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                        <button class="btn w-100 mt-20">
+                                            <i class="fas fa-play"></i> Continue Learning
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Student Progress Tab -->
+                    <!-- Additional Student Tabs (Progress, Assignments, Quizzes, Certificates, Discussions, Resources) -->
                     <div id="studentProgressTab" class="tab-content">
                         <h2 class="lms-section-title">Learning Progress</h2>
-                        <div id="progressCharts">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading progress charts...</p>
-                            </div>
-                        </div>
-
-                        <h3 class="lms-section-title">Course Progress</h3>
-                        <div id="courseProgressList">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading course progress...</p>
-                            </div>
+                        <div class="lms-card">
+                            <p>Progress tracking content will be displayed here.</p>
                         </div>
                     </div>
 
-                    <!-- Student Quiz Tab -->
-                    <div id="studentQuizTab" class="tab-content">
-                        <h2 class="lms-section-title">Daily Quiz</h2>
-                        <div id="quizContainer">
-                            <div class="loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <p>Loading quiz...</p>
-                            </div>
+                    <div id="studentAssignmentsTab" class="tab-content">
+                        <h2 class="lms-section-title">My Assignments</h2>
+                        <div class="lms-card">
+                            <p>Assignment management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="studentQuizzesTab" class="tab-content">
+                        <h2 class="lms-section-title">Quizzes & Tests</h2>
+                        <div class="lms-card">
+                            <p>Quiz and test content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="studentCertificatesTab" class="tab-content">
+                        <h2 class="lms-section-title">My Certificates</h2>
+                        <div class="lms-card">
+                            <p>Certificate management content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="studentDiscussionsTab" class="tab-content">
+                        <h2 class="lms-section-title">Discussion Forums</h2>
+                        <div class="lms-card">
+                            <p>Discussion forum content will be displayed here.</p>
+                        </div>
+                    </div>
+
+                    <div id="studentResourcesTab" class="tab-content">
+                        <h2 class="lms-section-title">Learning Resources</h2>
+                        <div class="lms-card">
+                            <p>Learning resources content will be displayed here.</p>
                         </div>
                     </div>
 
@@ -1916,85 +2995,63 @@ header .logo,
                     <div id="studentProfileTab" class="tab-content">
                         <h2 class="lms-section-title">My Profile</h2>
                         <div class="lms-card">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" id="profileFullName" readonly>
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" id="profileFullName" value="John Doe" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" id="profileUsername" value="johndoe" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" id="profileEmail" value="john.doe@example.com" readonly>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" id="profileUsername" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" id="profileEmail" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" id="profilePhone" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Member Since</label>
-                                    <input type="text" id="profileJoinDate" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Total Points</label>
-                                    <input type="text" id="profilePoints" readonly>
+                                <div style="flex: 1; min-width: 300px;">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" id="profilePhone" value="+1 (555) 123-4567" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Member Since</label>
+                                        <input type="text" id="profileJoinDate" value="January 15, 2023" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Points</label>
+                                        <input type="text" id="profilePoints" value="1,250" readonly>
+                                    </div>
                                 </div>
                             </div>
+                            <button class="btn mt-20">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
                         </div>
 
                         <h3 class="lms-section-title">Performance Statistics</h3>
                         <div class="lms-card">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div class="form-group">
-                                    <label>Quizzes Taken</label>
-                                    <input type="text" id="profileQuizzesTaken" readonly>
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Quizzes Taken</label>
+                                        <input type="text" id="profileQuizzesTaken" value="15" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Average Score</label>
+                                        <input type="text" id="profileAverageScore" value="82%" readonly>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Average Score</label>
-                                    <input type="text" id="profileAverageScore" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Attendance Rate</label>
-                                    <input type="text" id="profileAttendance" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Total Study Time</label>
-                                    <input type="text" id="profileStudyTime" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 class="lms-section-title">Daily Goals</h3>
-                        <div class="lms-card">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 65%"></div>
-                            </div>
-                            <div class="flex justify-between items-center mt-20">
-                                <span>65% of daily goals completed</span>
-                                <span>3/5 activities</span>
-                            </div>
-                            <div class="mt-20">
-                                <div class="flex justify-between items-center mb-10">
-                                    <span><i class="fas fa-check-circle text-success"></i> Attend class</span>
-                                    <span class="badge badge-success">Completed</span>
-                                </div>
-                                <div class="flex justify-between items-center mb-10">
-                                    <span><i class="fas fa-check-circle text-success"></i> Complete daily quiz</span>
-                                    <span class="badge badge-success">Completed</span>
-                                </div>
-                                <div class="flex justify-between items-center mb-10">
-                                    <span><i class="fas fa-check-circle text-success"></i> Study for 2 hours</span>
-                                    <span class="badge badge-success">Completed</span>
-                                </div>
-                                <div class="flex justify-between items-center mb-10">
-                                    <span><i class="fas fa-times-circle text-accent"></i> Complete assignment</span>
-                                    <span class="badge badge-warning">Pending</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span><i class="fas fa-times-circle text-accent"></i> Review notes</span>
-                                    <span class="badge badge-warning">Pending</span>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Attendance Rate</label>
+                                        <input type="text" id="profileAttendance" value="93%" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Study Time</label>
+                                        <input type="text" id="profileStudyTime" value="125 hours" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2004,9 +3061,9 @@ header .logo,
                     <div id="studentAttendanceTab" class="tab-content">
                         <h2 class="lms-section-title">Attendance Tracker</h2>
                         <div class="lms-card">
-                            <h3>September 2023</h3>
+                            <h3>October 2023</h3>
                             <div class="calendar">
-                                <div class="calendar-header">September 2023</div>
+                                <div class="calendar-header">October 2023</div>
                                 <div class="calendar-cell">Sun</div>
                                 <div class="calendar-cell">Mon</div>
                                 <div class="calendar-cell">Tue</div>
@@ -2020,26 +3077,28 @@ header .logo,
                                 <div class="calendar-cell"></div>
                                 <div class="calendar-cell"></div>
                                 <div class="calendar-cell"></div>
+                                <div class="calendar-cell"></div>
+                                <div class="calendar-cell"></div>
                                 
                                 <!-- Calendar days -->
                                 <div class="calendar-cell">1</div>
-                                <div class="calendar-cell">2</div>
+                                <div class="calendar-cell attended">2</div>
                                 <div class="calendar-cell attended">3</div>
                                 <div class="calendar-cell attended">4</div>
                                 <div class="calendar-cell attended">5</div>
                                 <div class="calendar-cell">6</div>
                                 <div class="calendar-cell">7</div>
                                 <div class="calendar-cell attended">8</div>
-                                <div class="calendar-cell absent">9</div>
+                                <div class="calendar-cell attended">9</div>
                                 <div class="calendar-cell attended">10</div>
-                                <div class="calendar-cell attended">11</div>
-                                <div class="calendar-cell attended">12</div>
+                                <div class="calendar-cell today">11</div>
+                                <div class="calendar-cell">12</div>
                                 <div class="calendar-cell">13</div>
                                 <div class="calendar-cell">14</div>
-                                <div class="calendar-cell attended">15</div>
-                                <div class="calendar-cell attended">16</div>
-                                <div class="calendar-cell attended">17</div>
-                                <div class="calendar-cell today">18</div>
+                                <div class="calendar-cell">15</div>
+                                <div class="calendar-cell">16</div>
+                                <div class="calendar-cell">17</div>
+                                <div class="calendar-cell">18</div>
                                 <div class="calendar-cell">19</div>
                                 <div class="calendar-cell">20</div>
                                 <div class="calendar-cell">21</div>
@@ -2052,16 +3111,17 @@ header .logo,
                                 <div class="calendar-cell">28</div>
                                 <div class="calendar-cell">29</div>
                                 <div class="calendar-cell">30</div>
+                                <div class="calendar-cell">31</div>
                             </div>
                             
                             <div class="mt-20">
                                 <div class="flex items-center gap-10 mb-10">
                                     <div style="width: 20px; height: 20px; background: var(--success); border-radius: 4px;"></div>
-                                    <span>Present (14 days)</span>
+                                    <span>Present (8 days)</span>
                                 </div>
                                 <div class="flex items-center gap-10 mb-10">
                                     <div style="width: 20px; height: 20px; background: var(--accent); border-radius: 4px;"></div>
-                                    <span>Absent (1 day)</span>
+                                    <span>Absent (0 days)</span>
                                 </div>
                                 <div class="flex items-center gap-10">
                                     <div style="width: 20px; height: 20px; background: var(--primary); border-radius: 4px;"></div>
@@ -2072,22 +3132,26 @@ header .logo,
                         
                         <h3 class="lms-section-title">Attendance Statistics</h3>
                         <div class="lms-card">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div class="form-group">
-                                    <label>Overall Attendance</label>
-                                    <input type="text" value="93%" readonly>
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Overall Attendance</label>
+                                        <input type="text" value="93%" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Current Streak</label>
+                                        <input type="text" value="4 days" readonly>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Current Streak</label>
-                                    <input type="text" value="3 days" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Total Present</label>
-                                    <input type="text" value="14 days" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Total Absent</label>
-                                    <input type="text" value="1 day" readonly>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Total Present</label>
+                                        <input type="text" value="42 days" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Absent</label>
+                                        <input type="text" value="3 days" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2140,22 +3204,26 @@ header .logo,
                         
                         <h3 class="lms-section-title">Weekly Report</h3>
                         <div class="lms-card">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div class="form-group">
-                                    <label>Total Study Hours</label>
-                                    <input type="text" value="12.5 hours" readonly>
+                            <div class="flex gap-20" style="flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Total Study Hours</label>
+                                        <input type="text" value="12.5 hours" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Modules Completed</label>
+                                        <input type="text" value="5 modules" readonly>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Modules Completed</label>
-                                    <input type="text" value="5 modules" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Assignments Submitted</label>
-                                    <input type="text" value="3 assignments" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label>Quizzes Taken</label>
-                                    <input type="text" value="4 quizzes" readonly>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <div class="form-group">
+                                        <label>Assignments Submitted</label>
+                                        <input type="text" value="3 assignments" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quizzes Taken</label>
+                                        <input type="text" value="4 quizzes" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2165,8 +3233,9 @@ header .logo,
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
-        // Mock API simulation to handle all requests locally
+        // Enhanced Mock API simulation to handle all requests locally
         const mockAPI = {
             login: function(username, password, userType) {
                 return new Promise((resolve) => {
@@ -2236,9 +3305,9 @@ header .logo,
                         resolve({
                             success: true,
                             data: {
-                                total_students: 24,
-                                total_courses: 8,
-                                total_enrollments: 42,
+                                total_students: 142,
+                                total_courses: 24,
+                                total_enrollments: 328,
                                 courses: {
                                     'course-1': { price: 49.99 },
                                     'course-2': { price: 79.99 },
@@ -2389,6 +3458,55 @@ header .logo,
                 });
             });
 
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+            const overlay = document.getElementById('overlay');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Notification dropdown functionality
+            const notificationBell = document.getElementById('notificationBell');
+            const notificationsDropdown = document.getElementById('notificationsDropdown');
+            
+            if (notificationBell && notificationsDropdown) {
+                notificationBell.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    notificationsDropdown.classList.toggle('active');
+                });
+            }
+            
+            const studentNotificationBell = document.getElementById('studentNotificationBell');
+            const studentNotificationsDropdown = document.getElementById('studentNotificationsDropdown');
+            
+            if (studentNotificationBell && studentNotificationsDropdown) {
+                studentNotificationBell.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    studentNotificationsDropdown.classList.toggle('active');
+                });
+            }
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                if (notificationsDropdown) notificationsDropdown.classList.remove('active');
+                if (studentNotificationsDropdown) studentNotificationsDropdown.classList.remove('active');
+            });
+
             // Check if already logged in
             const savedToken = localStorage.getItem('lmsToken');
             const savedUserType = localStorage.getItem('lmsUserType');
@@ -2400,12 +3518,42 @@ header .logo,
                 currentUser = JSON.parse(savedUser);
                 showDashboard();
             }
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const sidebarToggle = document.querySelector('.sidebar-toggle');
+                
+                if (window.innerWidth <= 992 && sidebar && sidebarToggle && 
+                    !sidebar.contains(event.target) && 
+                    !sidebarToggle.contains(event.target) && 
+                    sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            });
         });
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+            }
+        }
 
         // Page navigation functions
         function showLMS() {
             document.getElementById('landingPage').style.display = 'none';
             document.getElementById('loginPage').style.display = 'flex';
+            closeMobileMenu();
         }
 
         function showLandingPage() {
@@ -2413,6 +3561,7 @@ header .logo,
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('adminDashboard').style.display = 'none';
             document.getElementById('studentDashboard').style.display = 'none';
+            closeMobileMenu();
         }
 
         async function login() {
@@ -2464,6 +3613,8 @@ header .logo,
                 document.getElementById('studentDashboard').style.display = 'block';
                 loadStudentDashboard();
             }
+            
+            closeMobileMenu();
         }
 
         function logout() {
@@ -2480,6 +3631,10 @@ header .logo,
             // Clear form fields
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
+            
+            // Close sidebar if open
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) sidebar.classList.remove('active');
         }
 
         // Admin Dashboard Functions
@@ -2499,71 +3654,9 @@ header .logo,
                         return total + (course.price || 0);
                     }, 0);
                     document.getElementById('revenue').textContent = `$${revenue.toFixed(2)}`;
-
-                    // Load recent enrollments
-                    const enrollmentsContainer = document.getElementById('recentEnrollmentsContainer');
-                    if (data.data.recent_enrollments && data.data.recent_enrollments.length > 0) {
-                        let tableHTML = `
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Student ID</th>
-                                        <th>Course ID</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        `;
-                        
-                        data.data.recent_enrollments.forEach(enrollment => {
-                            tableHTML += `
-                                <tr>
-                                    <td>${enrollment.student_id}</td>
-                                    <td>${enrollment.course_id}</td>
-                                    <td>${new Date(enrollment.enrolled_at).toLocaleDateString()}</td>
-                                    <td><span class="badge badge-success">Active</span></td>
-                                </tr>
-                            `;
-                        });
-                        
-                        tableHTML += `</tbody></table>`;
-                        enrollmentsContainer.innerHTML = tableHTML;
-                    } else {
-                        enrollmentsContainer.innerHTML = '<p class="text-center">No enrollments yet</p>';
-                    }
-
-                    // Load recent activity
-                    const activityDiv = document.getElementById('recentActivity');
-                    if (data.data.recent_activity && data.data.recent_activity.length > 0) {
-                        let activityHTML = '';
-                        
-                        data.data.recent_activity.slice(-5).forEach(activity => {
-                            const percentage = Math.round((activity.modules_completed / activity.total_modules) * 100);
-                            activityHTML += `
-                                <div class="lms-card">
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <h4>${activity.course_id} Progress</h4>
-                                            <p>Student: ${activity.student_id} | Modules: ${activity.modules_completed}/${activity.total_modules}</p>
-                                        </div>
-                                        <div class="badge badge-warning">
-                                            ${percentage}% Complete
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        
-                        activityDiv.innerHTML = activityHTML;
-                    } else {
-                        activityDiv.innerHTML = '<p class="text-center">No recent activity</p>';
-                    }
                 }
             } catch (error) {
                 console.error('Error loading admin dashboard:', error);
-                document.getElementById('recentEnrollmentsContainer').innerHTML = '<p class="error">Error loading enrollments</p>';
-                document.getElementById('recentActivity').innerHTML = '<p class="error">Error loading activity</p>';
             }
         }
 
@@ -2576,6 +3669,12 @@ header .logo,
             // Show selected tab
             document.getElementById(`admin${tabName.charAt(0).toUpperCase() + tabName.slice(1)}Tab`).style.display = 'block';
             
+            // Close sidebar on mobile after selecting a tab
+            if (window.innerWidth <= 992) {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.classList.remove('active');
+            }
+            
             // Load tab content if needed
             if (tabName === 'students') loadStudents();
             if (tabName === 'courses') loadCourses();
@@ -2583,103 +3682,13 @@ header .logo,
         }
 
         async function loadStudents() {
-            try {
-                // Use mock API instead of real API call
-                const data = await mockAPI.getAdminDashboard();
-
-                if (data.success) {
-                    const studentsContainer = document.getElementById('studentsListContainer');
-                    
-                    if (data.data.students && Object.keys(data.data.students).length > 0) {
-                        let tableHTML = `
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Full Name</th>
-                                        <th>Courses</th>
-                                        <th>Points</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        `;
-                        
-                        Object.values(data.data.students).forEach(student => {
-                            tableHTML += `
-                                <tr>
-                                    <td>${student.username}</td>
-                                    <td>${student.email}</td>
-                                    <td>${student.full_name}</td>
-                                    <td>${student.courses_enrolled?.length || 0}</td>
-                                    <td>${student.points || 0}</td>
-                                    <td>
-                                        <button class="btn btn-sm" onclick="viewStudent('${student.id}')">
-                                            <i class="fas fa-eye"></i> View
-                                        </button>
-                                        <button class="btn btn-sm btn-danger" onclick="deleteStudent('${student.id}')">
-                                            <i class="fas fa-trash"></i> Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                        
-                        tableHTML += `</tbody></table>`;
-                        studentsContainer.innerHTML = tableHTML;
-                    } else {
-                        studentsContainer.innerHTML = '<p class="text-center">No students found</p>';
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading students:', error);
-                document.getElementById('studentsListContainer').innerHTML = '<p class="error">Error loading students</p>';
-            }
+            // Students are already loaded in the HTML table
+            console.log("Students tab loaded");
         }
 
         async function loadCourses() {
-            try {
-                // Use mock API instead of real API call
-                const data = await mockAPI.getCourses();
-
-                if (data.success) {
-                    const coursesList = document.getElementById('coursesList');
-                    coursesList.innerHTML = '';
-
-                    if (data.data && data.data.length > 0) {
-                        data.data.forEach(course => {
-                            const card = document.createElement('div');
-                            card.className = 'lms-card';
-                            card.innerHTML = `
-                                <div style="display: flex; justify-content: space-between; align-items: start;">
-                                    <div>
-                                        <h3>${course.title}</h3>
-                                        <p>${course.description}</p>
-                                        <div style="display: flex; gap: 15px; margin-top: 10px;">
-                                            <span><i class="fas fa-user"></i> ${course.instructor}</span>
-                                            <span><i class="fas fa-tag"></i> ${course.category}</span>
-                                            <span><i class="fas fa-dollar-sign"></i> ${course.price}</span>
-                                            <span><i class="fas fa-book"></i> ${course.modules.length} modules</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-danger btn-sm" onclick="deleteCourse('${course.id}')">
-                                            <i class="fas fa-trash"></i> Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-                            coursesList.appendChild(card);
-                        });
-                    } else {
-                        coursesList.innerHTML = '<p class="text-center">No courses found</p>';
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading courses:', error);
-                document.getElementById('coursesList').innerHTML = '<p class="error">Error loading courses</p>';
-            }
+            // Courses are already loaded in the HTML table
+            console.log("Courses tab loaded");
         }
 
         function loadSettings() {
@@ -2710,24 +3719,10 @@ header .logo,
                 setTimeout(() => {
                     alert('Student created successfully!');
                     hideCreateStudentForm();
-                    loadStudents();
+                    // In a real app, we would refresh the student list here
                 }, 500);
             } catch (error) {
                 alert('Error creating student: ' + error);
-            }
-        }
-
-        async function deleteStudent(studentId) {
-            if (!confirm('Are you sure you want to delete this student?')) return;
-
-            try {
-                // Simulate API call
-                setTimeout(() => {
-                    alert('Student deleted successfully!');
-                    loadStudents();
-                }, 500);
-            } catch (error) {
-                alert('Error deleting student: ' + error);
             }
         }
 
@@ -2752,24 +3747,10 @@ header .logo,
                 setTimeout(() => {
                     alert('Course created successfully!');
                     hideCreateCourseForm();
-                    loadCourses();
+                    // In a real app, we would refresh the course list here
                 }, 500);
             } catch (error) {
                 alert('Error creating course: ' + error);
-            }
-        }
-
-        async function deleteCourse(courseId) {
-            if (!confirm('Are you sure you want to delete this course?')) return;
-
-            try {
-                // Simulate API call
-                setTimeout(() => {
-                    alert('Course deleted successfully!');
-                    loadCourses();
-                }, 500);
-            } catch (error) {
-                alert('Error deleting course: ' + error);
             }
         }
 
@@ -2807,56 +3788,6 @@ header .logo,
                     document.getElementById('studentPoints').textContent = data.data.stats.total_points;
                     document.getElementById('studentAttendance').textContent = data.data.stats.attendance_rate;
                     
-                    // Load courses
-                    const coursesList = document.getElementById('studentCoursesList');
-                    coursesList.innerHTML = '';
-                    
-                    if (data.data.courses && data.data.courses.length > 0) {
-                        data.data.courses.forEach(course => {
-                            const progress = course.progress;
-                            const percentage = Math.round((progress.modules_completed / progress.total_modules) * 100);
-                            
-                            const card = document.createElement('div');
-                            card.className = 'lms-card';
-                            card.innerHTML = `
-                                <div class="card-header">
-                                    <h3 class="card-title">${course.title}</h3>
-                                    <span class="badge ${percentage === 100 ? 'badge-success' : 'badge-info'}">
-                                        ${percentage}% Complete
-                                    </span>
-                                </div>
-                                <p>${course.description}</p>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: ${percentage}%"></div>
-                                </div>
-                                <div class="flex justify-between items-center mt-20">
-                                    <span>${progress.modules_completed}/${progress.total_modules} modules</span>
-                                    <span>${Math.round(progress.time_spent / 60)} hours spent</span>
-                                </div>
-                            `;
-                            coursesList.appendChild(card);
-                        });
-                    } else {
-                        coursesList.innerHTML = '<p class="text-center">No courses enrolled yet</p>';
-                    }
-                    
-                    // Load daily quiz
-                    const quizContainer = document.getElementById('dailyQuizContainer');
-                    if (data.data.daily_quiz) {
-                        quizContainer.innerHTML = `
-                            <div class="quiz-container">
-                                <h3>${data.data.daily_quiz.title}</h3>
-                                <p>Course: ${data.data.daily_quiz.course_name}</p>
-                                <p>Duration: ${data.data.daily_quiz.duration} minutes</p>
-                                <button class="btn" onclick="showStudentTab('quiz')">
-                                    <i class="fas fa-play"></i> Start Quiz
-                                </button>
-                            </div>
-                        `;
-                    } else {
-                        quizContainer.innerHTML = '<p class="text-center">No quiz available today</p>';
-                    }
-                    
                     // Load profile data
                     loadStudentProfile();
                 }
@@ -2874,12 +3805,14 @@ header .logo,
             // Show selected tab
             document.getElementById(`student${tabName.charAt(0).toUpperCase() + tabName.slice(1)}Tab`).style.display = 'block';
             
+            // Close sidebar on mobile after selecting a tab
+            if (window.innerWidth <= 992) {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.classList.remove('active');
+            }
+            
             // Load tab content if needed
-            if (tabName === 'quiz') loadDailyQuiz();
             if (tabName === 'profile') loadStudentProfile();
-            if (tabName === 'courses') loadAvailableCourses();
-            if (tabName === 'attendance') loadAttendance();
-            if (tabName === 'activity') loadActivityLog();
         }
 
         function loadStudentProfile() {
@@ -2894,47 +3827,7 @@ header .logo,
             document.getElementById('profileQuizzesTaken').value = perf.quizzes_taken || 0;
             document.getElementById('profileAverageScore').value = perf.average_score ? `${Math.round(perf.average_score)}%` : '0%';
             document.getElementById('profileAttendance').value = `${perf.attendance_rate || 0}%`;
-            document.getElementById('profileStudyTime').value = '12.5 hours';
-        }
-
-        async function loadAvailableCourses() {
-            try {
-                // Use mock API instead of real API call
-                const data = await mockAPI.getCourses();
-
-                if (data.success) {
-                    const availableCoursesList = document.getElementById('availableCoursesList');
-                    availableCoursesList.innerHTML = '';
-
-                    if (data.data && data.data.length > 0) {
-                        data.data.forEach(course => {
-                            const card = document.createElement('div');
-                            card.className = 'lms-card';
-                            card.innerHTML = `
-                                <div class="card-header">
-                                    <h3 class="card-title">${course.title}</h3>
-                                    <span class="badge badge-info">$${course.price}</span>
-                                </div>
-                                <p>${course.description}</p>
-                                <div style="display: flex; gap: 15px; margin-top: 15px;">
-                                    <span><i class="fas fa-user"></i> ${course.instructor}</span>
-                                    <span><i class="fas fa-tag"></i> ${course.category}</span>
-                                    <span><i class="fas fa-clock"></i> ${course.duration}</span>
-                                </div>
-                                <button class="btn mt-20" onclick="enrollInCourse('${course.id}')">
-                                    <i class="fas fa-plus"></i> Enroll Now
-                                </button>
-                            `;
-                            availableCoursesList.appendChild(card);
-                        });
-                    } else {
-                        availableCoursesList.innerHTML = '<p class="text-center">No courses available</p>';
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading available courses:', error);
-                document.getElementById('availableCoursesList').innerHTML = '<p class="error">Error loading courses</p>';
-            }
+            document.getElementById('profileStudyTime').value = '125 hours';
         }
 
         async function enrollInCourse(courseId) {
@@ -2942,88 +3835,11 @@ header .logo,
                 // Simulate API call
                 setTimeout(() => {
                     alert('Enrolled in course successfully!');
-                    loadAvailableCourses();
+                    // In a real app, we would refresh the course list here
                 }, 500);
             } catch (error) {
                 alert('Error enrolling in course: ' + error);
             }
-        }
-
-        async function loadDailyQuiz() {
-            try {
-                // Use mock API instead of real API call
-                const data = await mockAPI.getStudentDashboard();
-
-                if (data.success && data.data.daily_quiz) {
-                    const quiz = data.data.daily_quiz;
-                    let quizHTML = `
-                        <div class="quiz-container">
-                            <h3>${quiz.title}</h3>
-                            <p>Course: ${quiz.course_name} | Duration: ${quiz.duration} minutes</p>
-                            <div id="quizQuestions">
-                    `;
-
-                    quiz.questions.forEach((question, index) => {
-                        quizHTML += `
-                            <div class="quiz-question">
-                                <h4>Question ${index + 1}: ${question.question}</h4>
-                                <div class="quiz-options">
-                        `;
-
-                        question.options.forEach((option, optIndex) => {
-                            quizHTML += `
-                                <div class="quiz-option" onclick="selectAnswer(${index}, ${optIndex})">
-                                    ${String.fromCharCode(65 + optIndex)}. ${option}
-                                </div>
-                            `;
-                        });
-
-                        quizHTML += `
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    quizHTML += `
-                            </div>
-                            <button class="btn mt-20" onclick="submitQuiz()">
-                                <i class="fas fa-paper-plane"></i> Submit Quiz
-                            </button>
-                        </div>
-                    `;
-
-                    document.getElementById('quizContainer').innerHTML = quizHTML;
-                } else {
-                    document.getElementById('quizContainer').innerHTML = '<p class="text-center">No quiz available today</p>';
-                }
-            } catch (error) {
-                console.error('Error loading quiz:', error);
-                document.getElementById('quizContainer').innerHTML = '<p class="error">Error loading quiz</p>';
-            }
-        }
-
-        function selectAnswer(questionIndex, optionIndex) {
-            const options = document.querySelectorAll(`#quizQuestions .quiz-question:nth-child(${questionIndex + 1}) .quiz-option`);
-            options.forEach(opt => opt.classList.remove('selected'));
-            options[optionIndex].classList.add('selected');
-        }
-
-        async function submitQuiz() {
-            // Simulate API call
-            setTimeout(() => {
-                alert('Quiz submitted successfully! You scored 85%.');
-                showStudentTab('overview');
-            }, 500);
-        }
-
-        function loadAttendance() {
-            // Attendance is already loaded in the HTML
-            console.log("Attendance tab loaded");
-        }
-
-        function loadActivityLog() {
-            // Activity log is already loaded in the HTML
-            console.log("Activity log tab loaded");
         }
 
         // Enrollment Modal Functionality
@@ -3034,47 +3850,43 @@ header .logo,
         enrollButtons.forEach(button => {
             button.addEventListener('click', () => {
                 enrollmentModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         });
 
         closeModal.addEventListener('click', () => {
             enrollmentModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
 
         enrollmentModal.addEventListener('click', (e) => {
             if (e.target === enrollmentModal) {
                 enrollmentModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
         });
 
-        // Add some 3D effect to cards on mousemove
-        document.querySelectorAll('.card-3d').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const angleY = (x - centerX) / 25;
-                const angleX = (centerY - y) / 25;
-                
-                card.style.transform = `perspective(1000px) rotateY(${angleY}deg) rotateX(${angleX}deg)`;
-            });
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Close mobile menu if window is resized to larger size
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-            });
+            // Adjust sidebar behavior based on screen size
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                if (window.innerWidth > 992) {
+                    sidebar.classList.remove('active');
+                }
+            }
         });
+
+        // Initialize charts
+        function initializeCharts() {
+            // This would initialize Chart.js charts for analytics
+            // For now, it's a placeholder for future implementation
+        }
     </script>
-
-
-
-
-
-
-
 </body>
-
 </html>
