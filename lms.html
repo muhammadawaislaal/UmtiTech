@@ -1601,16 +1601,16 @@
                 
                 <div id="loginMessage" class="message hidden"></div>
                 
-                <!-- <div class="demo-credentials">
-                    <p>Demo Credentials:</p>
-                    <div class="credential-badge">
-                        <span class="badge badge-admin">Admin:</span> admin / admin123
+                <div class="demo-credentials" style="margin-top: 20px; padding: 15px; background: #f8fafc; border-radius: 8px;">
+                    <p style="font-weight: 600; margin-bottom: 10px;">Demo Credentials:</p>
+                    <div style="margin-bottom: 8px;">
+                        <span class="badge badge-primary">Admin:</span> admin / admin123
                     </div>
-                    <div class="credential-badge">
-                        <span class="badge badge-student">Student:</span> student / student123
+                    <div>
+                        <span class="badge badge-success">Student:</span> student / student123
                     </div>
                 </div>
-            </div> -->
+            </div>
             
             <div class="login-card-footer">
                 <button class="btn btn-outline" onclick="showLandingPage()">
@@ -2407,7 +2407,15 @@
     <script>
         // Mobile-First JavaScript for Enhanced User Experience
         
+        // Global variables
+        let currentUser = null;
+        let currentToken = null;
+        let userType = 'student';
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the page - show landing page by default
+            showLandingPage();
+            
             // Mobile menu functionality
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navMenu = document.getElementById('mainMenu');
@@ -2575,11 +2583,6 @@
             }
         });
         
-        // Global variables
-        let currentUser = null;
-        let currentToken = null;
-        let userType = 'student';
-        
         // Page navigation functions
         function showLMS() {
             document.getElementById('landingPage').style.display = 'none';
@@ -2617,7 +2620,7 @@
             }
         }
         
-        async function login() {
+        function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const messageDiv = document.getElementById('loginMessage');
@@ -2769,6 +2772,12 @@
 
         function hideCreateStudentForm() {
             document.getElementById('createStudentForm').classList.add('hidden');
+        }
+        
+        function createStudent() {
+            // This would normally send data to a server
+            alert('Student creation functionality would be implemented here');
+            hideCreateStudentForm();
         }
         
         function enrollInCourse(courseId) {
