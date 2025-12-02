@@ -411,38 +411,26 @@
             opacity: 0;
         }
 
-
-        
-
-
-
-        /* Original definition */
-
         .hero-image {
-    position: absolute;
-    right: 2%;
-    top: 75%;
-    transform: translateY(-50%);
-    width: 40%;
-    max-width: 600px;
-    z-index: 0;
-    animation: float 5s ease-in-out infinite;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
-    opacity: 0.9;
-}
+            position: absolute;
+            right: 2%;
+            top: 75%;
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 600px;
+            z-index: 0;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+            opacity: 0.9;
+        }
 
         @media (max-width: 768px) {
-    .hero-image {
-        top: 95% !important;
-        transform: translateY(-40%) !important;
-        animation: float 5s ease-in-out infinite;
-    }
-}
-
-
-
-        
-
+            .hero-image {
+                top: 95% !important;
+                transform: translateY(-40%) !important;
+                animation: float 5s ease-in-out infinite;
+            }
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(-50%) translateX(0); }
@@ -525,20 +513,32 @@
             font-size: 0.95rem;
         }
         
-        /* Team */
+        /* Team Section - Updated with Carousel */
         .team {
             background-color: #f8fafc;
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2.5rem;
+        .team-carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+        
+        .team-carousel {
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .team-carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .team-card {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+            padding: 0 15px;
             text-align: center;
-            padding: 2rem;
             transition: var(--transition);
         }
         
@@ -601,6 +601,63 @@
             background-color: var(--primary);
             color: white;
             transform: translateY(-3px);
+        }
+        
+        .team-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: none;
+            box-shadow: var(--shadow-lg);
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .team-carousel-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .team-carousel-btn.prev {
+            left: 0;
+        }
+        
+        .team-carousel-btn.next {
+            right: 0;
+        }
+        
+        .team-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .team-carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+        }
+        
+        .team-carousel-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
         }
         
         /* Services */
@@ -699,6 +756,14 @@
         .portfolio-category {
             color: var(--light-gray);
             margin-bottom: 1rem;
+        }
+        
+        .portfolio-details {
+            font-size: 0.9rem;
+            color: #f1f5f9;
+            margin-top: 0.5rem;
+            font-style: italic;
+            max-width: 80%;
         }
         
         /* Courses */
@@ -1275,6 +1340,22 @@
                 flex-wrap: wrap;
             }
             
+            /* Team Carousel Mobile */
+            .team-carousel-container {
+                padding: 0 30px;
+            }
+            
+            .team-card {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            
+            .team-carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -1364,6 +1445,22 @@
             
             .section-title {
                 font-size: 1.85rem;
+            }
+            
+            /* Team Carousel Small Mobile */
+            .team-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .team-carousel-container {
+                padding: 0 20px;
+            }
+            
+            .team-carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
             
             .chatbot-box {
@@ -1489,74 +1586,29 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Team Section - Updated with Carousel -->
     <section class="section team" id="team">
         <div class="container">
             <h2 class="section-title">Our Team</h2>
             <p class="section-subtitle">Meet the passionate professionals driving UMTI Tech Solutions forward.</p>
             
-            <div class="team-grid">
-                <div class="card team-card">
-                    <img src="my_profile_pic-transparrent.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Muhammad Awais Laal</h3>
-                    <p class="team-role">Founder & CEO</p>
-                    <p class="team-bio">Visionary leader with over a decade of experience in software and education, dedicated to empowering communities.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+            <div class="team-carousel-container">
+                <button class="team-carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="team-carousel">
+                    <div class="team-carousel-track" id="teamCarouselTrack">
+                        <!-- Team cards will be inserted here by JavaScript -->
                     </div>
                 </div>
                 
-                <div class="card team-card">
-                    <img src="amir transparrent hd outfit dp.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Aamir Shaheen</h3>
-                    <p class="team-role">Lead Developer</p>
-                    <p class="team-bio">Expert in full-stack development, specializing in scalable solutions using React and Node.js.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-
-                <div class="team-grid">
-                <div class="card team-card">
-                    <img src="farooq_pic-whitebg.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Farooq Amras </h3>
-                    <p class="team-role">CTO</p>
-                    <p class="team-bio">Chief Technology officer with over a decade of experience in Web and Tech, Passionate to empowering communitiesand Serve the humanity.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                    
+                <button class="team-carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
                 
-                <div class="card team-card">
-                    <img src="imran_bhai_transparrent_hd_dp-removebg-preview (1).png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Imran Nazir</h3>
-                    <p class="team-role">AI Specialist</p>
-                    <p class="team-bio">Specializes in AI and machine learning, delivering innovative solutions for business automation.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="card team-card">
-                    <img src="sultan bhai transparrent hd dp.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Sultan Mehmood </h3>
-                    <p class="team-role">HOD Education</p>
-                    <p class="team-bio">Controller of All Education System Creates intuitive, stunning interfaces that enhance user engagement and satisfaction.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </div>
+                <div class="team-carousel-dots" id="teamCarouselDots">
+                    <!-- Dots will be inserted here by JavaScript -->
                 </div>
             </div>
         </div>
@@ -1614,7 +1666,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio Section - Updated without button -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <h2 class="section-title">Our Portfolio</h2>
@@ -1626,7 +1678,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">E-Commerce Platform</h3>
                         <p class="portfolio-category">Web Development</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Full-stack solution with payment integration and inventory management</p>
                     </div>
                 </div>
                 
@@ -1635,7 +1687,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Health & Fitness App</h3>
                         <p class="portfolio-category">Mobile Development</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Cross-platform app with workout tracking and nutrition planning</p>
                     </div>
                 </div>
                 
@@ -1644,7 +1696,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Business CRM System</h3>
                         <p class="portfolio-category">Enterprise Software</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Custom CRM with lead management and analytics dashboard</p>
                     </div>
                 </div>
                 
@@ -1653,7 +1705,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">AI Analytics Dashboard</h3>
                         <p class="portfolio-category">AI Solution</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Real-time data visualization with predictive analytics</p>
                     </div>
                 </div>
                 
@@ -1662,7 +1714,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Online Learning Platform</h3>
                         <p class="portfolio-category">Web Development</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Interactive e-learning platform with video courses</p>
                     </div>
                 </div>
                 
@@ -1671,7 +1723,7 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Mobile Game</h3>
                         <p class="portfolio-category">Mobile Development</p>
-                        <a href="#" class="btn btn-primary">View Project</a>
+                        <p class="portfolio-details">Engaging 2D mobile game with multiplayer features</p>
                     </div>
                 </div>
             </div>
@@ -1910,6 +1962,192 @@
     </div>
 
     <script>
+        // Team data
+        const teamMembers = [
+            {
+                name: "Muhammad Awais Laal",
+                role: "Founder & CEO",
+                bio: "Visionary leader with over a decade of experience in software and education, dedicated to empowering communities.",
+                image: "my_profile_pic-transparrent.png",
+                social: [
+                    { icon: "fab fa-linkedin", link: "#" },
+                    { icon: "fab fa-twitter", link: "#" },
+                    { icon: "fab fa-github", link: "#" }
+                ]
+            },
+            {
+                name: "Aamir Shaheen",
+                role: "Lead Developer",
+                bio: "Expert in full-stack development, specializing in scalable solutions using React and Node.js.",
+                image: "amir transparrent hd outfit dp.png",
+                social: [
+                    { icon: "fab fa-linkedin", link: "#" },
+                    { icon: "fab fa-twitter", link: "#" },
+                    { icon: "fab fa-github", link: "#" }
+                ]
+            },
+            {
+                name: "Farooq Amras",
+                role: "CTO",
+                bio: "Chief Technology officer with over a decade of experience in Web and Tech, Passionate to empowering communities and Serve the humanity.",
+                image: "farooq_pic-whitebg.png",
+                social: [
+                    { icon: "fab fa-linkedin", link: "#" },
+                    { icon: "fab fa-twitter", link: "#" },
+                    { icon: "fab fa-github", link: "#" }
+                ]
+            },
+            {
+                name: "Imran Nazir",
+                role: "AI Specialist",
+                bio: "Specializes in AI and machine learning, delivering innovative solutions for business automation.",
+                image: "imran_bhai_transparrent_hd_dp-removebg-preview (1).png",
+                social: [
+                    { icon: "fab fa-linkedin", link: "#" },
+                    { icon: "fab fa-twitter", link: "#" },
+                    { icon: "fab fa-github", link: "#" }
+                ]
+            },
+            {
+                name: "Sultan Mehmood",
+                role: "HOD Education",
+                bio: "Controller of All Education System Creates intuitive, stunning interfaces that enhance user engagement and satisfaction.",
+                image: "sultan bhai transparrent hd dp.png",
+                social: [
+                    { icon: "fab fa-linkedin", link: "#" },
+                    { icon: "fab fa-twitter", link: "#" },
+                    { icon: "fab fa-dribbble", link: "#" }
+                ]
+            }
+        ];
+
+        // Team Carousel
+        class TeamCarousel {
+            constructor() {
+                this.track = document.getElementById('teamCarouselTrack');
+                this.dotsContainer = document.getElementById('teamCarouselDots');
+                this.prevBtn = document.querySelector('.team-carousel-btn.prev');
+                this.nextBtn = document.querySelector('.team-carousel-btn.next');
+                
+                this.currentIndex = 0;
+                this.slidesPerView = this.getSlidesPerView();
+                this.totalSlides = teamMembers.length;
+                this.slideInterval = null;
+                this.autoSlideDelay = 5000; // 5 seconds
+                
+                this.init();
+                this.startAutoSlide();
+                this.setupEventListeners();
+                this.setupResponsive();
+            }
+            
+            getSlidesPerView() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 2;
+                return 3;
+            }
+            
+            init() {
+                // Clear existing content
+                this.track.innerHTML = '';
+                this.dotsContainer.innerHTML = '';
+                
+                // Create slides
+                teamMembers.forEach((member, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'team-card card';
+                    slide.innerHTML = `
+                        <img src="${member.image}" class="team-image" loading="lazy">
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-role">${member.role}</p>
+                        <p class="team-bio">${member.bio}</p>
+                        <div class="team-social">
+                            ${member.social.map(s => `<a href="${s.link}" target="_blank"><i class="${s.icon}"></i></a>`).join('')}
+                        </div>
+                    `;
+                    this.track.appendChild(slide);
+                });
+                
+                // Create dots
+                const totalDots = Math.ceil(this.totalSlides / this.slidesPerView);
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'team-carousel-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+                
+                this.updateCarousel();
+            }
+            
+            updateCarousel() {
+                const slideWidth = 100 / this.slidesPerView;
+                const translateX = -this.currentIndex * slideWidth;
+                this.track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update active dot
+                document.querySelectorAll('.team-carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === Math.floor(this.currentIndex / this.slidesPerView));
+                });
+            }
+            
+            nextSlide() {
+                const maxIndex = this.totalSlides - this.slidesPerView;
+                this.currentIndex = (this.currentIndex + this.slidesPerView) % (maxIndex + 1);
+                if (this.currentIndex > maxIndex) this.currentIndex = 0;
+                this.updateCarousel();
+            }
+            
+            prevSlide() {
+                const maxIndex = this.totalSlides - this.slidesPerView;
+                this.currentIndex = (this.currentIndex - this.slidesPerView + (maxIndex + 1)) % (maxIndex + 1);
+                this.updateCarousel();
+            }
+            
+            goToSlide(slideIndex) {
+                this.currentIndex = slideIndex * this.slidesPerView;
+                this.updateCarousel();
+                this.resetAutoSlide();
+            }
+            
+            startAutoSlide() {
+                this.slideInterval = setInterval(() => this.nextSlide(), this.autoSlideDelay);
+            }
+            
+            resetAutoSlide() {
+                clearInterval(this.slideInterval);
+                this.startAutoSlide();
+            }
+            
+            setupEventListeners() {
+                this.prevBtn.addEventListener('click', () => {
+                    this.prevSlide();
+                    this.resetAutoSlide();
+                });
+                
+                this.nextBtn.addEventListener('click', () => {
+                    this.nextSlide();
+                    this.resetAutoSlide();
+                });
+                
+                // Pause auto-slide on hover
+                this.track.addEventListener('mouseenter', () => clearInterval(this.slideInterval));
+                this.track.addEventListener('mouseleave', () => this.startAutoSlide());
+            }
+            
+            setupResponsive() {
+                window.addEventListener('resize', () => {
+                    const newSlidesPerView = this.getSlidesPerView();
+                    if (newSlidesPerView !== this.slidesPerView) {
+                        this.slidesPerView = newSlidesPerView;
+                        this.currentIndex = 0;
+                        this.init();
+                    }
+                });
+            }
+        }
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -2108,10 +2346,11 @@
                 }
             });
         });
+        
+        // Initialize team carousel after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TeamCarousel();
+        });
     </script>
 </body>
 </html>
-
-
-
-
