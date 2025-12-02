@@ -505,34 +505,28 @@
             font-size: 0.95rem;
         }
         
-        /* Team Section - Updated for Slider */
+        /* Team Section - Updated for Responsive Slider */
         .team {
             background-color: #f8fafc;
+            position: relative;
         }
         
-        .team-desktop {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        /* Team Slider Container */
-        .team-slider-container {
-            display: none;
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
         }
         
-        .team-slider-track {
+        .team-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            gap: 2rem;
         }
         
         .team-slide {
-            min-width: 100%;
-            padding: 0 1rem;
+            flex: 0 0 calc(33.333% - 1.33rem);
+            min-width: calc(33.333% - 1.33rem);
         }
         
         /* Team Cards */
@@ -578,6 +572,7 @@
             color: var(--gray);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
         
         .team-social {
@@ -604,7 +599,42 @@
             transform: translateY(-3px);
         }
         
-        /* Slider Dots */
+        /* Slider Navigation */
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .slider-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .slider-arrow:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .slider-arrow.disabled {
+            background-color: var(--light-gray);
+            color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -886,6 +916,42 @@
             justify-content: center;
             gap: 0.5rem;
             margin-top: 2rem;
+        }
+        
+        /* Testimonial Navigation */
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-arrow:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .testimonial-arrow.disabled {
+            background-color: var(--light-gray);
+            color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* Contact */
@@ -1425,6 +1491,12 @@
             .collab-title {
                 font-size: 2rem;
             }
+            
+            /* Team Slider for Tablet */
+            .team-slide {
+                flex: 0 0 calc(50% - 1rem);
+                min-width: calc(50% - 1rem);
+            }
         }
         
         @media (max-width: 768px) {
@@ -1498,12 +1570,17 @@
             }
             
             /* Team Slider for Mobile */
-            .team-desktop {
-                display: none;
+            .team-slide {
+                flex: 0 0 100%;
+                min-width: 100%;
             }
             
-            .team-slider-container {
-                display: block;
+            .team-container {
+                overflow: visible;
+            }
+            
+            .team-track {
+                gap: 1rem;
             }
             
             /* Testimonials */
@@ -1603,6 +1680,34 @@
             
             .collab-title {
                 font-size: 1.75rem;
+            }
+            
+            .team-image {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .team-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .team-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .team-name {
+                font-size: 1.1rem;
+            }
+            
+            .team-role {
+                font-size: 0.9rem;
+            }
+            
+            .team-bio {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1761,77 +1866,25 @@
             <h2 class="section-title">Our Team</h2>
             <p class="section-subtitle">Meet the passionate professionals driving UMTI Tech Solutions forward.</p>
             
-            <!-- Desktop View -->
-            <div class="team-desktop">
-                <div class="card team-card">
-                    <img src="my_profile_pic-transparrent.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Muhammad Awais Laal</h3>
-                    <p class="team-role">Founder & CEO</p>
-                    <p class="team-bio">Visionary leader with over a decade of experience in software and education, dedicated to empowering communities.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="card team-card">
-                    <img src="amir transparrent hd outfit dp.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Aamir Shaheen</h3>
-                    <p class="team-role">Lead Developer</p>
-                    <p class="team-bio">Expert in full-stack development, specializing in scalable solutions using React and Node.js.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="card team-card">
-                    <img src="farooq_pic-whitebg.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Farooq Amras</h3>
-                    <p class="team-role">CTO</p>
-                    <p class="team-bio">Chief Technology Officer with extensive experience in Web and Tech, passionate about empowering communities and serving humanity.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="card team-card">
-                    <img src="imran_bhai_transparrent_hd_dp-removebg-preview (1).png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Imran Nazir</h3>
-                    <p class="team-role">AI Specialist</p>
-                    <p class="team-bio">Specializes in AI and machine learning, delivering innovative solutions for business automation.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                
-                <div class="card team-card">
-                    <img src="sultan bhai transparrent hd dp.png" class="team-image" loading="lazy">
-                    <h3 class="team-name">Sultan Mehmood</h3>
-                    <p class="team-role">HOD Education</p>
-                    <p class="team-bio">Controller of All Education System, creates intuitive, stunning interfaces that enhance user engagement and satisfaction.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                    </div>
+            <div class="team-container">
+                <div class="team-track" id="teamTrack">
+                    <!-- Team slides will be inserted here by JavaScript -->
                 </div>
             </div>
             
-            <!-- Mobile Slider View -->
-            <div class="team-slider-container">
-                <div class="team-slider-track" id="teamSliderTrack">
-                    <!-- Slides will be inserted here by JavaScript -->
-                </div>
-                <div class="slider-dots" id="teamSliderDots">
+            <!-- Navigation Arrows -->
+            <div class="slider-nav">
+                <button class="slider-arrow" id="teamPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="slider-dots" id="teamDots">
                     <!-- Dots will be inserted here by JavaScript -->
                 </div>
+                
+                <button class="slider-arrow" id="teamNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -2080,9 +2133,21 @@
                 <div class="testimonials-track" id="testimonialsTrack">
                     <!-- Testimonial slides will be inserted by JavaScript -->
                 </div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <div class="testimonial-nav">
+                <button class="testimonial-arrow" id="testimonialPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
                 <div class="testimonial-dots" id="testimonialDots">
                     <!-- Dots will be inserted by JavaScript -->
                 </div>
+                
+                <button class="testimonial-arrow" id="testimonialNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -2448,8 +2513,8 @@
         ];
         
         function createTeamSlider() {
-            const track = document.getElementById('teamSliderTrack');
-            const dotsContainer = document.getElementById('teamSliderDots');
+            const track = document.getElementById('teamTrack');
+            const dotsContainer = document.getElementById('teamDots');
             
             teamMembers.forEach((member, index) => {
                 // Create slide
@@ -2482,18 +2547,37 @@
         }
         
         let currentTeamSlide = 0;
+        let slidesPerView;
+        let maxTeamSlide;
         let teamInterval;
         
+        function updateSlidesPerView() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 768) {
+                slidesPerView = 1;
+            } else if (screenWidth <= 1024) {
+                slidesPerView = 2;
+            } else {
+                slidesPerView = 3;
+            }
+            maxTeamSlide = Math.max(0, teamMembers.length - slidesPerView);
+            updateTeamArrows();
+        }
+        
         function goToTeamSlide(index) {
-            const track = document.getElementById('teamSliderTrack');
-            const dots = document.querySelectorAll('#teamSliderDots .slider-dot');
+            const track = document.getElementById('teamTrack');
+            const dots = document.querySelectorAll('#teamDots .slider-dot');
             
-            currentTeamSlide = index;
-            track.style.transform = `translateX(-${index * 100}%)`;
+            currentTeamSlide = Math.max(0, Math.min(index, maxTeamSlide));
+            
+            const slideWidth = 100 / slidesPerView;
+            track.style.transform = `translateX(-${currentTeamSlide * slideWidth}%)`;
             
             dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
+                dot.classList.toggle('active', i === currentTeamSlide);
             });
+            
+            updateTeamArrows();
             
             // Reset interval
             clearInterval(teamInterval);
@@ -2503,19 +2587,51 @@
         }
         
         function nextTeamSlide() {
-            const nextSlide = (currentTeamSlide + 1) % teamMembers.length;
-            goToTeamSlide(nextSlide);
+            if (currentTeamSlide >= maxTeamSlide) {
+                goToTeamSlide(0);
+            } else {
+                goToTeamSlide(currentTeamSlide + 1);
+            }
+        }
+        
+        function prevTeamSlide() {
+            if (currentTeamSlide <= 0) {
+                goToTeamSlide(maxTeamSlide);
+            } else {
+                goToTeamSlide(currentTeamSlide - 1);
+            }
+        }
+        
+        function updateTeamArrows() {
+            const prevBtn = document.getElementById('teamPrev');
+            const nextBtn = document.getElementById('teamNext');
+            
+            prevBtn.classList.toggle('disabled', currentTeamSlide === 0);
+            nextBtn.classList.toggle('disabled', currentTeamSlide >= maxTeamSlide);
         }
         
         // Initialize team slider
         createTeamSlider();
+        updateSlidesPerView();
+        goToTeamSlide(0);
         
         // Start auto-sliding for team
-        if (window.innerWidth <= 768) {
-            teamInterval = setInterval(() => {
+        teamInterval = setInterval(() => {
+            nextTeamSlide();
+        }, 5000);
+        
+        // Team slider navigation
+        document.getElementById('teamPrev').addEventListener('click', () => {
+            if (currentTeamSlide > 0) {
+                prevTeamSlide();
+            }
+        });
+        
+        document.getElementById('teamNext').addEventListener('click', () => {
+            if (currentTeamSlide < maxTeamSlide) {
                 nextTeamSlide();
-            }, 5000);
-        }
+            }
+        });
         
         // Testimonials Slider Functionality
         const testimonials = [
@@ -2600,6 +2716,8 @@
                 dot.classList.toggle('active', i === index);
             });
             
+            updateTestimonialArrows();
+            
             // Reset interval
             clearInterval(testimonialInterval);
             testimonialInterval = setInterval(() => {
@@ -2612,13 +2730,36 @@
             goToTestimonialSlide(nextSlide);
         }
         
+        function prevTestimonialSlide() {
+            const prevSlide = (currentTestimonialSlide - 1 + testimonials.length) % testimonials.length;
+            goToTestimonialSlide(prevSlide);
+        }
+        
+        function updateTestimonialArrows() {
+            const prevBtn = document.getElementById('testimonialPrev');
+            const nextBtn = document.getElementById('testimonialNext');
+            
+            prevBtn.classList.toggle('disabled', currentTestimonialSlide === 0);
+            nextBtn.classList.toggle('disabled', currentTestimonialSlide === testimonials.length - 1);
+        }
+        
         // Initialize testimonial slider
         createTestimonialSlider();
+        goToTestimonialSlide(0);
         
         // Start auto-sliding for testimonials
         testimonialInterval = setInterval(() => {
             nextTestimonialSlide();
         }, 5000);
+        
+        // Testimonial slider navigation
+        document.getElementById('testimonialPrev').addEventListener('click', () => {
+            prevTestimonialSlide();
+        });
+        
+        document.getElementById('testimonialNext').addEventListener('click', () => {
+            nextTestimonialSlide();
+        });
         
         // Collaboration Popup Functionality
         const collabPopup = document.getElementById('collabPopup');
@@ -2647,18 +2788,20 @@
             }
         });
         
-        // Responsive adjustments for team slider
+        // Responsive adjustments
         window.addEventListener('resize', () => {
             // Clear existing intervals
             clearInterval(teamInterval);
             clearInterval(testimonialInterval);
             
-            // Restart intervals if needed
-            if (window.innerWidth <= 768) {
-                teamInterval = setInterval(() => {
-                    nextTeamSlide();
-                }, 5000);
-            }
+            // Update slides per view for team
+            updateSlidesPerView();
+            goToTeamSlide(Math.min(currentTeamSlide, maxTeamSlide));
+            
+            // Restart intervals
+            teamInterval = setInterval(() => {
+                nextTeamSlide();
+            }, 5000);
             
             testimonialInterval = setInterval(() => {
                 nextTestimonialSlide();
@@ -2667,14 +2810,10 @@
         
         // Initialize everything when page loads
         window.addEventListener('DOMContentLoaded', () => {
-            // Show desktop team view on large screens
-            if (window.innerWidth <= 768) {
-                document.querySelector('.team-desktop').style.display = 'none';
-                document.querySelector('.team-slider-container').style.display = 'block';
-            } else {
-                document.querySelector('.team-desktop').style.display = 'grid';
-                document.querySelector('.team-slider-container').style.display = 'none';
-            }
+            // Update slides per view initially
+            updateSlidesPerView();
+            goToTeamSlide(0);
+            goToTestimonialSlide(0);
         });
     </script>
 </body>
