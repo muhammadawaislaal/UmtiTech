@@ -346,7 +346,7 @@
             color: var(--primary);
         }
         
-        /* Hero */
+        /* Hero - UPDATED LAYOUT */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -1537,30 +1537,56 @@
                 font-size: 2.75rem;
             }
             
-            .hero-title {
-                font-size: 4rem;
+            /* UPDATED HERO LAYOUT FOR DESKTOP - Better alignment */
+            .hero {
+                padding-top: 140px;
+                min-height: 100vh;
             }
             
             .hero-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
                 text-align: left;
+                max-width: 100%;
+                margin: 0;
+                padding: 3rem 0;
+            }
+            
+            .hero-text {
+                order: 1;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+                text-align: left;
+                margin-bottom: 1.5rem;
             }
             
             .hero-subtitle {
+                font-size: 1.2rem;
                 text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100%;
             }
             
             .hero-buttons {
                 justify-content: flex-start;
+                margin-top: 2rem;
+            }
+            
+            .hero-image-container {
+                order: 2;
+                position: relative;
             }
             
             .hero-image {
-                position: absolute;
-                right: 5%;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 40%;
-                max-width: 600px;
+                width: 100%;
+                max-width: 100%;
                 margin: 0;
+                animation: float 6s ease-in-out infinite;
             }
             
             .about-content {
@@ -1617,6 +1643,18 @@
         }
         
         @media (min-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .hero-content {
+                gap: 5rem;
+            }
+            
             .team-slide {
                 flex: 0 0 33.333%;
             }
@@ -1636,6 +1674,16 @@
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 3.5rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
             }
         }
         
@@ -1997,18 +2045,22 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - UPDATED LAYOUT -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Empowering Your Digital Future</h1>
-                <p class="hero-subtitle">From Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions delivers world-class software development and free tech education to inspire and innovate.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Discover Our Services</a>
-                    <a href="#courses" class="btn btn-secondary">Explore Free Courses</a>
+                <div class="hero-text">
+                    <h1 class="hero-title">Empowering Your Digital Future</h1>
+                    <p class="hero-subtitle">From Darkhast Jamal Khan, South Punjab, Pakistan, UMTI Tech Solutions delivers world-class software development and free tech education to inspire and innovate.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">Discover Our Services</a>
+                        <a href="#courses" class="btn btn-secondary">Explore Free Courses</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="hero section character.png" class="hero-image" loading="lazy" alt="Hero Image">
                 </div>
             </div>
-            <img src="hero section character.png" class="hero-image" loading="lazy" alt="Hero Image">
         </div>
     </section>
 
