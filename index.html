@@ -1142,18 +1142,53 @@
             transform: scale(1.1);
         }
         
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-            max-height: 200px;
+        .calendar-day.booked {
+            position: relative;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+        
+        .calendar-day.booked::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            background: var(--error);
+            border-radius: 50%;
+        }
+        
+        .timezone-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(30, 64, 175, 0.05);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+        
+        .timezone-info i {
+            color: var(--primary);
+        }
+        
+        .time-slots-container {
+            max-height: 300px;
             overflow-y: auto;
             padding-right: 0.5rem;
         }
         
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
         .time-slot {
-            padding: 0.75rem;
+            padding: 0.75rem 0.5rem;
             background: rgba(30, 64, 175, 0.05);
             border-radius: var(--radius);
             text-align: center;
@@ -1161,9 +1196,10 @@
             transition: var(--transition);
             border: 2px solid transparent;
             font-weight: 500;
+            font-size: 0.85rem;
         }
         
-        .time-slot:hover {
+        .time-slot:hover:not(.booked):not(.past) {
             background: rgba(30, 64, 175, 0.1);
             transform: translateY(-2px);
         }
@@ -1172,6 +1208,21 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary-dark);
+        }
+        
+        .time-slot.booked {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--gray);
+            cursor: not-allowed;
+            text-decoration: line-through;
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+        
+        .time-slot.past {
+            background: rgba(100, 116, 139, 0.05);
+            color: var(--light-gray);
+            cursor: not-allowed;
+            border-color: transparent;
         }
         
         .booking-form {
@@ -1221,6 +1272,302 @@
         
         .booking-actions .btn {
             flex: 1;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            position: fixed;
+            bottom: 100px;
+            right: 2rem;
+            z-index: 998;
+        }
+        
+        .admin-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .admin-btn:hover {
+            transform: scale(1.1);
+            background-color: #be185d;
+        }
+        
+        .admin-panel-box {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            width: 350px;
+            max-height: 500px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transform-origin: bottom right;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-panel-box.active {
+            display: flex;
+            animation: scaleUp 0.3s ease-out;
+        }
+        
+        .admin-header {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .admin-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .admin-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .admin-content {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .admin-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-section h4 {
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+        
+        .bookings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .booking-item {
+            background: rgba(30, 64, 175, 0.05);
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .booking-item .booking-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+        
+        .booking-item .booking-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .booking-item .booking-time {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .no-bookings {
+            text-align: center;
+            color: var(--gray);
+            font-style: italic;
+            padding: 1rem;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .admin-stat {
+            background: rgba(30, 64, 175, 0.05);
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .admin-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .admin-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .admin-actions .btn {
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Admin Login Modal */
+        .admin-login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .admin-login-modal.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeInPopup 0.3s ease-out;
+        }
+        
+        .admin-login-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            margin: 1rem;
+            text-align: center;
+        }
+        
+        .admin-login-modal.active .admin-login-content {
+            transform: translateY(0);
+        }
+        
+        .admin-login-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .admin-login-close:hover {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .admin-login-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .admin-login-modal h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .admin-login-modal p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .login-form {
+            margin-top: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .login-error {
+            color: var(--error);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            display: none;
         }
         
         /* Meeting Confirmation Modal */
@@ -1340,6 +1687,16 @@
         .meeting-detail span:last-child {
             color: var(--primary);
             font-weight: 600;
+        }
+        
+        /* User Info Form */
+        .user-info-form {
+            margin-top: 2rem;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
         }
         
         /* Footer */
@@ -1665,6 +2022,59 @@
             background-color: var(--primary-dark);
         }
         
+        /* Suggested Questions */
+        .suggested-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            opacity: 0.8; /* 80% transparency */
+            transition: opacity 0.3s ease;
+        }
+        
+        .suggested-questions.hidden {
+            display: none;
+        }
+        
+        .suggested-question {
+            background: rgba(30, 64, 175, 0.1);
+            border: none;
+            padding: 0.6rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+            font-family: inherit;
+        }
+        
+        .suggested-question:hover {
+            background: rgba(30, 64, 175, 0.2);
+            transform: translateX(5px);
+        }
+        
+        /* Team Info in Chatbot */
+        .team-info-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .team-info-card h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+        }
+        
+        .team-info-card p {
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            color: var(--gray);
+        }
+        
         /* Dropdown Menu */
         .dropdown {
             position: relative;
@@ -1967,6 +2377,10 @@
             .calendar-container {
                 padding: 3rem;
             }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
         }
         
         @media (min-width: 992px) {
@@ -2001,6 +2415,10 @@
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 3.5rem;
+            }
+            
+            .admin-panel {
+                bottom: 120px;
             }
         }
         
@@ -2118,6 +2536,16 @@
             
             .booking-actions {
                 flex-direction: column;
+            }
+            
+            .admin-panel {
+                bottom: 80px;
+                right: 1rem;
+            }
+            
+            .admin-panel-box {
+                width: calc(100vw - 2rem);
+                right: 0;
             }
             
             .chatbot-container {
@@ -2250,7 +2678,7 @@
             }
             
             .time-slots {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
             }
         }
         
@@ -2295,6 +2723,10 @@
             
             .calendar-day {
                 font-size: 0.8rem;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
             }
         }
     </style>
@@ -2758,22 +3190,22 @@
                         <div class="scheduler-feature">
                             <i class="fas fa-clock"></i>
                             <div>
-                                <h4>Flexible Scheduling</h4>
-                                <p>Choose a time that works best for you. We're available 7 days a week.</p>
+                                <h4>24/7 Availability</h4>
+                                <p>Book meetings anytime, day or night, based on your local timezone.</p>
                             </div>
                         </div>
                         <div class="scheduler-feature">
-                            <i class="fas fa-video"></i>
+                            <i class="fas fa-globe"></i>
                             <div>
-                                <h4>Virtual Meetings</h4>
-                                <p>Meet us online via Zoom, Google Meet, or your preferred platform.</p>
+                                <h4>Global Timezone Support</h4>
+                                <p>Times automatically adjust to your local timezone for convenience.</p>
                             </div>
                         </div>
                         <div class="scheduler-feature">
                             <i class="fas fa-calendar-check"></i>
                             <div>
-                                <h4>Instant Confirmation</h4>
-                                <p>Get immediate confirmation and calendar invites for your meeting.</p>
+                                <h4>Real-time Availability</h4>
+                                <p>See only available time slots that haven't been booked yet.</p>
                             </div>
                         </div>
                         <div class="scheduler-feature">
@@ -2805,6 +3237,11 @@
                         </div>
                     </div>
                     
+                    <div class="timezone-info">
+                        <i class="fas fa-globe-americas"></i>
+                        <span id="timezoneDisplay">Detecting your timezone...</span>
+                    </div>
+                    
                     <div class="calendar-month" id="currentMonth">
                         <!-- Month will be populated by JavaScript -->
                     </div>
@@ -2813,8 +3250,10 @@
                         <!-- Calendar days will be populated by JavaScript -->
                     </div>
                     
-                    <div class="time-slots" id="timeSlots">
-                        <!-- Time slots will be populated by JavaScript -->
+                    <div class="time-slots-container">
+                        <div class="time-slots" id="timeSlots">
+                            <!-- Time slots will be populated by JavaScript -->
+                        </div>
                     </div>
                     
                     <div class="booking-form" id="bookingForm" style="display: none;">
@@ -2838,15 +3277,115 @@
                             </div>
                         </div>
                         
+                        <div class="user-info-form" id="userInfoForm">
+                            <div class="form-group">
+                                <label for="userName" class="form-label">Your Name *</label>
+                                <input type="text" id="userName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail" class="form-label">Email Address *</label>
+                                <input type="email" id="userEmail" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userPhone" class="form-label">Phone Number</label>
+                                <input type="tel" id="userPhone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectDetails" class="form-label">Project Details (Optional)</label>
+                                <textarea id="projectDetails" class="form-control" placeholder="Briefly describe your project..."></textarea>
+                            </div>
+                        </div>
+                        
                         <div class="booking-actions">
                             <button class="btn btn-primary" id="confirmBooking">Confirm Booking</button>
-                            <button class="btn btn-secondary" id="changeSelection">Change</button>
+                            <button class="btn btn-secondary" id="changeSelection">Change Time</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <button class="admin-btn" id="adminBtn" title="Admin Panel">
+            <i class="fas fa-cog"></i>
+        </button>
+        
+        <div class="admin-panel-box" id="adminPanelBox">
+            <div class="admin-header">
+                <h4 class="admin-title">Admin Dashboard</h4>
+                <button class="admin-close" id="adminClose"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="admin-section">
+                    <h4>Recent Bookings</h4>
+                    <div class="bookings-list" id="bookingsList">
+                        <!-- Bookings will be inserted by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h4>Statistics</h4>
+                    <div class="admin-stats">
+                        <div class="admin-stat">
+                            <div class="admin-stat-number" id="totalBookings">0</div>
+                            <div class="admin-stat-label">Total Bookings</div>
+                        </div>
+                        <div class="admin-stat">
+                            <div class="admin-stat-number" id="todayBookings">0</div>
+                            <div class="admin-stat-label">Today</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h4>Quick Actions</h4>
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" id="refreshBookings">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button class="btn btn-secondary" id="clearAllBookings">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="admin-login-modal" id="adminLoginModal">
+        <div class="admin-login-content">
+            <button class="admin-login-close" id="adminLoginClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="admin-login-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3>Admin Login</h3>
+            <p>Enter your credentials to access the admin panel</p>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="adminUsername" class="form-label">Username</label>
+                    <input type="text" id="adminUsername" class="form-control" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword" class="form-label">Password</label>
+                    <input type="password" id="adminPassword" class="form-control" placeholder="Enter password">
+                </div>
+                <div class="login-error" id="loginError">
+                    Invalid username or password. Please try again.
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary" id="loginSubmit">Login</button>
+                    <button class="btn btn-secondary" id="loginCancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Meeting Confirmation Modal -->
     <div class="meeting-modal" id="meetingModal">
@@ -2879,12 +3418,16 @@
                 </div>
                 <div class="meeting-detail">
                     <span>Meeting Link:</span>
-                    <span>Will be sent via email</span>
+                    <span>https://meet.google.com/shv-knoe-vfw</span>
                 </div>
             </div>
             
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 1rem;">
+                <i class="fas fa-info-circle"></i> If you face any issue to connect in the meeting, please contact us at <strong>umtitechsolutions@gmail.com</strong>
+            </p>
+            
             <div class="booking-actions">
-                <button class="btn btn-primary" id="addToCalendar">Add to Calendar</button>
+                <button class="btn btn-primary" id="downloadICS">Download Calendar Invite (.ics)</button>
                 <button class="btn btn-secondary" id="closeModal">Close</button>
             </div>
         </div>
@@ -2971,12 +3514,14 @@
             
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="message bot-message">
-                    Hello! I'm the UMTI Tech Assistant. How can I assist you today? Ask about our services, courses, or anything else!
+                    Hello! I'm the UMTI Tech Assistant. I can answer questions about our services, team, courses, and meeting scheduling. Please select a question below or ask your own.
                 </div>
+                
+                <!-- Suggested Questions will be added here by JavaScript -->
             </div>
             
             <div class="chatbot-input">
-                <input type="text" class="chatbot-input-field" id="chatbotInput" placeholder="Type your message...">
+                <input type="text" class="chatbot-input-field" id="chatbotInput" placeholder="Type your question...">
                 <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
@@ -3052,7 +3597,7 @@
             observer.observe(section);
         });
         
-        // Chatbot functionality
+        // Enhanced Chatbot Functionality
         const chatbotBtn = document.getElementById('chatbotBtn');
         const chatbotBox = document.getElementById('chatbotBox');
         const chatbotClose = document.getElementById('chatbotClose');
@@ -3060,8 +3605,103 @@
         const chatbotInput = document.getElementById('chatbotInput');
         const chatbotSend = document.getElementById('chatbotSend');
         
+        // Team information for chatbot
+        const teamInfo = [
+            {
+                name: "Muhammad Awais Laal",
+                role: "Founder & CEO",
+                bio: "Visionary leader with over a decade of experience in software and education, dedicated to empowering communities.",
+                expertise: "Leadership, Strategy, Business Development"
+            },
+            {
+                name: "Aamir Shaheen",
+                role: "Lead Developer",
+                bio: "Expert in full-stack development, specializing in scalable solutions using React and Node.js.",
+                expertise: "React, Node.js, MongoDB, API Development"
+            },
+            {
+                name: "Farooq Amras",
+                role: "CTO",
+                bio: "Chief Technology Officer with extensive experience in Web and Tech, passionate about empowering communities and serving humanity.",
+                expertise: "System Architecture, Cloud Solutions, DevOps"
+            },
+            {
+                name: "Imran Nazir",
+                role: "AI Specialist",
+                bio: "Specializes in AI and machine learning, delivering innovative solutions for business automation.",
+                expertise: "Machine Learning, AI, Python, Data Science"
+            },
+            {
+                name: "Sultan Mehmood",
+                role: "HOD Education",
+                bio: "Controller of All Education System, creates intuitive, stunning interfaces that enhance user engagement and satisfaction.",
+                expertise: "Education Management, Curriculum Development, Training"
+            }
+        ];
+        
+        // Suggested questions for chatbot
+        const suggestedQuestions = [
+            "What is UMTI Tech Solutions?",
+            "What services do you offer?",
+            "Tell me about your team",
+            "How can I schedule a meeting?",
+            "What courses do you offer?",
+            "How can I contact you?",
+            "Where are you located?",
+            "Tell me about Muhammad Awais Laal",
+            "Tell me about Aamir Shaheen",
+            "Tell me about Farooq Amras",
+            "Tell me about Imran Nazir",
+            "Tell me about Sultan Mehmood"
+        ];
+        
+        // Show suggested questions in chatbot
+        function showSuggestedQuestions() {
+            const suggestedQuestionsDiv = document.createElement('div');
+            suggestedQuestionsDiv.className = 'suggested-questions';
+            suggestedQuestionsDiv.id = 'suggestedQuestions';
+            
+            suggestedQuestions.forEach(question => {
+                const questionBtn = document.createElement('button');
+                questionBtn.className = 'suggested-question';
+                questionBtn.textContent = question;
+                questionBtn.addEventListener('click', () => {
+                    chatbotInput.value = question;
+                    handleSendMessage();
+                });
+                suggestedQuestionsDiv.appendChild(questionBtn);
+            });
+            
+            chatbotMessages.appendChild(suggestedQuestionsDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Hide suggested questions
+        function hideSuggestedQuestions() {
+            const suggestedQuestionsDiv = document.getElementById('suggestedQuestions');
+            if (suggestedQuestionsDiv) {
+                suggestedQuestionsDiv.classList.add('hidden');
+            }
+        }
+        
+        // Show suggested questions again
+        function showSuggestedQuestionsAgain() {
+            const suggestedQuestionsDiv = document.getElementById('suggestedQuestions');
+            if (suggestedQuestionsDiv) {
+                suggestedQuestionsDiv.classList.remove('hidden');
+            } else {
+                showSuggestedQuestions();
+            }
+        }
+        
         chatbotBtn.addEventListener('click', () => {
             chatbotBox.classList.toggle('active');
+            if (chatbotBox.classList.contains('active')) {
+                // Show suggested questions when chatbot opens
+                setTimeout(() => {
+                    showSuggestedQuestions();
+                }, 100);
+            }
         });
         
         chatbotClose.addEventListener('click', () => {
@@ -3073,6 +3713,19 @@
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
             messageDiv.textContent = text;
             chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        function addTeamInfoCard(member) {
+            const teamCard = document.createElement('div');
+            teamCard.className = 'team-info-card';
+            teamCard.innerHTML = `
+                <h5>${member.name}</h5>
+                <p><strong>Role:</strong> ${member.role}</p>
+                <p><strong>Bio:</strong> ${member.bio}</p>
+                <p><strong>Expertise:</strong> ${member.expertise}</p>
+            `;
+            chatbotMessages.appendChild(teamCard);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
         
@@ -3118,7 +3771,7 @@
             },
             {
                 question: "Tell me about your team",
-                answer: "Our team consists of experienced professionals including our Founder & CEO Awais Laal, Lead Developer Aamir Shaheen, AI Specialist Imran Nazir, and UI/UX Designer Sara Khan. Each brings unique expertise to deliver exceptional solutions."
+                answer: "Our team consists of experienced professionals. Would you like to know about a specific team member? You can ask about: Muhammad Awais Laal, Aamir Shaheen, Farooq Amras, Imran Nazir, or Sultan Mehmood."
             },
             {
                 question: "What courses do you offer?",
@@ -3134,18 +3787,53 @@
             }
         ];
         
+        // Add team member specific questions
+        teamInfo.forEach(member => {
+            const firstName = member.name.split(' ')[0];
+            predefinedQuestions.push({
+                question: `Tell me about ${member.name}`,
+                answer: `I'll provide information about ${member.name}.`
+            });
+            
+            predefinedQuestions.push({
+                question: `Tell me about ${firstName}`,
+                answer: `I'll provide information about ${member.name}.`
+            });
+        });
+        
         function findAnswer(userInput) {
             const input = userInput.toLowerCase().trim();
+            
+            // Check for team member queries first
+            for (const member of teamInfo) {
+                const firstName = member.name.split(' ')[0].toLowerCase();
+                const fullName = member.name.toLowerCase();
+                
+                if (input.includes(firstName) || input.includes(fullName) || 
+                    input.includes(`about ${firstName}`) || input.includes(`about ${fullName}`)) {
+                    return member;
+                }
+            }
+            
+            // Check for general questions
             const matchedQuestion = predefinedQuestions.find(q => 
                 input.includes(q.question.toLowerCase()) || 
                 q.question.toLowerCase().includes(input)
             );
-            return matchedQuestion ? matchedQuestion.answer : "I'm not sure about that. Could you please provide more details or ask about our services, courses, or meeting scheduling?";
+            
+            if (matchedQuestion) {
+                return matchedQuestion.answer;
+            }
+            
+            return null; // No match found
         }
         
         function handleSendMessage() {
             const userInput = chatbotInput.value.trim();
             if (!userInput) return;
+            
+            // Hide suggested questions when user sends a message
+            hideSuggestedQuestions();
             
             addMessage(userInput, true);
             chatbotInput.value = '';
@@ -3153,8 +3841,22 @@
             
             setTimeout(() => {
                 hideTypingIndicator(typingDiv);
-                const botResponse = findAnswer(userInput);
-                addMessage(botResponse);
+                const response = findAnswer(userInput);
+                
+                if (response === null) {
+                    // No match found - show error and suggested questions
+                    addMessage("I'm sorry, I can only answer questions about our services, team, courses, and meeting scheduling. Please select one of the suggested questions below or ask about our team members.");
+                    showSuggestedQuestionsAgain();
+                } else if (typeof response === 'object') {
+                    // Team member info
+                    addTeamInfoCard(response);
+                    addMessage("Is there anything else you'd like to know about our team or services?");
+                    showSuggestedQuestionsAgain();
+                } else {
+                    // General answer
+                    addMessage(response);
+                    showSuggestedQuestionsAgain();
+                }
             }, 1000);
         }
         
@@ -3487,10 +4189,11 @@
             }
         });
         
-        // Meeting Scheduler Calendar Functionality
+        // Enhanced Meeting Scheduler Calendar Functionality
         let currentDate = new Date();
         let selectedDate = null;
         let selectedTime = null;
+        let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         
         const monthNames = [
             "January", "February", "March", "April", "May", "June",
@@ -3499,10 +4202,65 @@
         
         const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         
-        const timeSlots = [
-            "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", 
-            "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
-        ];
+        // Store booked meetings in localStorage
+        let bookedMeetings = JSON.parse(localStorage.getItem('umti_booked_meetings')) || [];
+        
+        // Update timezone display
+        function updateTimezoneDisplay() {
+            const timezoneDisplay = document.getElementById('timezoneDisplay');
+            const timezoneName = userTimezone.replace(/_/g, ' ');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            timezoneDisplay.textContent = `Your timezone: ${timezoneName} (Current time: ${timeString})`;
+        }
+        
+        // Format time based on user's locale
+        function formatTimeToLocale(hour24) {
+            const date = new Date();
+            date.setHours(hour24, 0, 0, 0);
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        
+        // Generate 24-hour time slots (every 30 minutes)
+        function generateTimeSlots() {
+            const slots = [];
+            for (let hour = 0; hour < 24; hour++) {
+                // Add :00 slot
+                slots.push({
+                    hour24: hour,
+                    minute: 0,
+                    display: formatTimeToLocale(hour) + ':00'
+                });
+                
+                // Add :30 slot
+                slots.push({
+                    hour24: hour,
+                    minute: 30,
+                    display: formatTimeToLocale(hour) + ':30'
+                });
+            }
+            return slots;
+        }
+        
+        // Check if a time slot is booked
+        function isTimeSlotBooked(date, hour24, minute) {
+            const dateStr = date.toISOString().split('T')[0];
+            return bookedMeetings.some(meeting => {
+                const meetingDate = new Date(meeting.dateTime);
+                return meetingDate.toISOString().split('T')[0] === dateStr &&
+                       meetingDate.getHours() === hour24 &&
+                       meetingDate.getMinutes() === minute;
+            });
+        }
+        
+        // Check if a date has any booked slots
+        function hasBookedSlots(date) {
+            const dateStr = date.toISOString().split('T')[0];
+            return bookedMeetings.some(meeting => {
+                const meetingDate = new Date(meeting.dateTime);
+                return meetingDate.toISOString().split('T')[0] === dateStr;
+            });
+        }
         
         function renderCalendar() {
             const currentMonth = document.getElementById('currentMonth');
@@ -3555,304 +4313,386 @@
                 if (date < today) {
                     dayElement.classList.add('disabled');
                 } else {
-                    // Check if this is the selected date
-                    if (selectedDate && 
-                        selectedDate.getDate() === day &&
-                        selectedDate.getMonth() === currentDate.getMonth() &&
-                        selectedDate.getFullYear() === currentDate.getFullYear()) {
-                        dayElement.classList.add('selected');
-                    }
-                    
-                    // Check if this is today
-                    if (date.getDate() === today.getDate() &&
-                        date.getMonth() === today.getMonth() &&
-                        date.getFullYear() === today.getFullYear()) {
-                        dayElement.classList.add('today');
+                    // Check if this date has booked slots
+                    if (hasBookedSlots(date)) {
+                        dayElement.classList.add('booked');
                     }
                     
                     dayElement.addEventListener('click', () => {
-                        if (!dayElement.classList.contains('disabled')) {
-                            // Remove selected class from all days
-                            document.querySelectorAll('.calendar-day').forEach(d => {
-                                d.classList.remove('selected');
-                            });
+                        document.querySelectorAll('.calendar-day').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+                        dayElement.classList.add('selected');
+                        selectedDate = date;
+                        
+                        // Generate time slots for selected date
+                        const timeSlots = generateTimeSlots();
+                        timeSlotsContainer.innerHTML = '';
+                        
+                        timeSlots.forEach(slot => {
+                            const slotBtn = document.createElement('div');
+                            slotBtn.className = 'time-slot';
+                            slotBtn.textContent = slot.display;
                             
-                            // Add selected class to clicked day
-                            dayElement.classList.add('selected');
+                            const isPast = new Date(date.getFullYear(), date.getMonth(), date.getDate(), slot.hour24, slot.minute) < new Date();
+                            const isBooked = isTimeSlotBooked(date, slot.hour24, slot.minute);
                             
-                            // Set selected date
-                            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-                            
-                            // Update selected date display
-                            document.getElementById('selectedDate').textContent = 
-                                `${dayNames[selectedDate.getDay()]}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
-                            
-                            // Show time slots
-                            renderTimeSlots();
-                            
-                            // Hide booking form if time is not selected
-                            if (!selectedTime) {
-                                bookingForm.style.display = 'none';
+                            if (isPast) {
+                                slotBtn.classList.add('past');
+                            } else if (isBooked) {
+                                slotBtn.classList.add('booked');
+                            } else {
+                                slotBtn.addEventListener('click', () => {
+                                    document.querySelectorAll('.time-slot').forEach(el => {
+                                        el.classList.remove('selected');
+                                    });
+                                    slotBtn.classList.add('selected');
+                                    selectedTime = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(slot.hour24).padStart(2, '0')}:${String(slot.minute).padStart(2, '0')}`;
+                                    
+                                    // Show booking form
+                                    document.getElementById('selectedDate').textContent = date.toLocaleDateString();
+                                    document.getElementById('selectedTime').textContent = slot.display;
+                                    bookingForm.style.display = 'block';
+                                });
                             }
-                        }
+                            
+                            timeSlotsContainer.appendChild(slotBtn);
+                        });
                     });
                 }
                 
                 calendarGrid.appendChild(dayElement);
             }
-            
-            // Render time slots
-            renderTimeSlots();
         }
         
-        function renderTimeSlots() {
-            const timeSlotsContainer = document.getElementById('timeSlots');
-            const bookingForm = document.getElementById('bookingForm');
+        // Password Protection for Admin Panel
+        const ADMIN_USERNAME = "admin";
+        const ADMIN_PASSWORD = "@ADMIN121";
+        let isAdminLoggedIn = false;
+
+        // Admin Panel Elements
+        const adminPanel = document.getElementById('adminPanel');
+        const adminBtn = document.getElementById('adminBtn');
+        const adminPanelBox = document.getElementById('adminPanelBox');
+        const adminClose = document.getElementById('adminClose');
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const adminLoginClose = document.getElementById('adminLoginClose');
+        const loginSubmit = document.getElementById('loginSubmit');
+        const loginCancel = document.getElementById('loginCancel');
+        const adminUsername = document.getElementById('adminUsername');
+        const adminPassword = document.getElementById('adminPassword');
+        const loginError = document.getElementById('loginError');
+        const refreshBookings = document.getElementById('refreshBookings');
+        const clearAllBookings = document.getElementById('clearAllBookings');
+
+        // Admin Panel Functions
+        adminBtn.addEventListener('click', () => {
+            if (!isAdminLoggedIn) {
+                adminLoginModal.classList.add('active');
+            } else {
+                adminPanelBox.classList.toggle('active');
+            }
+        });
+
+        adminClose.addEventListener('click', () => {
+            adminPanelBox.classList.remove('active');
+        });
+
+        adminLoginClose.addEventListener('click', () => {
+            adminLoginModal.classList.remove('active');
+            adminUsername.value = '';
+            adminPassword.value = '';
+            loginError.style.display = 'none';
+        });
+
+        loginCancel.addEventListener('click', () => {
+            adminLoginModal.classList.remove('active');
+            adminUsername.value = '';
+            adminPassword.value = '';
+            loginError.style.display = 'none';
+        });
+
+        loginSubmit.addEventListener('click', () => {
+            if (adminUsername.value === ADMIN_USERNAME && adminPassword.value === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                adminLoginModal.classList.remove('active');
+                adminPanelBox.classList.add('active');
+                adminUsername.value = '';
+                adminPassword.value = '';
+                loginError.style.display = 'none';
+                loadBookings();
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+
+        adminLoginModal.addEventListener('click', (e) => {
+            if (e.target === adminLoginModal) {
+                adminLoginModal.classList.remove('active');
+                adminUsername.value = '';
+                adminPassword.value = '';
+                loginError.style.display = 'none';
+            }
+        });
+
+        // Load bookings from localStorage
+        function loadBookings() {
+            const bookingsList = document.getElementById('bookingsList');
+            bookingsList.innerHTML = '';
             
-            // Clear previous time slots
-            timeSlotsContainer.innerHTML = '';
-            
-            // Only show time slots if a date is selected
-            if (!selectedDate) {
-                const message = document.createElement('div');
-                message.style.textAlign = 'center';
-                message.style.padding = '1rem';
-                message.style.color = 'var(--gray)';
-                message.textContent = 'Please select a date first';
-                timeSlotsContainer.appendChild(message);
-                bookingForm.style.display = 'none';
+            if (bookedMeetings.length === 0) {
+                bookingsList.innerHTML = '<div class="no-bookings">No bookings yet</div>';
+                document.getElementById('totalBookings').textContent = '0';
+                document.getElementById('todayBookings').textContent = '0';
                 return;
             }
             
-            // Check if selected date is today
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+            const today = new Date().toISOString().split('T')[0];
+            let todayCount = 0;
             
-            const selectedDateOnly = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-            
-            // For today, filter out past time slots
-            let availableTimeSlots = [...timeSlots];
-            
-            if (selectedDateOnly.getTime() === today.getTime()) {
-                const currentHour = new Date().getHours();
-                const currentMinute = new Date().getMinutes();
+            bookedMeetings.forEach((booking, index) => {
+                const bookingDate = new Date(booking.dateTime);
+                const isToday = bookingDate.toISOString().split('T')[0] === today;
+                if (isToday) todayCount++;
                 
-                availableTimeSlots = timeSlots.filter(slot => {
-                    const slotHour = parseInt(slot.split(':')[0]);
-                    const isPM = slot.includes('PM');
-                    const hour24 = isPM ? (slotHour === 12 ? 12 : slotHour + 12) : (slotHour === 12 ? 0 : slotHour);
-                    
-                    // Only show future time slots
-                    return hour24 > currentHour || (hour24 === currentHour && currentMinute < 30);
-                });
-            }
-            
-            // Show message if no time slots available
-            if (availableTimeSlots.length === 0) {
-                const message = document.createElement('div');
-                message.style.textAlign = 'center';
-                message.style.padding = '1rem';
-                message.style.color = 'var(--gray)';
-                message.textContent = selectedDateOnly.getTime() === today.getTime() 
-                    ? 'No more available time slots for today' 
-                    : 'Please select a different date';
-                timeSlotsContainer.appendChild(message);
-                bookingForm.style.display = 'none';
-                return;
-            }
-            
-            // Create time slot buttons
-            availableTimeSlots.forEach(slot => {
-                const timeSlotElement = document.createElement('div');
-                timeSlotElement.className = 'time-slot';
-                timeSlotElement.textContent = slot;
-                
-                // Check if this is the selected time
-                if (selectedTime === slot) {
-                    timeSlotElement.classList.add('selected');
-                }
-                
-                timeSlotElement.addEventListener('click', () => {
-                    // Remove selected class from all time slots
-                    document.querySelectorAll('.time-slot').forEach(t => {
-                        t.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to clicked time slot
-                    timeSlotElement.classList.add('selected');
-                    
-                    // Set selected time
-                    selectedTime = slot;
-                    
-                    // Update selected time display
-                    document.getElementById('selectedTime').textContent = slot;
-                    
-                    // Show booking form
-                    bookingForm.style.display = 'block';
-                });
-                
-                timeSlotsContainer.appendChild(timeSlotElement);
+                const bookingItem = document.createElement('div');
+                bookingItem.className = 'booking-item';
+                bookingItem.innerHTML = `
+                    <div class="booking-meta">
+                        <span>${bookingDate.toLocaleDateString()}</span>
+                        <span>${bookingDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    </div>
+                    <div class="booking-name">${booking.userName}</div>
+                    <div class="booking-time">${booking.userEmail}</div>
+                `;
+                bookingsList.appendChild(bookingItem);
             });
+            
+            document.getElementById('totalBookings').textContent = bookedMeetings.length;
+            document.getElementById('todayBookings').textContent = todayCount;
         }
-        
+
+        refreshBookings.addEventListener('click', loadBookings);
+
+        clearAllBookings.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all bookings?')) {
+                bookedMeetings = [];
+                localStorage.setItem('umti_booked_meetings', JSON.stringify(bookedMeetings));
+                loadBookings();
+                alert('All bookings have been cleared.');
+            }
+        });
+
+        // Initialize calendar
+        renderCalendar();
+
+        // Update timezone display
+        updateTimezoneDisplay();
+
         // Calendar navigation
         document.getElementById('prevMonth').addEventListener('click', () => {
             currentDate.setMonth(currentDate.getMonth() - 1);
             renderCalendar();
         });
-        
+
         document.getElementById('nextMonth').addEventListener('click', () => {
             currentDate.setMonth(currentDate.getMonth() + 1);
             renderCalendar();
         });
-        
-        // Header schedule button
-        document.getElementById('headerScheduleBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Scroll to contact section
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+
+        // Timezone detection
+        updateTimezoneDisplay();
+        setInterval(updateTimezoneDisplay, 60000); // Update every minute
+
+        // Generate ICS file for calendar invite
+        function generateICSFile(dateTime, userName, userEmail) {
+            const startTime = new Date(dateTime);
+            const endTime = new Date(startTime.getTime() + 30 * 60000); // 30 minutes
             
-            // Auto-select today's date
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            selectedDate = today;
-            currentDate = new Date(today);
-            
-            // Render calendar with today selected
-            setTimeout(() => {
-                renderCalendar();
-                
-                // Find and click today's date
-                const todayElement = document.querySelector('.calendar-day.today');
-                if (todayElement && !todayElement.classList.contains('disabled')) {
-                    todayElement.click();
-                }
-            }, 500);
-        });
-        
-        // Booking actions
-        document.getElementById('confirmBooking').addEventListener('click', () => {
-            if (!selectedDate || !selectedTime) {
-                alert('Please select both a date and time');
-                return;
+            // Format dates for ICS
+            function formatDateForICS(date) {
+                return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
             }
             
-            // Show confirmation modal
-            document.getElementById('confirmedDate').textContent = 
-                `${dayNames[selectedDate.getDay()]}, ${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
-            document.getElementById('confirmedTime').textContent = selectedTime;
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//UMTI Tech Solutions//Meeting Scheduler//EN
+BEGIN:VEVENT
+UID:${Date.now()}@umtitech.com
+DTSTAMP:${formatDateForICS(new Date())}
+DTSTART:${formatDateForICS(startTime)}
+DTEND:${formatDateForICS(endTime)}
+SUMMARY:Meeting with UMTI Tech Solutions
+DESCRIPTION:Free consultation meeting with ${userName} (${userEmail})
+LOCATION:https://meet.google.com/shv-knoe-vfw
+URL:https://meet.google.com/shv-knoe-vfw
+END:VEVENT
+END:VCALENDAR`;
             
-            document.getElementById('meetingModal').classList.add('active');
-        });
-        
-        document.getElementById('changeSelection').addEventListener('click', () => {
-            selectedTime = null;
-            document.getElementById('bookingForm').style.display = 'none';
-            
-            // Remove selected class from all time slots
-            document.querySelectorAll('.time-slot').forEach(t => {
-                t.classList.remove('selected');
-            });
-        });
-        
-        // Modal actions
-        document.getElementById('meetingModalClose').addEventListener('click', () => {
-            document.getElementById('meetingModal').classList.remove('active');
-        });
-        
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('meetingModal').classList.remove('active');
-            
-            // Reset selection
-            selectedDate = null;
-            selectedTime = null;
-            
-            // Re-render calendar
-            renderCalendar();
-        });
-        
-        document.getElementById('addToCalendar').addEventListener('click', () => {
-            // Create calendar event data
-            const eventTitle = "Meeting with UMTI Tech Solutions";
-            const eventDescription = "Free consultation meeting to discuss project requirements and solutions.";
-            const eventLocation = "Online Meeting (Link will be sent via email)";
-            
-            // Format date for calendar
-            const eventDate = new Date(selectedDate);
-            const [time, modifier] = selectedTime.split(' ');
-            let [hours, minutes] = time.split(':');
-            
-            hours = parseInt(hours);
-            if (modifier === 'PM' && hours < 12) hours += 12;
-            if (modifier === 'AM' && hours === 12) hours = 0;
-            
-            eventDate.setHours(hours, 0, 0, 0);
-            const endDate = new Date(eventDate);
-            endDate.setHours(eventDate.getHours() + 1);
-            
-            // Create ICS file content
-            const icsContent = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'BEGIN:VEVENT',
-                `SUMMARY:${eventTitle}`,
-                `DESCRIPTION:${eventDescription}`,
-                `LOCATION:${eventLocation}`,
-                `DTSTART:${formatDateForICS(eventDate)}`,
-                `DTEND:${formatDateForICS(endDate)}`,
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ].join('\n');
-            
-            // Create download link
+            return icsContent;
+        }
+
+        // Download ICS file
+        function downloadICS(icsContent, fileName) {
             const blob = new Blob([icsContent], { type: 'text/calendar' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `UMTI-Tech-Meeting-${selectedDate.toISOString().split('T')[0]}.ics`;
+            a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
-            alert('Calendar event downloaded. You can import it to your calendar application.');
-        });
-        
-        function formatDateForICS(date) {
-            return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
         }
-        
-        // Initialize calendar
-        renderCalendar();
-        
-        // Responsive adjustments
-        window.addEventListener('resize', () => {
-            // Clear existing intervals
-            clearInterval(teamInterval);
-            clearInterval(testimonialInterval);
-            
-            // Update slides per view for team
-            updateSlidesPerView();
-            
-            // Restart intervals
-            teamInterval = setInterval(() => {
-                nextTeamSlide();
-            }, 5000);
-            
-            testimonialInterval = setInterval(() => {
-                nextTestimonialSlide();
-            }, 5000);
-            
-            // Re-render calendar if needed
-            renderCalendar();
+
+        // Meeting confirmation modal
+        const meetingModal = document.getElementById('meetingModal');
+        const meetingModalClose = document.getElementById('meetingModalClose');
+        const confirmedDate = document.getElementById('confirmedDate');
+        const confirmedTime = document.getElementById('confirmedTime');
+        const downloadICSBtn = document.getElementById('downloadICS');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        meetingModalClose.addEventListener('click', () => {
+            meetingModal.classList.remove('active');
         });
-        
-        // Initialize everything when page loads
-        window.addEventListener('DOMContentLoaded', () => {
-            // Update slides per view initially
+
+        closeModalBtn.addEventListener('click', () => {
+            meetingModal.classList.remove('active');
+        });
+
+        meetingModal.addEventListener('click', (e) => {
+            if (e.target === meetingModal) {
+                meetingModal.classList.remove('active');
+            }
+        });
+
+        // Download ICS button handler
+        downloadICSBtn.addEventListener('click', () => {
+            const booking = bookedMeetings[bookedMeetings.length - 1];
+            if (booking) {
+                const icsContent = generateICSFile(
+                    booking.dateTime,
+                    booking.userName,
+                    booking.userEmail
+                );
+                const fileName = `UMTI-Meeting-${booking.dateStr}.ics`;
+                downloadICS(icsContent, fileName);
+            }
+        });
+
+        // Enhanced Chatbot with 80% transparency for suggested questions
+        function showSuggestedQuestions() {
+            let suggestedQuestionsDiv = document.getElementById('suggestedQuestions');
+            
+            if (!suggestedQuestionsDiv) {
+                suggestedQuestionsDiv = document.createElement('div');
+                suggestedQuestionsDiv.className = 'suggested-questions';
+                suggestedQuestionsDiv.id = 'suggestedQuestions';
+                suggestedQuestionsDiv.style.opacity = '0.8'; // 80% transparency
+                
+                suggestedQuestions.forEach(question => {
+                    const questionBtn = document.createElement('button');
+                    questionBtn.className = 'suggested-question';
+                    questionBtn.textContent = question;
+                    questionBtn.addEventListener('click', () => {
+                        chatbotInput.value = question;
+                        handleSendMessage();
+                    });
+                    suggestedQuestionsDiv.appendChild(questionBtn);
+                });
+                
+                chatbotMessages.appendChild(suggestedQuestionsDiv);
+            } else {
+                suggestedQuestionsDiv.style.display = 'flex';
+                suggestedQuestionsDiv.style.opacity = '0.8';
+            }
+            
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function hideSuggestedQuestions() {
+            const suggestedQuestionsDiv = document.getElementById('suggestedQuestions');
+            if (suggestedQuestionsDiv) {
+                suggestedQuestionsDiv.style.display = 'none';
+            }
+        }
+
+        // Modify the chatbot response handler
+        function handleSendMessage() {
+            const userInput = chatbotInput.value.trim();
+            if (!userInput) return;
+            
+            // Hide suggested questions when user sends a message
+            hideSuggestedQuestions();
+            
+            addMessage(userInput, true);
+            chatbotInput.value = '';
+            const typingDiv = showTypingIndicator();
+            
+            setTimeout(() => {
+                hideTypingIndicator(typingDiv);
+                const response = findAnswer(userInput);
+                
+                if (response === null) {
+                    // No match found - show error and show suggested questions again
+                    addMessage("I'm sorry, I can only answer questions about our services, team, courses, and meeting scheduling. Please select one of the suggested questions below or ask about our team members.");
+                    showSuggestedQuestions();
+                } else if (typeof response === 'object') {
+                    // Team member info
+                    addTeamInfoCard(response);
+                    addMessage("Is there anything else you'd like to know about our team or services?");
+                    showSuggestedQuestions();
+                } else {
+                    // General answer
+                    addMessage(response);
+                    showSuggestedQuestions();
+                }
+            }, 1000);
+        }
+
+        // Initialize chatbot with suggested questions
+        chatbotBtn.addEventListener('click', () => {
+            chatbotBox.classList.toggle('active');
+            if (chatbotBox.classList.contains('active')) {
+                // Clear previous suggested questions and show new ones
+                const existingQuestions = document.getElementById('suggestedQuestions');
+                if (existingQuestions) {
+                    existingQuestions.remove();
+                }
+                
+                // Show welcome message and questions after a short delay
+                setTimeout(() => {
+                    showSuggestedQuestions();
+                }, 300);
+            }
+        });
+
+        // Header schedule button
+        document.getElementById('headerScheduleBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            // Load bookings for admin panel
+            if (isAdminLoggedIn) {
+                loadBookings();
+            }
+            
+            // Show hero animation
+            setTimeout(() => {
+                document.querySelector('.hero-title').style.opacity = '1';
+                document.querySelector('.hero-subtitle').style.opacity = '1';
+                document.querySelector('.hero-buttons').style.opacity = '1';
+            }, 300);
+        });
+
+        // Window resize handling for sliders
+        window.addEventListener('resize', () => {
             updateSlidesPerView();
-            goToTeamSlide(0);
-            goToTestimonialSlide(0);
+            renderCalendar();
         });
     </script>
 </body>
