@@ -1274,6 +1274,20 @@
             flex: 1;
         }
         
+        @media (max-width: 480px) {
+            .booking-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-top: 1.5rem;
+            }
+            
+            .booking-actions .btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.95rem;
+            }
+        }
+        
         /* Admin Panel Styles */
         .admin-panel {
             position: fixed;
@@ -1598,6 +1612,8 @@
             padding: 2.5rem;
             max-width: 500px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
             box-shadow: var(--shadow-lg);
             transform: translateY(20px);
@@ -1608,6 +1624,40 @@
         
         .meeting-modal.active .meeting-modal-content {
             transform: translateY(0);
+        }
+        
+        @media (max-width: 480px) {
+            .meeting-modal-content {
+                padding: 1.5rem;
+                width: 95%;
+                margin: 0.5rem;
+                max-height: calc(100vh - 1rem);
+            }
+            
+            .meeting-success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .meeting-modal h3 {
+                font-size: 1.5rem;
+            }
+            
+            .meeting-modal p {
+                font-size: 0.9rem;
+            }
+            
+            .meeting-details {
+                padding: 1rem;
+            }
+            
+            .meeting-detail {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
         }
         
         .meeting-modal-close {
@@ -3694,20 +3744,6 @@
             }
         }
         
-        chatbotBtn.addEventListener('click', () => {
-            chatbotBox.classList.toggle('active');
-            if (chatbotBox.classList.contains('active')) {
-                // Show suggested questions when chatbot opens
-                setTimeout(() => {
-                    showSuggestedQuestions();
-                }, 100);
-            }
-        });
-        
-        chatbotClose.addEventListener('click', () => {
-            chatbotBox.classList.remove('active');
-        });
-        
         function addMessage(text, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
@@ -4745,21 +4781,27 @@ END:VCALENDAR`;
         }
 
         // Initialize chatbot with suggested questions
-        chatbotBtn.addEventListener('click', () => {
-            chatbotBox.classList.toggle('active');
-            if (chatbotBox.classList.contains('active')) {
-                // Clear previous suggested questions and show new ones
-                const existingQuestions = document.getElementById('suggestedQuestions');
-                if (existingQuestions) {
-                    existingQuestions.remove();
+        if (chatbotBtn && chatbotBox && chatbotClose) {
+            chatbotBtn.addEventListener('click', () => {
+                chatbotBox.classList.toggle('active');
+                if (chatbotBox.classList.contains('active')) {
+                    // Clear previous suggested questions and show new ones
+                    const existingQuestions = document.getElementById('suggestedQuestions');
+                    if (existingQuestions) {
+                        existingQuestions.remove();
+                    }
+                    
+                    // Show welcome message and questions after a short delay
+                    setTimeout(() => {
+                        showSuggestedQuestions();
+                    }, 300);
                 }
-                
-                // Show welcome message and questions after a short delay
-                setTimeout(() => {
-                    showSuggestedQuestions();
-                }, 300);
-            }
-        });
+            });
+            
+            chatbotClose.addEventListener('click', () => {
+                chatbotBox.classList.remove('active');
+            });
+        }
 
         // Header schedule button
         document.getElementById('headerScheduleBtn').addEventListener('click', (e) => {
