@@ -1225,6 +1225,49 @@
             border-color: transparent;
         }
         
+        .time-slot-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(30, 64, 175, 0.02);
+            border-radius: var(--radius);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--dark);
+        }
+        
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid transparent;
+        }
+        
+        .legend-color.available {
+            background: rgba(30, 64, 175, 0.1);
+            border-color: rgba(30, 64, 175, 0.3);
+        }
+        
+        .legend-color.booked {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .legend-color.past {
+            background: rgba(100, 116, 139, 0.05);
+            border-color: rgba(100, 116, 139, 0.2);
+        }
+        
         .booking-form {
             margin-top: 2rem;
             background: rgba(30, 64, 175, 0.03);
@@ -1285,6 +1328,12 @@
                 width: 100%;
                 padding: 0.75rem 1rem;
                 font-size: 0.95rem;
+            }
+            
+            .time-slot-legend {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
         
@@ -3306,6 +3355,21 @@
                         </div>
                     </div>
                     
+                    <div class="time-slot-legend">
+                        <div class="legend-item">
+                            <span class="legend-color available"></span>
+                            <span>Available</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color booked"></span>
+                            <span>Booked</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color past"></span>
+                            <span>Past</span>
+                        </div>
+                    </div>
+                    
                     <div class="booking-form" id="bookingForm" style="display: none;">
                         <h4>Meeting Details</h4>
                         <div class="booking-details">
@@ -3349,8 +3413,15 @@
                                 <input type="text" id="meetingTimeInput" class="form-control" placeholder="Select a time slot" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="meetingTimezoneInput" class="form-label">Time Zone</label>
-                                <input type="text" id="meetingTimezoneInput" class="form-control" placeholder="Your detected timezone" readonly>
+                                <label for="timezoneSelect" class="form-label">Your Timezone *</label>
+                                <select id="timezoneSelect" class="form-control" required>
+                                    <option value="">Select your timezone...</option>
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="meetingTimezoneInput" class="form-label">Meeting Time Zone (Display)</label>
+                                <input type="text" id="meetingTimezoneInput" class="form-control" placeholder="Your selected timezone" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="projectDetails" class="form-label">Project Details (Optional)</label>
@@ -4250,7 +4321,29 @@
         let selectedDate = null;
         let selectedTime = null;
         let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        let selectedUserTimezone = userTimezone; // User's selected timezone for booking
         const MEETING_LINK = 'https://meet.google.com/shv-knoe-vfw';
+        const PAKISTAN_TIMEZONE = 'Asia/Karachi';
+        
+        // All world timezones
+        const allTimezones = [
+            'UTC', 'UTC+1', 'UTC+2', 'UTC+3', 'UTC+4', 'UTC+5', 'UTC+6', 'UTC+7', 'UTC+8', 'UTC+9', 'UTC+10', 'UTC+11', 'UTC+12',
+            'UTC-1', 'UTC-2', 'UTC-3', 'UTC-4', 'UTC-5', 'UTC-6', 'UTC-7', 'UTC-8', 'UTC-9', 'UTC-10', 'UTC-11', 'UTC-12',
+            'Africa/Cairo', 'Africa/Johannesburg', 'Africa/Lagos', 'America/Anchorage', 'America/Chicago', 'America/Denver',
+            'America/Los_Angeles', 'America/Mexico_City', 'America/New_York', 'America/Toronto', 'America/Vancouver',
+            'Asia/Bangkok', 'Asia/Beijing', 'Asia/Dubai', 'Asia/Hong_Kong', 'Asia/Kolkata', 'Asia/Karachi', 'Asia/Jakarta',
+            'Asia/Manila', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore', 'Asia/Tokyo', 'Australia/Brisbane', 'Australia/Melbourne',
+            'Australia/Perth', 'Australia/Sydney', 'Europe/Amsterdam', 'Europe/Berlin', 'Europe/Brussels', 'Europe/Dublin',
+            'Europe/Istanbul', 'Europe/London', 'Europe/Madrid', 'Europe/Moscow', 'Europe/Paris', 'Europe/Rome', 'Europe/Vienna',
+            'Europe/Zurich', 'Pacific/Auckland', 'Pacific/Fiji', 'Pacific/Honolulu', 'Pacific/Kiritimati', 'Pacific/Samoa',
+            'Pacific/Tongatapu', 'America/Buenos_Aires', 'America/Caracas', 'America/Godthab', 'America/Jamaica', 'America/Monterrey',
+            'America/Godthab', 'Asia/Almaty', 'Asia/Amman', 'Asia/Ashkhabad', 'Asia/Baghdad', 'Asia/Baku', 'Asia/Dhaka',
+            'Asia/Kabul', 'Asia/Magadan', 'Asia/Muscat', 'Asia/Nicosia', 'Asia/Rangoon', 'Asia/Tehran', 'Asia/Tbilisi',
+            'Asia/Vladivostok', 'Asia/Yakutsk', 'Asia/Yekaterinburg', 'Atlantic/Azores', 'Atlantic/Cape_Verde', 'Atlantic/Reykjavik',
+            'Europe/Chisinau', 'Europe/Kaliningrad', 'Europe/Lisbon', 'Europe/Malta', 'Europe/Minsk', 'Europe/Riga', 'Europe/Samara',
+            'Europe/Simferopol', 'Europe/Sofia', 'Europe/Tallinn', 'Europe/Uzhgorod', 'Europe/Vilnius', 'Europe/Volgograd',
+            'Europe/Kirov'
+        ].sort();
         
         const monthNames = [
             "January", "February", "March", "April", "May", "June",
@@ -4262,12 +4355,52 @@
         // Store booked meetings in localStorage
         let bookedMeetings = JSON.parse(localStorage.getItem('umti_booked_meetings')) || [];
         
-        // Update timezone display
+        // Populate timezone dropdown
+        function populateTimezoneDropdown() {
+            const tzSelect = document.getElementById('timezoneSelect');
+            if (!tzSelect) return;
+            
+            allTimezones.forEach(tz => {
+                const option = document.createElement('option');
+                option.value = tz;
+                option.textContent = tz.replace(/_/g, ' ');
+                // Pre-select user's detected timezone
+                if (tz === userTimezone) {
+                    option.selected = true;
+                }
+                tzSelect.appendChild(option);
+            });
+            
+            // Update selected timezone when changed
+            tzSelect.addEventListener('change', (e) => {
+                selectedUserTimezone = e.target.value;
+                document.getElementById('meetingTimezoneInput').value = selectedUserTimezone.replace(/_/g, ' ');
+                updateTimezoneDisplay();
+            });
+            
+            // Set initial value
+            selectedUserTimezone = userTimezone;
+            document.getElementById('meetingTimezoneInput').value = userTimezone.replace(/_/g, ' ');
+        }
+        
+        // Update timezone display with current time in selected timezone
         function updateTimezoneDisplay() {
             const timezoneDisplay = document.getElementById('timezoneDisplay');
-            const timezoneName = userTimezone.replace(/_/g, ' ');
+            if (!timezoneDisplay) return;
+            
+            const timezoneName = selectedUserTimezone.replace(/_/g, ' ');
             const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            // Create a formatter for the selected timezone
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: selectedUserTimezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            
+            const timeString = formatter.format(now);
             timezoneDisplay.textContent = `Your timezone: ${timezoneName} (Current time: ${timeString})`;
         }
         
@@ -4299,10 +4432,20 @@
             return slots;
         }
         
-        // Check if a time slot is booked
+        // Check if a time slot is booked (by ANY user)
         function isTimeSlotBooked(date, hour24, minute) {
             const dateStr = date.toISOString().split('T')[0];
+            
             return bookedMeetings.some(meeting => {
+                // Try new structure first (startDate + startTime)
+                if (meeting.startDate && meeting.startTime) {
+                    if (meeting.startDate === dateStr) {
+                        const [bookHour, bookMinute] = meeting.startTime.split(':').map(Number);
+                        return bookHour === hour24 && bookMinute === minute;
+                    }
+                }
+                
+                // Fall back to old dateTime structure for backward compatibility
                 const meetingDate = new Date(meeting.dateTime);
                 return meetingDate.toISOString().split('T')[0] === dateStr &&
                        meetingDate.getHours() === hour24 &&
@@ -4498,6 +4641,34 @@
                 loginError.style.display = 'none';
             }
         });
+        
+        // Convert time from user timezone to Pakistan timezone
+        function convertToPakistanTime(dateStr, timeStr, userTimezone) {
+            try {
+                // Parse the date and time
+                const [year, month, day] = dateStr.split('-');
+                const [hour, minute] = timeStr.split(':');
+                
+                // Create a date in the user's timezone
+                const dateInUserTz = new Date(year, parseInt(month) - 1, day, parseInt(hour), parseInt(minute), 0);
+                
+                // Create a formatter for Pakistan timezone
+                const pakistanFormatter = new Intl.DateTimeFormat('en-US', {
+                    timeZone: PAKISTAN_TIMEZONE,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+                
+                const pakistanTime = pakistanFormatter.format(dateInUserTz);
+                return pakistanTime;
+            } catch (e) {
+                return `${dateStr} ${timeStr}`;
+            }
+        }
 
         // Load bookings from localStorage
         function loadBookings() {
@@ -4514,27 +4685,39 @@
             const today = new Date().toISOString().split('T')[0];
             let todayCount = 0;
             
+            // Show ALL booked meetings
             bookedMeetings.forEach((booking, index) => {
                 // Prefer explicit startDate/startTime if available
                 const startDate = booking.startDate || (booking.dateStr || '').toString();
                 const startTime = booking.startTime || (booking.dateTime ? booking.dateTime.split(' ')[1] : '');
-                const timezone = booking.timezone || '';
+                const userTz = booking.timezone || '';
                 const meetingLink = booking.meetingLink || '';
 
                 const isToday = startDate === today;
                 if (isToday) todayCount++;
+                
+                // Convert user's meeting time to Pakistan timezone
+                const pakistanTime = convertToPakistanTime(startDate, startTime, userTz);
 
                 const bookingItem = document.createElement('div');
                 bookingItem.className = 'booking-item';
                 bookingItem.innerHTML = `
                     <div class="booking-meta">
-                        <span>${startDate}</span>
-                        <span>${startTime}</span>
-                        <span>${timezone}</span>
+                        <span><strong>User:</strong> ${booking.userName}</span>
+                        <span><strong>Email:</strong> ${booking.userEmail}</span>
                     </div>
-                    <div class="booking-name">${booking.userName}</div>
-                    <div class="booking-time">${booking.userEmail}</div>
-                    <div class="booking-link">${meetingLink ? `<a href="${meetingLink}" target="_blank">Open Meeting</a>` : ''}</div>
+                    <div class="booking-detail">
+                        <span><strong>User TZ:</strong> ${userTz} @ ${startDate} ${startTime}</span>
+                    </div>
+                    <div class="booking-detail">
+                        <span><strong>PKT (Pakistan):</strong> ${pakistanTime}</span>
+                    </div>
+                    <div class="booking-detail">
+                        <span><strong>Phone:</strong> ${booking.userPhone || 'N/A'}</span>
+                    </div>
+                    <div class="booking-link">
+                        ${meetingLink ? `<a href="${meetingLink}" target="_blank" style="color: #1e40af; font-weight: bold;">Open Meeting</a>` : 'No link'}
+                    </div>
                 `;
                 bookingsList.appendChild(bookingItem);
             });
@@ -4625,10 +4808,16 @@ END:VCALENDAR`;
             const userEmail = document.getElementById('userEmail').value.trim();
             const userPhone = document.getElementById('userPhone').value.trim();
             const projectDetails = document.getElementById('projectDetails').value.trim();
+            const timezoneSelect = document.getElementById('timezoneSelect');
             
             // Validate required fields
             if (!userName || !userEmail) {
                 alert('Please fill in your name and email address.');
+                return;
+            }
+            
+            if (!timezoneSelect || !timezoneSelect.value) {
+                alert('Please select your timezone.');
                 return;
             }
             
@@ -4654,7 +4843,7 @@ END:VCALENDAR`;
                 dateTime: selectedTime,
                 startDate: selectedDate.toISOString().split('T')[0],
                 startTime: document.getElementById('meetingTimeInput') ? document.getElementById('meetingTimeInput').value : selectedTime.split(' ')[1],
-                timezone: userTimezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+                timezone: selectedUserTimezone || timezoneSelect.value,
                 meetingLink: MEETING_LINK
             };
             
@@ -4855,6 +5044,9 @@ END:VCALENDAR`;
 
         // Initialize
         window.addEventListener('load', () => {
+            // Populate timezone dropdown
+            populateTimezoneDropdown();
+            
             // Load bookings for admin panel
             if (isAdminLoggedIn) {
                 loadBookings();
