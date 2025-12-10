@@ -4545,6 +4545,89 @@ END:VCALENDAR`;
             window.URL.revokeObjectURL(url);
         }
 
+        // Confirm Booking button handler
+        const confirmBookingBtn = document.getElementById('confirmBooking');
+        const changeSelectionBtn = document.getElementById('changeSelection');
+        
+        confirmBookingBtn.addEventListener('click', () => {
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const userPhone = document.getElementById('userPhone').value.trim();
+            const projectDetails = document.getElementById('projectDetails').value.trim();
+            
+            // Validate required fields
+            if (!userName || !userEmail) {
+                alert('Please fill in your name and email address.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userEmail)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            if (!selectedDate || !selectedTime) {
+                alert('Please select both date and time.');
+                return;
+            }
+            
+            // Create booking object
+            const booking = {
+                userName: userName,
+                userEmail: userEmail,
+                userPhone: userPhone,
+                projectDetails: projectDetails,
+                dateTime: selectedTime,
+                dateStr: selectedDate.toISOString().split('T')[0]
+            };
+            
+            // Save booking to localStorage
+            bookedMeetings.push(booking);
+            localStorage.setItem('umti_booked_meetings', JSON.stringify(bookedMeetings));
+            
+            // Update admin panel if logged in
+            if (isAdminLoggedIn) {
+                loadBookings();
+            }
+            
+            // Show confirmation modal
+            document.getElementById('confirmedDate').textContent = selectedDate.toLocaleDateString();
+            document.getElementById('confirmedTime').textContent = document.getElementById('selectedTime').textContent;
+            
+            const meetingModal = document.getElementById('meetingModal');
+            meetingModal.classList.add('active');
+            
+            // Clear the form
+            document.getElementById('userInfoForm').reset();
+            document.getElementById('bookingForm').style.display = 'none';
+            
+            // Clear selections
+            document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            selectedDate = null;
+            selectedTime = null;
+        });
+        
+        changeSelectionBtn.addEventListener('click', () => {
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.style.display = 'none';
+            
+            // Clear selections
+            document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+        });
+
         // Meeting confirmation modal
         const meetingModal = document.getElementById('meetingModal');
         const meetingModalClose = document.getElementById('meetingModalClose');
@@ -4571,13 +4654,23 @@ END:VCALENDAR`;
         downloadICSBtn.addEventListener('click', () => {
             const booking = bookedMeetings[bookedMeetings.length - 1];
             if (booking) {
+                // Parse the selectedTime string to create proper datetime
+                const [dateStr, timeStr] = booking.dateTime.split(' ');
+                const [year, month, day] = dateStr.split('-');
+                const [hour, minute] = timeStr.split(':');
+                
+                const dateTime = new Date(year, parseInt(month) - 1, day, hour, minute, 0);
+                
                 const icsContent = generateICSFile(
-                    booking.dateTime,
+                    dateTime,
                     booking.userName,
                     booking.userEmail
                 );
                 const fileName = `UMTI-Meeting-${booking.dateStr}.ics`;
                 downloadICS(icsContent, fileName);
+                
+                // Show success message
+                alert('Calendar invite (.ics) file downloaded successfully!');
             }
         });
 
